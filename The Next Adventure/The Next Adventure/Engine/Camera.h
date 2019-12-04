@@ -31,6 +31,7 @@ namespace Toast {
 		void OrbitWest();
 		void ZoomIn();
 		void ZoomOut();
+		void TurnAround(float delta);
 		void SetPosition(DirectX::XMFLOAT3 pos);
 		void Rotate(float xR, float yR, float zR);
 		void CalculateDirections();
@@ -72,7 +73,7 @@ namespace Toast {
 		ID3D11Buffer *mGUIConstantBuffer = nullptr;
 
 		bool mOrbitDirections[6] = { false,false,false,false,false,false };
-		float mOrbitalAngleY = 0.0f, mOrbitalAngleXZ = 0.0f;
+		float mOrbitalAngleY = 0.0f, mOrbitalAngleXZ = 0.0f, mRotationXZ = 0.0f;
 
 	private:
 		DirectX::XMFLOAT3 mPosition;

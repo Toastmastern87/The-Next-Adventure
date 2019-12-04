@@ -25,14 +25,17 @@ namespace Toast
 		mMinY = 0.0f;
 		mVisible = true;
 
+		Toast::System::tSys->Print("Mouse cursor start pos X: %f", static_cast<float>(pos.x));
+		Toast::System::tSys->Print("Mouse cursor start pos Y: %f", static_cast<float>(pos.y));
+
 		mMaxX = Toast::System::tSys->mSettings["WindowSizeX"] - mWidth;
 		mMaxY = Toast::System::tSys->mSettings["WindowSizeY"] - mHeight;
 
 		// The first XMFLOAT3 is the positions of the vertices and the second, XMFLOAT2 is the UV-coordinates
-		mVertices.push_back(Toast::GUIVertex(DirectX::XMFLOAT3(mPosX - (Toast::System::tSys->mSettings["WindowSizeX"] / 2.0f), ((Toast::System::tSys->mSettings["WindowSizeY"] / 2.0f) - mTitleBarOffset - mPosY), 0.0f), DirectX::XMFLOAT2(0.0f, 0.0f)));
-		mVertices.push_back(Toast::GUIVertex(DirectX::XMFLOAT3((mPosX - (Toast::System::tSys->mSettings["WindowSizeX"] / 2.0f) + mWidth), ((Toast::System::tSys->mSettings["WindowSizeY"] / 2.0f) - mTitleBarOffset - mPosY), 0.0f), DirectX::XMFLOAT2(1.0f, 0.0f)));
-		mVertices.push_back(Toast::GUIVertex(DirectX::XMFLOAT3((mPosX - (Toast::System::tSys->mSettings["WindowSizeX"] / 2.0f) + mWidth), ((Toast::System::tSys->mSettings["WindowSizeY"] / 2.0f) - mHeight - mTitleBarOffset - mPosY), 0.0f), DirectX::XMFLOAT2(1.0f, 1.0f)));
-		mVertices.push_back(Toast::GUIVertex(DirectX::XMFLOAT3(mPosX - (Toast::System::tSys->mSettings["WindowSizeX"] / 2.0f), ((Toast::System::tSys->mSettings["WindowSizeY"] / 2.0f) - mHeight - mTitleBarOffset - mPosY), 0.0f), DirectX::XMFLOAT2(0.0f, 1.0f)));
+		mVertices.push_back(Toast::GUIVertex(DirectX::XMFLOAT3(static_cast<float>(pos.x) - (Toast::System::tSys->mSettings["WindowSizeX"] / 2.0f), ((Toast::System::tSys->mSettings["WindowSizeY"] / 2.0f) - static_cast<float>(pos.y)), 0.0f), DirectX::XMFLOAT2(0.0f, 0.0f)));
+		mVertices.push_back(Toast::GUIVertex(DirectX::XMFLOAT3((static_cast<float>(pos.x) - (Toast::System::tSys->mSettings["WindowSizeX"] / 2.0f) + mWidth), ((Toast::System::tSys->mSettings["WindowSizeY"] / 2.0f) - static_cast<float>(pos.y)), 0.0f), DirectX::XMFLOAT2(1.0f, 0.0f)));
+		mVertices.push_back(Toast::GUIVertex(DirectX::XMFLOAT3((static_cast<float>(pos.x) - (Toast::System::tSys->mSettings["WindowSizeX"] / 2.0f) + mWidth), ((Toast::System::tSys->mSettings["WindowSizeY"] / 2.0f) - mHeight - static_cast<float>(pos.y)), 0.0f), DirectX::XMFLOAT2(1.0f, 1.0f)));
+		mVertices.push_back(Toast::GUIVertex(DirectX::XMFLOAT3(static_cast<float>(pos.x) - (Toast::System::tSys->mSettings["WindowSizeX"] / 2.0f), ((Toast::System::tSys->mSettings["WindowSizeY"] / 2.0f) - mHeight- static_cast<float>(pos.y)), 0.0f), DirectX::XMFLOAT2(0.0f, 1.0f)));
 
 		mIndices.push_back(0);
 		mIndices.push_back(1);
@@ -72,6 +75,18 @@ namespace Toast
 		}
 
 		mOldPos = pos;
+	}
+
+	void GUICursor::HideCursor() 
+	{
+		GetCursorPos(&mHiddenPos);
+		mVisible = false;
+	}
+
+	void GUICursor::ShowCursor() 
+	{
+		SetCursorPos(static_cast<int>(mHiddenPos.x), static_cast<int>(mHiddenPos.y));
+		mVisible = true;
 	}
 
 	void GUICursor::Draw(D3D &d3d)

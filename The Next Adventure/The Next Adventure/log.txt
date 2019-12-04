@@ -1,115 +1,652 @@
-[10:43:33:631] Initating the game
-[10:43:33:634] Camera created
-[10:43:34:470] Texture added
-[10:43:34:480] Star sphere created
-[10:43:34:780] Texture added
-[10:43:34:780] Mars created
-[10:43:34:788] Texture added
-[10:43:34:791] Font Created
-[10:43:34:799] Texture added
-[10:43:34:801] Texture added
-[10:43:34:801] Debug window created
-[10:43:34:807] Texture added
-[10:43:34:815] Texture added
-[10:43:34:827] Texture added
-[10:43:34:835] Font Created
-[10:43:34:839] Font Created
-[10:43:34:850] Texture added
-[10:43:34:852] Font Created
-[10:43:34:853] FPS Text created in the Debug window
-[10:43:34:854] Altitude Text created in the Debug window
-[10:43:34:856] Texture added
-[10:43:34:858] Texture added
-[10:43:34:887] Texture added
-[10:43:34:887] Mouse cursor created
-[10:43:35:607] Avg FPS: 143  Avg Frametime: 0.0057   Avg Tick Time: 0.1937
-[10:43:36:316] Avg FPS: 145  Avg Frametime: 0.0058   Avg Tick Time: 0.1613
-[10:43:37:240] Avg FPS: 145  Avg Frametime: 0.0066   Avg Tick Time: 0.0477
-[10:43:37:736] Avg FPS: 105  Avg Frametime: 0.0093   Avg Tick Time: 0.0278
-[10:43:38:441] Avg FPS: 100  Avg Frametime: 0.0097   Avg Tick Time: 0.0295
-[10:43:39:149] Avg FPS:  92  Avg Frametime: 0.0106   Avg Tick Time: 0.0236
-[10:43:39:853] Avg FPS: 114  Avg Frametime: 0.0083   Avg Tick Time: 0.0537
-[10:43:40:561] Avg FPS: 153  Avg Frametime: 0.0060   Avg Tick Time: 0.0927
-[10:43:41:269] Avg FPS: 155  Avg Frametime: 0.0056   Avg Tick Time: 0.1386
-[10:43:41:976] Avg FPS: 160  Avg Frametime: 0.0054   Avg Tick Time: 0.1466
-[10:43:42:684] Avg FPS: 146  Avg Frametime: 0.0051   Avg Tick Time: 0.2650
-[10:43:43:391] Avg FPS: 148  Avg Frametime: 0.0057   Avg Tick Time: 0.1534
-[10:43:44:101] Avg FPS: 150  Avg Frametime: 0.0056   Avg Tick Time: 0.1680
-[10:43:44:811] Avg FPS: 154  Avg Frametime: 0.0056   Avg Tick Time: 0.1515
-[10:43:45:518] Avg FPS: 147  Avg Frametime: 0.0058   Avg Tick Time: 0.1444
-[10:43:46:227] Avg FPS: 158  Avg Frametime: 0.0056   Avg Tick Time: 0.1243
-[10:43:46:933] Avg FPS: 157  Avg Frametime: 0.0056   Avg Tick Time: 0.1211
-[10:43:47:639] Avg FPS: 152  Avg Frametime: 0.0058   Avg Tick Time: 0.1150
-[10:43:48:348] Avg FPS: 141  Avg Frametime: 0.0061   Avg Tick Time: 0.1409
-[10:43:49:550] Avg FPS: 132  Avg Frametime: 0.0070   Avg Tick Time: 0.0850
-[10:43:49:762] Avg FPS: 143  Avg Frametime: 0.0065   Avg Tick Time: 0.0714
-[10:43:50:471] Avg FPS: 147  Avg Frametime: 0.0063   Avg Tick Time: 0.0793
-[10:43:51:179] Avg FPS: 141  Avg Frametime: 0.0063   Avg Tick Time: 0.1183
-[10:43:51:887] Avg FPS: 133  Avg Frametime: 0.0062   Avg Tick Time: 0.1767
-[10:43:52:592] Avg FPS: 132  Avg Frametime: 0.0063   Avg Tick Time: 0.1754
-[10:43:53:302] Avg FPS: 135  Avg Frametime: 0.0061   Avg Tick Time: 0.1831
-[10:43:54:130] Avg FPS: 132  Avg Frametime: 0.0062   Avg Tick Time: 0.1859
-[10:43:54:721] Avg FPS: 136  Avg Frametime: 0.0060   Avg Tick Time: 0.1838
-[10:43:55:431] Avg FPS: 131  Avg Frametime: 0.0061   Avg Tick Time: 0.1998
-[10:43:56:136] Avg FPS: 142  Avg Frametime: 0.0059   Avg Tick Time: 0.1594
-[10:43:56:846] Avg FPS: 148  Avg Frametime: 0.0063   Avg Tick Time: 0.0782
-[10:43:57:553] Avg FPS: 121  Avg Frametime: 0.0078   Avg Tick Time: 0.0607
-[10:43:58:264] Avg FPS: 106  Avg Frametime: 0.0090   Avg Tick Time: 0.0526
-[10:43:58:976] Avg FPS:  90  Avg Frametime: 0.0107   Avg Tick Time: 0.0402
-[10:43:59:690] Avg FPS:  88  Avg Frametime: 0.0110   Avg Tick Time: 0.0460
-[10:44:00:395] Avg FPS:  76  Avg Frametime: 0.0126   Avg Tick Time: 0.0424
-[10:44:01:109] Avg FPS:  84  Avg Frametime: 0.0115   Avg Tick Time: 0.0475
-[10:44:01:818] Avg FPS:  95  Avg Frametime: 0.0101   Avg Tick Time: 0.0515
-[10:44:02:528] Avg FPS:  96  Avg Frametime: 0.0100   Avg Tick Time: 0.0444
-[10:44:03:233] Avg FPS: 132  Avg Frametime: 0.0071   Avg Tick Time: 0.0624
-[10:44:03:941] Avg FPS: 107  Avg Frametime: 0.0089   Avg Tick Time: 0.0498
-[10:44:04:656] Avg FPS: 124  Avg Frametime: 0.0077   Avg Tick Time: 0.0576
-[10:44:05:362] Avg FPS: 102  Avg Frametime: 0.0094   Avg Tick Time: 0.0479
-[10:44:06:730] Avg FPS: 109  Avg Frametime: 0.0088   Avg Tick Time: 0.0425
-[10:44:06:779] Avg FPS:  96  Avg Frametime: 0.0100   Avg Tick Time: 0.0399
-[10:44:07:494] Avg FPS:  80  Avg Frametime: 0.0123   Avg Tick Time: 0.0269
-[10:44:08:203] Avg FPS:  79  Avg Frametime: 0.0124   Avg Tick Time: 0.0278
-[10:44:08:913] Avg FPS:  79  Avg Frametime: 0.0124   Avg Tick Time: 0.0264
-[10:44:09:620] Avg FPS:  79  Avg Frametime: 0.0123   Avg Tick Time: 0.0277
-[10:44:10:324] Avg FPS:  79  Avg Frametime: 0.0123   Avg Tick Time: 0.0292
-[10:44:11:380] Avg FPS:  80  Avg Frametime: 0.0123   Avg Tick Time: 0.0281
-[10:44:11:744] Avg FPS:  79  Avg Frametime: 0.0123   Avg Tick Time: 0.0272
-[10:44:12:450] Avg FPS:  79  Avg Frametime: 0.0123   Avg Tick Time: 0.0267
-[10:44:13:158] Avg FPS:  79  Avg Frametime: 0.0124   Avg Tick Time: 0.0239
-[10:44:13:866] Avg FPS:  79  Avg Frametime: 0.0124   Avg Tick Time: 0.0282
-[10:44:14:576] Avg FPS:  92  Avg Frametime: 0.0106   Avg Tick Time: 0.0335
-[10:44:15:289] Avg FPS:  96  Avg Frametime: 0.0101   Avg Tick Time: 0.0405
-[10:44:15:997] Avg FPS:  89  Avg Frametime: 0.0108   Avg Tick Time: 0.0380
-[10:44:16:702] Avg FPS:  71  Avg Frametime: 0.0137   Avg Tick Time: 0.0266
-[10:44:17:417] Avg FPS:  80  Avg Frametime: 0.0124   Avg Tick Time: 0.0231
-[10:44:18:122] Avg FPS:  82  Avg Frametime: 0.0119   Avg Tick Time: 0.0279
-[10:44:18:836] Avg FPS:  80  Avg Frametime: 0.0123   Avg Tick Time: 0.0241
-[10:44:19:548] Avg FPS:  83  Avg Frametime: 0.0119   Avg Tick Time: 0.0259
-[10:44:20:263] Avg FPS:  75  Avg Frametime: 0.0131   Avg Tick Time: 0.0319
-[10:44:20:973] Avg FPS:  72  Avg Frametime: 0.0136   Avg Tick Time: 0.0279
-[10:44:21:681] Avg FPS:  75  Avg Frametime: 0.0131   Avg Tick Time: 0.0252
-[10:44:22:391] Avg FPS:  73  Avg Frametime: 0.0134   Avg Tick Time: 0.0232
-[10:44:23:105] Avg FPS:  70  Avg Frametime: 0.0140   Avg Tick Time: 0.0296
-[10:44:23:810] Avg FPS:  74  Avg Frametime: 0.0132   Avg Tick Time: 0.0270
-[10:44:24:514] Avg FPS:  82  Avg Frametime: 0.0118   Avg Tick Time: 0.0328
-[10:44:25:227] Avg FPS: 106  Avg Frametime: 0.0088   Avg Tick Time: 0.0788
-[10:44:25:939] Avg FPS:  85  Avg Frametime: 0.0112   Avg Tick Time: 0.0540
-[10:44:26:644] Avg FPS:  77  Avg Frametime: 0.0125   Avg Tick Time: 0.0413
-[10:44:27:355] Avg FPS:  79  Avg Frametime: 0.0121   Avg Tick Time: 0.0470
-[10:44:28:650] Avg FPS:  76  Avg Frametime: 0.0124   Avg Tick Time: 0.0629
-[10:44:28:782] Avg FPS:  78  Avg Frametime: 0.0124   Avg Tick Time: 0.0410
-[10:44:29:486] Avg FPS:  79  Avg Frametime: 0.0121   Avg Tick Time: 0.0507
-[10:44:30:196] Avg FPS:  77  Avg Frametime: 0.0125   Avg Tick Time: 0.0386
-[10:44:30:902] Avg FPS:  97  Avg Frametime: 0.0098   Avg Tick Time: 0.0618
-[10:44:31:613] Avg FPS: 103  Avg Frametime: 0.0086   Avg Tick Time: 0.1228
-[10:44:32:321] Avg FPS:  92  Avg Frametime: 0.0091   Avg Tick Time: 0.1630
-[10:44:33:250] Avg FPS:  95  Avg Frametime: 0.0089   Avg Tick Time: 0.1534
-[10:44:33:736] Avg FPS:  79  Avg Frametime: 0.0111   Avg Tick Time: 0.1295
-[10:44:34:445] Avg FPS:  84  Avg Frametime: 0.0104   Avg Tick Time: 0.1338
-[10:44:35:157] Avg FPS:  92  Avg Frametime: 0.0095   Avg Tick Time: 0.1327
-[10:44:35:863] Avg FPS:  94  Avg Frametime: 0.0091   Avg Tick Time: 0.1470
-[10:44:36:572] Avg FPS:  93  Avg Frametime: 0.0097   Avg Tick Time: 0.1002
-[10:44:37:280] Avg FPS: 103  Avg Frametime: 0.0087   Avg Tick Time: 0.1106
-[10:44:37:989] Avg FPS:  91  Avg Frametime: 0.0097   Avg Tick Time: 0.1244
-[10:44:38:693] Avg FPS: 117  Avg Frametime: 0.0074   Avg Tick Time: 0.1330
-[10:44:39:403] Avg FPS: 128  Avg Frametime: 0.0064   Avg Tick Time: 0.1826
+[15:20:06:418] Initating the game
+[15:20:06:420] Camera created
+[15:20:06:794] Texture added
+[15:20:06:794] Star sphere created
+[15:20:07:496] Texture added
+[15:20:07:497] Mars created
+[15:20:07:504] Texture added
+[15:20:07:507] Font Created
+[15:20:07:515] Texture added
+[15:20:07:517] Texture added
+[15:20:07:517] Debug window created
+[15:20:07:529] Texture added
+[15:20:07:539] Texture added
+[15:20:07:548] Texture added
+[15:20:07:551] Font Created
+[15:20:07:554] Font Created
+[15:20:07:563] Texture added
+[15:20:07:565] Font Created
+[15:20:07:566] FPS Text created in the Debug window
+[15:20:07:567] Altitude Text created in the Debug window
+[15:20:07:569] Texture added
+[15:20:07:590] Texture added
+[15:20:07:590] Mouse cursor start pos X: 749.000000
+[15:20:07:590] Mouse cursor start pos Y: 371.000000
+[15:20:07:618] Texture added
+[15:20:07:618] Mouse cursor created
+[15:20:08:328] Avg FPS: 152  Avg Frametime: 0.0052   Avg Tick Time: 0.2154
+[15:20:09:360] Avg FPS: 158  Avg Frametime: 0.0054   Avg Tick Time: 0.1466
+[15:20:09:743] Avg FPS: 158  Avg Frametime: 0.0049   Avg Tick Time: 0.2343
+[15:20:10:451] Avg FPS: 149  Avg Frametime: 0.0054   Avg Tick Time: 0.1991
+[15:20:11:159] Avg FPS: 161  Avg Frametime: 0.0051   Avg Tick Time: 0.1908
+[15:20:11:867] Avg FPS: 162  Avg Frametime: 0.0050   Avg Tick Time: 0.1957
+[15:20:12:576] Avg FPS: 164  Avg Frametime: 0.0048   Avg Tick Time: 0.2236
+[15:20:13:281] Avg FPS: 169  Avg Frametime: 0.0050   Avg Tick Time: 0.1567
+[15:20:13:987] Avg FPS: 170  Avg Frametime: 0.0051   Avg Tick Time: 0.1396
+[15:20:14:697] Avg FPS: 174  Avg Frametime: 0.0050   Avg Tick Time: 0.1308
+[15:20:15:405] Avg FPS: 176  Avg Frametime: 0.0047   Avg Tick Time: 0.1746
+[15:20:16:111] Avg FPS: 162  Avg Frametime: 0.0049   Avg Tick Time: 0.2108
+[15:20:16:819] Avg FPS: 170  Avg Frametime: 0.0047   Avg Tick Time: 0.2092
+[15:20:17:529] Avg FPS: 170  Avg Frametime: 0.0052   Avg Tick Time: 0.1300
+[15:20:18:236] Avg FPS: 167  Avg Frametime: 0.0053   Avg Tick Time: 0.1250
+[15:20:18:947] Avg FPS: 164  Avg Frametime: 0.0054   Avg Tick Time: 0.1223
+[15:20:19:654] Avg FPS: 177  Avg Frametime: 0.0050   Avg Tick Time: 0.1192
+[15:20:20:363] Avg FPS: 180  Avg Frametime: 0.0049   Avg Tick Time: 0.1161
+[15:20:21:680] Avg FPS: 179  Avg Frametime: 0.0050   Avg Tick Time: 0.1131
+[15:20:21:779] Avg FPS: 179  Avg Frametime: 0.0049   Avg Tick Time: 0.1270
+[15:20:22:485] Avg FPS: 165  Avg Frametime: 0.0053   Avg Tick Time: 0.1284
+[15:20:23:197] Avg FPS: 152  Avg Frametime: 0.0055   Avg Tick Time: 0.1690
+[15:20:23:907] Avg FPS: 150  Avg Frametime: 0.0057   Avg Tick Time: 0.1580
+[15:20:24:614] Avg FPS: 157  Avg Frametime: 0.0051   Avg Tick Time: 0.1936
+[15:20:25:335] Avg FPS: 155  Avg Frametime: 0.0055   Avg Tick Time: 0.1577
+[15:20:26:300] Avg FPS: 152  Avg Frametime: 0.0055   Avg Tick Time: 0.1621
+[15:20:26:738] Avg FPS: 147  Avg Frametime: 0.0062   Avg Tick Time: 0.0834
+[15:20:27:445] Avg FPS: 149  Avg Frametime: 0.0064   Avg Tick Time: 0.0441
+[15:20:28:157] Avg FPS: 124  Avg Frametime: 0.0078   Avg Tick Time: 0.0314
+[15:20:28:862] Avg FPS: 118  Avg Frametime: 0.0082   Avg Tick Time: 0.0385
+[15:20:29:575] Avg FPS: 119  Avg Frametime: 0.0082   Avg Tick Time: 0.0381
+[15:20:30:283] Avg FPS: 113  Avg Frametime: 0.0085   Avg Tick Time: 0.0412
+[15:20:30:989] Avg FPS: 117  Avg Frametime: 0.0082   Avg Tick Time: 0.0443
+[15:20:31:699] Avg FPS: 103  Avg Frametime: 0.0094   Avg Tick Time: 0.0354
+[15:20:32:407] Avg FPS: 130  Avg Frametime: 0.0074   Avg Tick Time: 0.0455
+[15:20:33:118] Avg FPS: 139  Avg Frametime: 0.0069   Avg Tick Time: 0.0469
+[15:20:33:826] Avg FPS: 118  Avg Frametime: 0.0081   Avg Tick Time: 0.0388
+[15:20:34:531] Avg FPS: 118  Avg Frametime: 0.0081   Avg Tick Time: 0.0414
+[15:20:35:241] Avg FPS: 104  Avg Frametime: 0.0094   Avg Tick Time: 0.0286
+[15:20:35:956] Avg FPS:  83  Avg Frametime: 0.0119   Avg Tick Time: 0.0245
+[15:20:36:663] Avg FPS:  83  Avg Frametime: 0.0118   Avg Tick Time: 0.0259
+[15:20:37:375] Avg FPS:  84  Avg Frametime: 0.0117   Avg Tick Time: 0.0229
+[15:20:38:820] Avg FPS:  83  Avg Frametime: 0.0116   Avg Tick Time: 0.0390
+[15:20:38:794] Avg FPS:  84  Avg Frametime: 0.0117   Avg Tick Time: 0.0235
+[15:20:39:499] Avg FPS:  83  Avg Frametime: 0.0117   Avg Tick Time: 0.0262
+[15:20:40:213] Avg FPS:  84  Avg Frametime: 0.0118   Avg Tick Time: 0.0252
+[15:20:40:919] Avg FPS:  83  Avg Frametime: 0.0118   Avg Tick Time: 0.0234
+[15:20:41:627] Avg FPS:  83  Avg Frametime: 0.0117   Avg Tick Time: 0.0278
+[15:20:42:337] Avg FPS:  80  Avg Frametime: 0.0121   Avg Tick Time: 0.0377
+[15:20:43:420] Avg FPS:  85  Avg Frametime: 0.0112   Avg Tick Time: 0.0495
+[15:20:43:757] Avg FPS:  87  Avg Frametime: 0.0111   Avg Tick Time: 0.0395
+[15:20:44:281] Altitude: 4438.369629
+[15:20:44:281] mRotationXZ: 0.000667
+[15:20:44:289] Altitude: 4439.589355
+[15:20:44:289] mRotationXZ: 0.001333
+[15:20:44:297] Altitude: 4440.753418
+[15:20:44:297] mRotationXZ: 0.003333
+[15:20:44:306] Altitude: 4441.865723
+[15:20:44:306] mRotationXZ: 0.006000
+[15:20:44:315] Altitude: 4442.917480
+[15:20:44:316] mRotationXZ: 0.008000
+[15:20:44:325] Altitude: 4443.915527
+[15:20:44:325] mRotationXZ: 0.010667
+[15:20:44:334] Altitude: 4444.859863
+[15:20:44:335] mRotationXZ: 0.012667
+[15:20:44:345] Altitude: 4445.754395
+[15:20:44:345] mRotationXZ: 0.017333
+[15:20:44:353] Altitude: 4446.597168
+[15:20:44:354] mRotationXZ: 0.022667
+[15:20:44:364] Altitude: 4447.396973
+[15:20:44:365] mRotationXZ: 0.028000
+[15:20:44:374] Altitude: 4448.146973
+[15:20:44:374] mRotationXZ: 0.032000
+[15:20:44:386] Altitude: 4448.856934
+[15:20:44:386] mRotationXZ: 0.037333
+[15:20:44:395] Altitude: 4449.519043
+[15:20:44:395] mRotationXZ: 0.040667
+[15:20:44:405] Altitude: 4450.145996
+[15:20:44:405] mRotationXZ: 0.045333
+[15:20:44:412] Altitude: 4450.739746
+[15:20:44:413] mRotationXZ: 0.048667
+[15:20:44:422] Altitude: 4451.306152
+[15:20:44:422] mRotationXZ: 0.052667
+[15:20:44:431] Altitude: 4451.847168
+[15:20:44:431] mRotationXZ: 0.056000
+[15:20:44:439] Altitude: 4452.356934
+[15:20:44:440] mRotationXZ: 0.059333
+[15:20:44:448] Altitude: 4452.841309
+[15:20:44:448] mRotationXZ: 0.062667
+[15:20:44:457] Altitude: 4453.303223
+[15:20:44:457] mRotationXZ: 0.067333
+[15:20:44:465] Avg FPS:  89  Avg Frametime: 0.0107   Avg Tick Time: 0.0529
+[15:20:44:465] Altitude: 4453.741699
+[15:20:44:465] mRotationXZ: 0.070667
+[15:20:44:476] Altitude: 4454.157715
+[15:20:44:476] mRotationXZ: 0.074667
+[15:20:44:485] Altitude: 4454.549316
+[15:20:44:485] mRotationXZ: 0.078667
+[15:20:44:495] Altitude: 4454.921387
+[15:20:44:495] mRotationXZ: 0.082000
+[15:20:44:504] Altitude: 4455.272949
+[15:20:44:504] mRotationXZ: 0.085333
+[15:20:44:523] Altitude: 4455.604980
+[15:20:44:523] mRotationXZ: 0.092667
+[15:20:44:536] Altitude: 4455.900879
+[15:20:44:538] mRotationXZ: 0.097333
+[15:20:44:557] Altitude: 4456.177246
+[15:20:44:557] mRotationXZ: 0.103333
+[15:20:44:567] Altitude: 4456.422363
+[15:20:44:567] mRotationXZ: 0.108000
+[15:20:44:577] Altitude: 4456.650879
+[15:20:44:577] mRotationXZ: 0.112000
+[15:20:44:588] Altitude: 4456.865723
+[15:20:44:588] mRotationXZ: 0.117333
+[15:20:44:597] Altitude: 4457.067871
+[15:20:44:597] mRotationXZ: 0.122000
+[15:20:44:607] Altitude: 4457.259277
+[15:20:44:607] mRotationXZ: 0.128667
+[15:20:44:616] Altitude: 4457.439941
+[15:20:44:616] mRotationXZ: 0.134000
+[15:20:44:626] Altitude: 4457.611816
+[15:20:44:626] mRotationXZ: 0.142667
+[15:20:44:636] Altitude: 4457.773926
+[15:20:44:636] mRotationXZ: 0.152000
+[15:20:44:647] Altitude: 4457.927246
+[15:20:44:647] mRotationXZ: 0.166667
+[15:20:44:657] Altitude: 4458.070801
+[15:20:44:657] mRotationXZ: 0.184000
+[15:20:44:666] Altitude: 4458.205566
+[15:20:44:666] mRotationXZ: 0.202000
+[15:20:44:677] Altitude: 4458.333496
+[15:20:44:677] mRotationXZ: 0.222667
+[15:20:44:687] Altitude: 4458.454590
+[15:20:44:687] mRotationXZ: 0.248667
+[15:20:44:697] Altitude: 4458.568848
+[15:20:44:697] mRotationXZ: 0.272000
+[15:20:44:707] Altitude: 4458.675293
+[15:20:44:707] mRotationXZ: 0.295333
+[15:20:44:716] Altitude: 4458.775879
+[15:20:44:717] mRotationXZ: 0.300000
+[15:20:44:727] Altitude: 4458.871582
+[15:20:44:727] mRotationXZ: 0.300000
+[15:20:44:738] Altitude: 4458.961426
+[15:20:44:738] mRotationXZ: 0.300000
+[15:20:44:748] Altitude: 4459.045410
+[15:20:44:749] mRotationXZ: 0.300000
+[15:20:44:758] Altitude: 4459.124512
+[15:20:44:759] mRotationXZ: 0.300000
+[15:20:45:850] Altitude: 4460.039551
+[15:20:45:850] mRotationXZ: 0.301333
+[15:20:45:920] Altitude: 4460.051270
+[15:20:45:920] mRotationXZ: 0.304000
+[15:20:45:100] Altitude: 4460.062012
+[15:20:45:100] mRotationXZ: 0.307333
+[15:20:45:109] Altitude: 4460.072754
+[15:20:45:109] mRotationXZ: 0.313333
+[15:20:45:117] Altitude: 4460.082520
+[15:20:45:117] mRotationXZ: 0.320000
+[15:20:45:127] Altitude: 4460.092285
+[15:20:45:127] mRotationXZ: 0.330667
+[15:20:45:135] Altitude: 4460.101074
+[15:20:45:135] mRotationXZ: 0.340667
+[15:20:45:144] Altitude: 4460.109863
+[15:20:45:144] mRotationXZ: 0.354000
+[15:20:45:153] Altitude: 4460.117676
+[15:20:45:153] mRotationXZ: 0.367333
+[15:20:45:162] Altitude: 4460.125488
+[15:20:45:162] mRotationXZ: 0.381333
+[15:20:45:170] Avg FPS:  69  Avg Frametime: 0.0133   Avg Tick Time: 0.0829
+[15:20:45:171] Altitude: 4460.132324
+[15:20:45:171] mRotationXZ: 0.397333
+[15:20:45:180] Altitude: 4460.139160
+[15:20:45:180] mRotationXZ: 0.414000
+[15:20:45:189] Altitude: 4460.145996
+[15:20:45:189] mRotationXZ: 0.431333
+[15:20:45:198] Altitude: 4460.151855
+[15:20:45:198] mRotationXZ: 0.448000
+[15:20:45:207] Altitude: 4460.157715
+[15:20:45:207] mRotationXZ: 0.462667
+[15:20:45:214] Altitude: 4460.163574
+[15:20:45:214] mRotationXZ: 0.472667
+[15:20:45:224] Altitude: 4460.168457
+[15:20:45:224] mRotationXZ: 0.483333
+[15:20:45:232] Altitude: 4460.173340
+[15:20:45:232] mRotationXZ: 0.491333
+[15:20:45:241] Altitude: 4460.178223
+[15:20:45:241] mRotationXZ: 0.500000
+[15:20:45:260] Altitude: 4460.183105
+[15:20:45:260] mRotationXZ: 0.514000
+[15:20:45:277] Altitude: 4460.187012
+[15:20:45:277] mRotationXZ: 0.526667
+[15:20:45:287] Altitude: 4460.190918
+[15:20:45:287] mRotationXZ: 0.533333
+[15:20:45:297] Altitude: 4460.194824
+[15:20:45:297] mRotationXZ: 0.540667
+[15:20:45:307] Altitude: 4460.197754
+[15:20:45:307] mRotationXZ: 0.547333
+[15:20:45:317] Altitude: 4460.200684
+[15:20:45:317] mRotationXZ: 0.554000
+[15:20:45:327] Altitude: 4460.203613
+[15:20:45:327] mRotationXZ: 0.560667
+[15:20:45:337] Altitude: 4460.206543
+[15:20:45:337] mRotationXZ: 0.568000
+[15:20:45:346] Altitude: 4460.209473
+[15:20:45:346] mRotationXZ: 0.574000
+[15:20:45:357] Altitude: 4460.211426
+[15:20:45:358] mRotationXZ: 0.582667
+[15:20:45:367] Altitude: 4460.213379
+[15:20:45:367] mRotationXZ: 0.590000
+[15:20:45:379] Altitude: 4460.215332
+[15:20:45:379] mRotationXZ: 0.600667
+[15:20:45:390] Altitude: 4460.217285
+[15:20:45:390] mRotationXZ: 0.610000
+[15:20:45:399] Altitude: 4460.219238
+[15:20:45:399] mRotationXZ: 0.618000
+[15:20:45:410] Altitude: 4460.221191
+[15:20:45:410] mRotationXZ: 0.626000
+[15:20:45:420] Altitude: 4460.223145
+[15:20:45:420] mRotationXZ: 0.634667
+[15:20:45:431] Altitude: 4460.225098
+[15:20:45:431] mRotationXZ: 0.642000
+[15:20:45:441] Altitude: 4460.227051
+[15:20:45:441] mRotationXZ: 0.647333
+[15:20:45:451] Altitude: 4460.228027
+[15:20:45:451] mRotationXZ: 0.652667
+[15:20:45:461] Altitude: 4460.229004
+[15:20:45:461] mRotationXZ: 0.656000
+[15:20:45:471] Altitude: 4460.229980
+[15:20:45:471] mRotationXZ: 0.659333
+[15:20:45:481] Altitude: 4460.230957
+[15:20:45:481] mRotationXZ: 0.661333
+[15:20:45:490] Altitude: 4460.231934
+[15:20:45:490] mRotationXZ: 0.663333
+[15:20:45:500] Altitude: 4460.232910
+[15:20:45:500] mRotationXZ: 0.665333
+[15:20:45:510] Altitude: 4460.233887
+[15:20:45:510] mRotationXZ: 0.666667
+[15:20:45:520] Altitude: 4460.234863
+[15:20:45:521] mRotationXZ: 0.668666
+[15:20:45:530] Altitude: 4460.235840
+[15:20:45:530] mRotationXZ: 0.670000
+[15:20:45:540] Altitude: 4460.236816
+[15:20:45:540] mRotationXZ: 0.672000
+[15:20:45:550] Altitude: 4460.237793
+[15:20:45:550] mRotationXZ: 0.674000
+[15:20:45:559] Altitude: 4460.238770
+[15:20:45:559] mRotationXZ: 0.674666
+[15:20:45:567] Altitude: 4460.239746
+[15:20:45:568] mRotationXZ: 0.676000
+[15:20:45:576] Altitude: 4460.240723
+[15:20:45:576] mRotationXZ: 0.676666
+[15:20:45:586] Altitude: 4460.241699
+[15:20:45:586] mRotationXZ: 0.677333
+[15:20:45:593] Altitude: 4460.242676
+[15:20:45:594] mRotationXZ: 0.678000
+[15:20:45:603] Altitude: 4460.243652
+[15:20:45:603] mRotationXZ: 0.678667
+[15:20:45:612] Altitude: 4460.244629
+[15:20:45:613] mRotationXZ: 0.679333
+[15:20:45:622] Altitude: 4460.245605
+[15:20:45:622] mRotationXZ: 0.680667
+[15:20:45:630] Altitude: 4460.245605
+[15:20:45:630] mRotationXZ: 0.680667
+[15:20:45:638] Altitude: 4460.245605
+[15:20:45:638] mRotationXZ: 0.681333
+[15:20:45:646] Altitude: 4460.245605
+[15:20:45:646] mRotationXZ: 0.682667
+[15:20:45:653] Altitude: 4460.245605
+[15:20:45:653] mRotationXZ: 0.682667
+[15:20:45:661] Altitude: 4460.245605
+[15:20:45:661] mRotationXZ: 0.683333
+[15:20:45:668] Altitude: 4460.245605
+[15:20:45:669] mRotationXZ: 0.684000
+[15:20:45:677] Altitude: 4460.245605
+[15:20:45:677] mRotationXZ: 0.684667
+[15:20:45:685] Altitude: 4460.245605
+[15:20:45:685] mRotationXZ: 0.685333
+[15:20:45:693] Altitude: 4460.245605
+[15:20:45:693] mRotationXZ: 0.686000
+[15:20:45:700] Altitude: 4460.245605
+[15:20:45:700] mRotationXZ: 0.686000
+[15:20:45:708] Altitude: 4460.245605
+[15:20:45:708] mRotationXZ: 0.687333
+[15:20:45:716] Altitude: 4460.245605
+[15:20:45:716] mRotationXZ: 0.688000
+[15:20:45:725] Altitude: 4460.245605
+[15:20:45:725] mRotationXZ: 0.689333
+[15:20:45:732] Altitude: 4460.245605
+[15:20:45:732] mRotationXZ: 0.690667
+[15:20:45:740] Altitude: 4460.245605
+[15:20:45:740] mRotationXZ: 0.692667
+[15:20:45:748] Altitude: 4460.245605
+[15:20:45:748] mRotationXZ: 0.694667
+[15:20:45:756] Altitude: 4460.245605
+[15:20:45:756] mRotationXZ: 0.696667
+[15:20:45:764] Altitude: 4460.245605
+[15:20:45:764] mRotationXZ: 0.698000
+[15:20:45:772] Altitude: 4460.245605
+[15:20:45:772] mRotationXZ: 0.698667
+[15:20:45:780] Altitude: 4460.245605
+[15:20:45:780] mRotationXZ: 0.699333
+[15:20:45:788] Altitude: 4460.245605
+[15:20:45:788] mRotationXZ: 0.700000
+[15:20:45:795] Altitude: 4460.245605
+[15:20:45:795] mRotationXZ: 0.700000
+[15:20:45:805] Altitude: 4460.245605
+[15:20:45:805] mRotationXZ: 0.700667
+[15:20:45:815] Altitude: 4460.245605
+[15:20:45:816] mRotationXZ: 0.700667
+[15:20:45:825] Altitude: 4460.245605
+[15:20:45:825] mRotationXZ: 0.700667
+[15:20:45:835] Altitude: 4460.245605
+[15:20:45:835] mRotationXZ: 0.702000
+[15:20:45:845] Altitude: 4460.245605
+[15:20:45:845] mRotationXZ: 0.702000
+[15:20:45:855] Altitude: 4460.245605
+[15:20:45:855] mRotationXZ: 0.703333
+[15:20:45:864] Altitude: 4460.245605
+[15:20:45:864] mRotationXZ: 0.703333
+[15:20:45:874] Altitude: 4460.245605
+[15:20:45:874] mRotationXZ: 0.704000
+[15:20:45:883] Avg FPS:  76  Avg Frametime: 0.0121   Avg Tick Time: 0.0919
+[15:20:45:883] Altitude: 4460.245605
+[15:20:45:883] mRotationXZ: 0.704000
+[15:20:45:893] Altitude: 4460.245605
+[15:20:45:893] mRotationXZ: 0.704000
+[15:20:45:902] Altitude: 4460.245605
+[15:20:45:902] mRotationXZ: 0.704000
+[15:20:45:910] Altitude: 4460.245605
+[15:20:45:910] mRotationXZ: 0.704000
+[15:20:45:919] Altitude: 4460.245605
+[15:20:45:920] mRotationXZ: 0.704000
+[15:20:45:928] Altitude: 4460.245605
+[15:20:45:928] mRotationXZ: 0.704000
+[15:20:45:936] Altitude: 4460.245605
+[15:20:45:936] mRotationXZ: 0.704000
+[15:20:45:945] Altitude: 4460.245605
+[15:20:45:945] mRotationXZ: 0.704000
+[15:20:45:954] Altitude: 4460.245605
+[15:20:45:954] mRotationXZ: 0.704000
+[15:20:45:963] Altitude: 4460.245605
+[15:20:45:963] mRotationXZ: 0.704000
+[15:20:45:971] Altitude: 4460.245605
+[15:20:45:972] mRotationXZ: 0.704000
+[15:20:45:981] Altitude: 4460.245605
+[15:20:45:981] mRotationXZ: 0.704000
+[15:20:45:989] Altitude: 4460.245605
+[15:20:45:990] mRotationXZ: 0.704000
+[15:20:45:997] Altitude: 4460.245605
+[15:20:45:997] mRotationXZ: 0.704000
+[15:20:46:600] Altitude: 4460.245605
+[15:20:46:600] mRotationXZ: 0.704000
+[15:20:46:130] Altitude: 4460.245605
+[15:20:46:130] mRotationXZ: 0.704000
+[15:20:46:210] Altitude: 4460.245605
+[15:20:46:210] mRotationXZ: 0.704000
+[15:20:46:310] Altitude: 4460.245605
+[15:20:46:310] mRotationXZ: 0.704000
+[15:20:46:410] Altitude: 4460.245605
+[15:20:46:410] mRotationXZ: 0.704000
+[15:20:46:490] Altitude: 4460.245605
+[15:20:46:490] mRotationXZ: 0.704000
+[15:20:46:560] Altitude: 4460.245605
+[15:20:46:570] mRotationXZ: 0.704000
+[15:20:46:640] Altitude: 4460.245605
+[15:20:46:640] mRotationXZ: 0.704000
+[15:20:46:710] Altitude: 4460.245605
+[15:20:46:710] mRotationXZ: 0.704000
+[15:20:46:780] Altitude: 4460.245605
+[15:20:46:780] mRotationXZ: 0.704000
+[15:20:46:870] Altitude: 4460.245605
+[15:20:46:870] mRotationXZ: 0.704000
+[15:20:46:940] Altitude: 4460.245605
+[15:20:46:940] mRotationXZ: 0.704000
+[15:20:46:102] Altitude: 4460.245605
+[15:20:46:102] mRotationXZ: 0.704000
+[15:20:46:109] Altitude: 4460.245605
+[15:20:46:109] mRotationXZ: 0.704000
+[15:20:46:116] Altitude: 4434.343262
+[15:20:46:117] mRotationXZ: 0.704000
+[15:20:46:124] Altitude: 4409.547363
+[15:20:46:124] mRotationXZ: 0.704000
+[15:20:46:132] Altitude: 4385.860840
+[15:20:46:132] mRotationXZ: 0.704000
+[15:20:46:140] Altitude: 4363.208496
+[15:20:46:140] mRotationXZ: 0.704000
+[15:20:46:148] Altitude: 4341.588379
+[15:20:46:148] mRotationXZ: 0.704000
+[15:20:46:156] Altitude: 4320.942871
+[15:20:46:156] mRotationXZ: 0.704000
+[15:20:46:164] Altitude: 4301.278809
+[15:20:46:165] mRotationXZ: 0.704000
+[15:20:46:173] Altitude: 4282.518066
+[15:20:46:173] mRotationXZ: 0.704000
+[15:20:46:180] Altitude: 4264.646973
+[15:20:46:181] mRotationXZ: 0.704000
+[15:20:46:189] Altitude: 4247.554199
+[15:20:46:189] mRotationXZ: 0.704000
+[15:20:46:197] Altitude: 4231.284668
+[15:20:46:197] mRotationXZ: 0.704000
+[15:20:46:206] Altitude: 4215.732910
+[15:20:46:206] mRotationXZ: 0.704000
+[15:20:46:215] Altitude: 4200.959473
+[15:20:46:215] mRotationXZ: 0.704000
+[15:20:46:224] Altitude: 4186.986816
+[15:20:46:224] mRotationXZ: 0.704000
+[15:20:46:232] Altitude: 4173.736816
+[15:20:46:232] mRotationXZ: 0.704000
+[15:20:46:241] Altitude: 4161.093262
+[15:20:46:241] mRotationXZ: 0.704000
+[15:20:46:250] Altitude: 4149.061035
+[15:20:46:250] mRotationXZ: 0.704000
+[15:20:46:259] Altitude: 4137.627441
+[15:20:46:260] mRotationXZ: 0.704000
+[15:20:46:269] Altitude: 4126.829590
+[15:20:46:269] mRotationXZ: 0.704000
+[15:20:46:278] Altitude: 4116.603027
+[15:20:46:278] mRotationXZ: 0.704000
+[15:20:46:288] Altitude: 4106.929199
+[15:20:46:288] mRotationXZ: 0.704000
+[15:20:46:296] Altitude: 4097.765137
+[15:20:46:296] mRotationXZ: 0.704000
+[15:20:46:305] Altitude: 4089.031250
+[15:20:46:305] mRotationXZ: 0.704000
+[15:20:46:313] Altitude: 4065.113281
+[15:20:46:313] mRotationXZ: 0.704000
+[15:20:46:322] Altitude: 4042.315918
+[15:20:46:322] mRotationXZ: 0.704000
+[15:20:46:330] Altitude: 4020.653809
+[15:20:46:331] mRotationXZ: 0.704000
+[15:20:46:340] Altitude: 4000.030762
+[15:20:46:340] mRotationXZ: 0.704000
+[15:20:46:348] Altitude: 3980.476074
+[15:20:46:348] mRotationXZ: 0.704000
+[15:20:46:358] Altitude: 3961.899414
+[15:20:46:358] mRotationXZ: 0.704000
+[15:20:46:368] Altitude: 3944.334473
+[15:20:46:368] mRotationXZ: 0.704000
+[15:20:46:379] Altitude: 3927.769531
+[15:20:46:379] mRotationXZ: 0.704000
+[15:20:46:390] Altitude: 3912.192383
+[15:20:46:390] mRotationXZ: 0.704000
+[15:20:46:401] Altitude: 3897.638184
+[15:20:46:401] mRotationXZ: 0.704000
+[15:20:46:412] Altitude: 3883.959473
+[15:20:46:412] mRotationXZ: 0.704000
+[15:20:46:423] Altitude: 3871.168457
+[15:20:46:423] mRotationXZ: 0.704000
+[15:20:46:435] Altitude: 3859.165527
+[15:20:46:435] mRotationXZ: 0.706000
+[15:20:46:446] Altitude: 3847.977051
+[15:20:46:446] mRotationXZ: 0.710667
+[15:20:46:458] Altitude: 3837.487305
+[15:20:46:458] mRotationXZ: 0.716667
+[15:20:46:469] Altitude: 3827.710449
+[15:20:46:469] mRotationXZ: 0.722000
+[15:20:46:480] Altitude: 3818.539063
+[15:20:46:480] mRotationXZ: 0.728000
+[15:20:46:491] Altitude: 3809.941895
+[15:20:46:491] mRotationXZ: 0.733333
+[15:20:46:502] Altitude: 3801.876953
+[15:20:46:502] mRotationXZ: 0.738000
+[15:20:46:513] Altitude: 3794.323730
+[15:20:46:513] mRotationXZ: 0.742000
+[15:20:46:524] Altitude: 3787.244629
+[15:20:46:524] mRotationXZ: 0.745333
+[15:20:46:535] Altitude: 3780.604492
+[15:20:46:535] mRotationXZ: 0.748667
+[15:20:46:546] Altitude: 3774.362793
+[15:20:46:546] mRotationXZ: 0.752000
+[15:20:46:557] Altitude: 3768.519043
+[15:20:46:557] mRotationXZ: 0.754667
+[15:20:46:568] Altitude: 3763.043945
+[15:20:46:568] mRotationXZ: 0.756000
+[15:20:46:578] Altitude: 3757.894531
+[15:20:46:578] mRotationXZ: 0.756667
+[15:20:46:589] Altitude: 3753.061523
+[15:20:46:589] mRotationXZ: 0.756667
+[15:20:46:600] Avg FPS:  78  Avg Frametime: 0.0122   Avg Tick Time: 0.0602
+[15:20:46:600] Altitude: 3748.526855
+[15:20:46:600] mRotationXZ: 0.756667
+[15:20:46:611] Altitude: 3744.261719
+[15:20:46:611] mRotationXZ: 0.756667
+[15:20:46:623] Altitude: 3740.260742
+[15:20:46:623] mRotationXZ: 0.756667
+[15:20:46:634] Altitude: 3736.540039
+[15:20:46:634] mRotationXZ: 0.756667
+[15:20:46:647] Altitude: 3733.042969
+[15:20:46:648] mRotationXZ: 0.756667
+[15:20:46:659] Altitude: 3729.821777
+[15:20:46:659] mRotationXZ: 0.756667
+[15:20:46:670] Altitude: 3726.809570
+[15:20:46:670] mRotationXZ: 0.756667
+[15:20:46:680] Altitude: 3723.985840
+[15:20:46:680] mRotationXZ: 0.756667
+[15:20:46:691] Altitude: 3721.328125
+[15:20:46:691] mRotationXZ: 0.758000
+[15:20:46:702] Altitude: 3718.832031
+[15:20:46:702] mRotationXZ: 0.760000
+[15:20:46:713] Altitude: 3716.488770
+[15:20:46:713] mRotationXZ: 0.764000
+[15:20:46:724] Altitude: 3714.296875
+[15:20:46:725] mRotationXZ: 0.769333
+[15:20:46:735] Altitude: 3712.243164
+[15:20:46:735] mRotationXZ: 0.774667
+[15:20:46:748] Altitude: 3710.315918
+[15:20:46:748] mRotationXZ: 0.781333
+[15:20:46:760] Altitude: 3708.527832
+[15:20:46:761] mRotationXZ: 0.784667
+[15:20:46:773] Altitude: 3706.865234
+[15:20:46:773] mRotationXZ: 0.786667
+[15:20:46:788] Altitude: 3705.322754
+[15:20:46:788] mRotationXZ: 0.788000
+[15:20:46:806] Altitude: 3703.910645
+[15:20:46:806] mRotationXZ: 0.789333
+[15:20:46:821] Altitude: 3702.640625
+[15:20:46:821] mRotationXZ: 0.791333
+[15:20:46:837] Altitude: 3701.479980
+[15:20:46:837] mRotationXZ: 0.794667
+[15:20:46:852] Altitude: 3700.422363
+[15:20:46:853] mRotationXZ: 0.798000
+[15:20:46:867] Altitude: 3699.459473
+[15:20:46:867] mRotationXZ: 0.800667
+[15:20:46:881] Altitude: 3698.576172
+[15:20:46:882] mRotationXZ: 0.802667
+[15:20:46:907] Altitude: 3697.765137
+[15:20:46:907] mRotationXZ: 0.806000
+[15:20:46:920] Altitude: 3697.071777
+[15:20:46:920] mRotationXZ: 0.808000
+[15:20:46:935] Altitude: 3696.428223
+[15:20:46:935] mRotationXZ: 0.812000
+[15:20:46:949] Altitude: 3695.840820
+[15:20:46:949] mRotationXZ: 0.816000
+[15:20:46:963] Altitude: 3695.300293
+[15:20:46:963] mRotationXZ: 0.820000
+[15:20:46:977] Altitude: 3694.802734
+[15:20:46:977] mRotationXZ: 0.825333
+[15:20:46:991] Altitude: 3694.344727
+[15:20:46:991] mRotationXZ: 0.832000
+[15:20:47:400] Altitude: 3693.922852
+[15:20:47:400] mRotationXZ: 0.836667
+[15:20:47:160] Altitude: 3693.531738
+[15:20:47:160] mRotationXZ: 0.841333
+[15:20:47:270] Altitude: 3693.166504
+[15:20:47:280] mRotationXZ: 0.845333
+[15:20:47:410] Altitude: 3692.826172
+[15:20:47:410] mRotationXZ: 0.850667
+[15:20:47:580] Altitude: 3692.512207
+[15:20:47:580] mRotationXZ: 0.858000
+[15:20:47:740] Altitude: 3692.228027
+[15:20:47:740] mRotationXZ: 0.862667
+[15:20:47:900] Altitude: 3691.969727
+[15:20:47:900] mRotationXZ: 0.868667
+[15:20:47:103] Altitude: 3691.734375
+[15:20:47:103] mRotationXZ: 0.872000
+[15:20:47:117] Altitude: 3691.517090
+[15:20:47:117] mRotationXZ: 0.874667
+[15:20:47:130] Altitude: 3691.316406
+[15:20:47:130] mRotationXZ: 0.876000
+[15:20:47:142] Altitude: 3691.130859
+[15:20:47:142] mRotationXZ: 0.877333
+[15:20:47:154] Altitude: 3690.958008
+[15:20:47:154] mRotationXZ: 0.878667
+[15:20:47:165] Altitude: 3690.796875
+[15:20:47:165] mRotationXZ: 0.879333
+[15:20:47:177] Altitude: 3690.645996
+[15:20:47:177] mRotationXZ: 0.879333
+[15:20:47:189] Altitude: 3690.504883
+[15:20:47:189] mRotationXZ: 0.880000
+[15:20:47:200] Altitude: 3690.373535
+[15:20:47:200] mRotationXZ: 0.880667
+[15:20:47:211] Altitude: 3690.250488
+[15:20:47:211] mRotationXZ: 0.880667
+[15:20:47:222] Altitude: 3690.135254
+[15:20:47:222] mRotationXZ: 0.882000
+[15:20:47:233] Altitude: 3690.027344
+[15:20:47:233] mRotationXZ: 0.883333
+[15:20:47:246] Altitude: 3689.925781
+[15:20:47:246] mRotationXZ: 0.884000
+[15:20:47:264] Altitude: 3689.831543
+[15:20:47:264] mRotationXZ: 0.885333
+[15:20:47:276] Altitude: 3689.747070
+[15:20:47:276] mRotationXZ: 0.885333
+[15:20:47:288] Altitude: 3689.668457
+[15:20:47:288] mRotationXZ: 0.884667
+[15:20:47:301] Altitude: 3689.595215
+[15:20:47:301] mRotationXZ: 0.884667
+[15:20:47:313] Avg FPS:  54  Avg Frametime: 0.0179   Avg Tick Time: 0.0432
+[15:20:47:314] Altitude: 3689.527344
+[15:20:47:314] mRotationXZ: 0.883333
+[15:20:47:327] Altitude: 3689.464355
+[15:20:47:327] mRotationXZ: 0.882667
+[15:20:47:339] Altitude: 3689.406250
+[15:20:47:339] mRotationXZ: 0.881333
+[15:20:47:350] Altitude: 3689.352051
+[15:20:47:350] mRotationXZ: 0.880000
+[15:20:47:362] Altitude: 3689.301270
+[15:20:47:363] mRotationXZ: 0.878667
+[15:20:47:375] Altitude: 3689.253906
+[15:20:47:375] mRotationXZ: 0.877333
+[15:20:47:389] Altitude: 3689.209961
+[15:20:47:389] mRotationXZ: 0.876667
+[15:20:47:402] Altitude: 3689.169434
+[15:20:47:402] mRotationXZ: 0.875333
+[15:20:47:415] Altitude: 3689.131836
+[15:20:47:415] mRotationXZ: 0.875333
+[15:20:48:170] Avg FPS:  61  Avg Frametime: 0.0158   Avg Tick Time: 0.0348
+[15:20:48:723] Avg FPS:  61  Avg Frametime: 0.0159   Avg Tick Time: 0.0285
+[15:20:49:436] Avg FPS:  66  Avg Frametime: 0.0148   Avg Tick Time: 0.0322
+[15:20:50:154] Avg FPS:  65  Avg Frametime: 0.0152   Avg Tick Time: 0.0313
+[15:20:50:864] Avg FPS:  68  Avg Frametime: 0.0142   Avg Tick Time: 0.0409
+[15:20:51:574] Avg FPS:  76  Avg Frametime: 0.0130   Avg Tick Time: 0.0204
+[15:20:52:284] Avg FPS:  80  Avg Frametime: 0.0123   Avg Tick Time: 0.0234
+[15:20:53:100] Avg FPS:  78  Avg Frametime: 0.0127   Avg Tick Time: 0.0206
+[15:20:53:712] Avg FPS:  62  Avg Frametime: 0.0158   Avg Tick Time: 0.0226
+[15:20:54:420] Avg FPS:  68  Avg Frametime: 0.0144   Avg Tick Time: 0.0273
+[15:20:55:138] Avg FPS:  61  Avg Frametime: 0.0160   Avg Tick Time: 0.0217
+[15:20:55:851] Avg FPS:  70  Avg Frametime: 0.0141   Avg Tick Time: 0.0274
+[15:20:56:579] Avg FPS:  63  Avg Frametime: 0.0160   Avg Tick Time: 0.0140
+[15:20:57:282] Avg FPS:  61  Avg Frametime: 0.0159   Avg Tick Time: 0.0379
+[15:20:57:991] Avg FPS:  66  Avg Frametime: 0.0148   Avg Tick Time: 0.0270
+[15:20:58:711] Avg FPS:  64  Avg Frametime: 0.0155   Avg Tick Time: 0.0207
+[15:20:59:418] Avg FPS:  53  Avg Frametime: 0.0181   Avg Tick Time: 0.0253
+[15:21:00:126] Avg FPS:  52  Avg Frametime: 0.0187   Avg Tick Time: 0.0377
+[15:21:00:848] Avg FPS:  57  Avg Frametime: 0.0175   Avg Tick Time: 0.0154
+[15:21:01:548] Avg FPS:  59  Avg Frametime: 0.0164   Avg Tick Time: 0.0375

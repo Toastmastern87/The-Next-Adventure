@@ -7,6 +7,7 @@
 #include "../Engine/Material.h"
 #include "../Engine/GUI.h"
 #include "../Engine/GUIPanel.h"
+#include "../Engine/GUICursor.h"
 #include "GameInput.h"
 
 namespace Toast 
@@ -47,6 +48,7 @@ namespace Toast
 		Toast::GUIFont* mTimeFont;
 		Toast::GUIFont* mYearDayFont;
 
+		POINT mRawCursorPos;
 		LARGE_INTEGER mGameTime;
 		float mGameSpeeds[4] = { 1.0f, 10.0f, 100.0f, 1000.0f };
 		int mGameSpeedActiveIndex = 0;

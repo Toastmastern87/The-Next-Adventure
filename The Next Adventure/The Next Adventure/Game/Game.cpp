@@ -153,15 +153,13 @@ namespace Toast
 		mGUI->mGUIPanels[4]->mMaterial = mGameSpeedActivatedPanelMaterial;
 		mGUI->mGUIPanels[5]->mMaterial = mGameSpeedActivatedPanelMaterial;
 
-		//mGUI->AddPanel(static_cast<float>(mInput->mCursorPos.x), static_cast<float>(mInput->mCursorPos.y), 40.0f, 36.0f);
+		GetCursorPos(&mRawCursorPos);
+		mGUI->AddCursor(mRawCursorPos, 40.0f, 40.0f);
 
-		//mCursorMaterial = Resources::sResources->GetMaterial("Cursor", "CursorTexture", "GUI", GUIIED, 2);
-		//mGUI->mGUIPanels[cursorPanelID]->mMaterial = mCursorMaterial;
-		//mGUI->mGUIPanels[cursorPanelID]->mTargeted = true;
-		//mGUI->mGUIPanels[cursorPanelID]->mMaxX = Toast::System::tSys->mSettings["WindowSizeX"];
-		//mGUI->mGUIPanels[cursorPanelID]->mMaxY = Toast::System::tSys->mSettings["WindowSizeY"];
+		mCursorMaterial = Resources::sResources->GetMaterial("Cursor", "CursorTexture", "GUI", GUIIED, 2);
+		mGUI->mCursor->mMaterial = mCursorMaterial;
 
-		//Toast::System::tSys->Print("Mouse cursor created");
+		Toast::System::tSys->Print("Mouse cursor created");
 	}
 
 	void Toast::Game::Update(double deltaTime) 
@@ -206,6 +204,16 @@ namespace Toast
 				break;
 			case Toast::GameCommands::LeftMouseClick:
 				//Toast::GUIPanel::CheckRayIntersection2D(mGUI->mGUIPanels[0], mGUI->mGUIPanels[cursorPanelID]);
+				break;
+			case Toast::GameCommands::RightMouseClick:
+				mGUI->mCursor->HideCursor();
+				break;
+			case Toast::GameCommands::RightMousePressed:
+				GetCursorPos(&mRawCursorPos);
+				Toast::System::tSys->mTheNextFrontier->mCamera->TurnAround(static_cast<float>(mRawCursorPos.x) - static_cast<float>(mGUI->mCursor->mOldPos.x));
+				break;
+			case Toast::GameCommands::RightMouseRelease:
+				mGUI->mCursor->ShowCursor();
 				break;
 			case Toast::GameCommands::IncreaseGameSpeed:
 				if (mGameSpeedActiveIndex < 3) mGameSpeedActiveIndex++;
@@ -285,7 +293,7 @@ namespace Toast
 		// Updates the Camera in the game
 		mCamera->Update(deltaTime);
 		mCamera->UpdateAltitude();
-		mCamera->Rotate(mCamera->mOrbitalAngleY, (-mCamera->mOrbitalAngleXZ + (-DirectX::XM_PI / 2)), (DirectX::XM_PI / 2));
+		mCamera->Rotate(mCamera->mOrbitalAngleY, (-mCamera->mOrbitalAngleXZ + mCamera->mRotationXZ + (-DirectX::XM_PI / 2)), (DirectX::XM_PI / 2));
 		mCamera->UpdateOrbitalPosition();
 		mCamera->CheckOrbitalAngleBoundaries();
 		mCamera->UpdateMatrices();
@@ -301,6 +309,9 @@ namespace Toast
 		{
 			/*mGUI->mGUIPanels[cursorPanelID]->UpdatePos(mInput->mDeltaMousePos.x, mInput->mDeltaMousePos.y);*/
 		}
+
+		GetCursorPos(&mRawCursorPos);
+		mGUI->mCursor->UpdatePos(mRawCursorPos);
 
 		//Updates the debug window with new data
 		std::string fpsString = "FPS: " + std::to_string(Toast::System::tSys->mFPS);

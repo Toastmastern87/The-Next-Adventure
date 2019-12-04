@@ -78,6 +78,14 @@ namespace Toast
 		mOrbitDirections[5] = true;
 	}
 
+	void Camera::TurnAround(float delta) 
+	{
+		mRotationXZ += delta / 1500.0f;
+
+		Toast::System::tSys->Print("Altitude: %f", mAltitude);
+		Toast::System::tSys->Print("mRotationXZ: %f", mRotationXZ);
+	}
+
 	void Camera::SetPosition(DirectX::XMFLOAT3 position)
 	{
 		mPosition = position;

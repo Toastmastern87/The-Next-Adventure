@@ -51,6 +51,9 @@ namespace Toast
 		mKeyMap[Toast::GameCommands::ZoomOut] = new Toast::GameCommand(L"ZoomOut", Toast::Mouse::SCROLL_DOWN, Toast::KeyState::PRESSED, Toast::GameCommandsType::MouseCommand);
 		mKeyMap[Toast::GameCommands::ResetCursorOffsets] = new Toast::GameCommand(L"ResetCursorOffsets", Toast::Mouse::LEFT, Toast::KeyState::JUST_RELEASED, Toast::GameCommandsType::MouseCommand);
 		mKeyMap[Toast::GameCommands::LeftMouseClick] = new Toast::GameCommand(L"LeftMouseClick", Toast::Mouse::LEFT, Toast::KeyState::JUST_PRESSED, Toast::GameCommandsType::MouseCommand);
+		mKeyMap[Toast::GameCommands::RightMouseClick] = new Toast::GameCommand(L"RightMouseClick", Toast::Mouse::RIGHT, Toast::KeyState::JUST_PRESSED, Toast::GameCommandsType::MouseCommand);
+		mKeyMap[Toast::GameCommands::RightMousePressed] = new Toast::GameCommand(L"RightMousePress", Toast::Mouse::RIGHT, Toast::KeyState::PRESSED, Toast::GameCommandsType::MouseCommand);
+		mKeyMap[Toast::GameCommands::RightMouseRelease] = new Toast::GameCommand(L"RightMouseRelease", Toast::Mouse::RIGHT, Toast::KeyState::JUST_RELEASED, Toast::GameCommandsType::MouseCommand);
 		mKeyMap[Toast::GameCommands::IncreaseGameSpeed] = new Toast::GameCommand(L"IncreaseGameSpeed", Toast::Keyboard::NUMPADADD, Toast::KeyState::JUST_PRESSED, Toast::GameCommandsType::KeyboardCommand);
 		mKeyMap[Toast::GameCommands::DecreaseGameSpeed] = new Toast::GameCommand(L"DecreaseGameSpeed", Toast::Keyboard::NUMPADSUB, Toast::KeyState::JUST_PRESSED, Toast::GameCommandsType::KeyboardCommand);
 		mKeyMap[Toast::GameCommands::ShowDebugWindow] = new Toast::GameCommand(L"ShowDebugWindow", Toast::Keyboard::F3, Toast::KeyState::JUST_PRESSED, Toast::GameCommandsType::KeyboardCommand);
