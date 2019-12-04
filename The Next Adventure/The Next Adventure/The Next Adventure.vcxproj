@@ -69,7 +69,12 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -89,7 +94,8 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -123,8 +129,109 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Data\Fonts\SegoeUI.xml" />
+    <Xml Include="Data\Fonts\SegoeUIp14.xml" />
+    <Xml Include="Data\Fonts\SegoeUIp20.xml" />
+    <Xml Include="Data\Fonts\SegoeUIp35.xml" />
+    <Xml Include="Data\Fonts\SegoeUIp49.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Data\Shaders\GUI_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\The Next Adventure\Data\Shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="Data\Shaders\GUI_vs.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\The Next Adventure\Data\Shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="Data\Shaders\Planet_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\The Next Adventure\Data\Shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="Data\Shaders\Planet_vs.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\The Next Adventure\Data\Shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="Data\Shaders\StarSphere_ps.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\The Next Adventure\Data\Shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="Data\Shaders\StarSphere_vs.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)\The Next Adventure\Data\Shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Data\Textures\CursorTexture.tif" />
+    <Image Include="Data\Textures\DebugWindowTexture.tif" />
+    <Image Include="Data\Textures\DebugWindowTitleBarTexture.tif" />
+    <Image Include="Data\Textures\GameSpeedActivatedTexture.tif" />
+    <Image Include="Data\Textures\GameSpeedDeactivatedTexture.tif" />
+    <Image Include="Data\Textures\GameTimePanelTexture.tif" />
+    <Image Include="Data\Textures\MarsHeightMap8K.tif" />
+    <Image Include="Data\Textures\MarsTestColorMap.tiff" />
+    <Image Include="Data\Textures\SegoeUI.tif" />
+    <Image Include="Data\Textures\SegoeUIp14.tif" />
+    <Image Include="Data\Textures\SegoeUIp20.tif" />
+    <Image Include="Data\Textures\SegoeUIp35.tif" />
+    <Image Include="Data\Textures\SegoeUIp49.tif" />
+    <Image Include="Data\Textures\StarSphere.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\Camera.h" />
+    <ClInclude Include="Engine\D3D.h" />
+    <ClInclude Include="Engine\Functions.h" />
+    <ClInclude Include="Engine\GUI.h" />
+    <ClInclude Include="Engine\GUICursor.h" />
+    <ClInclude Include="Engine\GUIPanel.h" />
+    <ClInclude Include="Engine\GUIText.h" />
+    <ClInclude Include="Engine\Material.h" />
+    <ClInclude Include="Engine\Mesh.h" />
+    <ClInclude Include="Engine\Object3D.h" />
+    <ClInclude Include="Engine\Resources.h" />
+    <ClInclude Include="Engine\SphereMesh.h" />
+    <ClInclude Include="Engine\System.h" />
+    <ClInclude Include="Engine\tinyxml2.h" />
+    <ClInclude Include="Engine\World.h" />
+    <ClInclude Include="Game\Game.h" />
+    <ClInclude Include="Game\GameInput.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine\Camera.cpp" />
+    <ClCompile Include="Engine\D3D.cpp" />
+    <ClCompile Include="Engine\Functions.cpp" />
+    <ClCompile Include="Engine\GUI.cpp" />
+    <ClCompile Include="Engine\GUICursor.cpp" />
+    <ClCompile Include="Engine\GUIPanel.cpp" />
+    <ClCompile Include="Engine\GUIText.cpp" />
+    <ClCompile Include="Engine\Material.cpp" />
+    <ClCompile Include="Engine\Mesh.cpp" />
+    <ClCompile Include="Engine\Object3D.cpp" />
+    <ClCompile Include="Engine\Resources.cpp" />
+    <ClCompile Include="Engine\SphereMesh.cpp" />
+    <ClCompile Include="Engine\System.cpp" />
+    <ClCompile Include="Engine\tinyxml2.cpp" />
+    <ClCompile Include="Engine\World.cpp" />
+    <ClCompile Include="Game\Game.cpp" />
+    <ClCompile Include="Game\GameInput.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\directxtk_desktop_2015.2019.10.17.1\build\native\directxtk_desktop_2015.targets" Condition="Exists('..\packages\directxtk_desktop_2015.2019.10.17.1\build\native\directxtk_desktop_2015.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\directxtk_desktop_2015.2019.10.17.1\build\native\directxtk_desktop_2015.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\directxtk_desktop_2015.2019.10.17.1\build\native\directxtk_desktop_2015.targets'))" />
+  </Target>
 </Project>

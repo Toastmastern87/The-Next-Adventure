@@ -1,0 +1,115 @@
+[10:43:33:631] Initating the game
+[10:43:33:634] Camera created
+[10:43:34:470] Texture added
+[10:43:34:480] Star sphere created
+[10:43:34:780] Texture added
+[10:43:34:780] Mars created
+[10:43:34:788] Texture added
+[10:43:34:791] Font Created
+[10:43:34:799] Texture added
+[10:43:34:801] Texture added
+[10:43:34:801] Debug window created
+[10:43:34:807] Texture added
+[10:43:34:815] Texture added
+[10:43:34:827] Texture added
+[10:43:34:835] Font Created
+[10:43:34:839] Font Created
+[10:43:34:850] Texture added
+[10:43:34:852] Font Created
+[10:43:34:853] FPS Text created in the Debug window
+[10:43:34:854] Altitude Text created in the Debug window
+[10:43:34:856] Texture added
+[10:43:34:858] Texture added
+[10:43:34:887] Texture added
+[10:43:34:887] Mouse cursor created
+[10:43:35:607] Avg FPS: 143  Avg Frametime: 0.0057   Avg Tick Time: 0.1937
+[10:43:36:316] Avg FPS: 145  Avg Frametime: 0.0058   Avg Tick Time: 0.1613
+[10:43:37:240] Avg FPS: 145  Avg Frametime: 0.0066   Avg Tick Time: 0.0477
+[10:43:37:736] Avg FPS: 105  Avg Frametime: 0.0093   Avg Tick Time: 0.0278
+[10:43:38:441] Avg FPS: 100  Avg Frametime: 0.0097   Avg Tick Time: 0.0295
+[10:43:39:149] Avg FPS:  92  Avg Frametime: 0.0106   Avg Tick Time: 0.0236
+[10:43:39:853] Avg FPS: 114  Avg Frametime: 0.0083   Avg Tick Time: 0.0537
+[10:43:40:561] Avg FPS: 153  Avg Frametime: 0.0060   Avg Tick Time: 0.0927
+[10:43:41:269] Avg FPS: 155  Avg Frametime: 0.0056   Avg Tick Time: 0.1386
+[10:43:41:976] Avg FPS: 160  Avg Frametime: 0.0054   Avg Tick Time: 0.1466
+[10:43:42:684] Avg FPS: 146  Avg Frametime: 0.0051   Avg Tick Time: 0.2650
+[10:43:43:391] Avg FPS: 148  Avg Frametime: 0.0057   Avg Tick Time: 0.1534
+[10:43:44:101] Avg FPS: 150  Avg Frametime: 0.0056   Avg Tick Time: 0.1680
+[10:43:44:811] Avg FPS: 154  Avg Frametime: 0.0056   Avg Tick Time: 0.1515
+[10:43:45:518] Avg FPS: 147  Avg Frametime: 0.0058   Avg Tick Time: 0.1444
+[10:43:46:227] Avg FPS: 158  Avg Frametime: 0.0056   Avg Tick Time: 0.1243
+[10:43:46:933] Avg FPS: 157  Avg Frametime: 0.0056   Avg Tick Time: 0.1211
+[10:43:47:639] Avg FPS: 152  Avg Frametime: 0.0058   Avg Tick Time: 0.1150
+[10:43:48:348] Avg FPS: 141  Avg Frametime: 0.0061   Avg Tick Time: 0.1409
+[10:43:49:550] Avg FPS: 132  Avg Frametime: 0.0070   Avg Tick Time: 0.0850
+[10:43:49:762] Avg FPS: 143  Avg Frametime: 0.0065   Avg Tick Time: 0.0714
+[10:43:50:471] Avg FPS: 147  Avg Frametime: 0.0063   Avg Tick Time: 0.0793
+[10:43:51:179] Avg FPS: 141  Avg Frametime: 0.0063   Avg Tick Time: 0.1183
+[10:43:51:887] Avg FPS: 133  Avg Frametime: 0.0062   Avg Tick Time: 0.1767
+[10:43:52:592] Avg FPS: 132  Avg Frametime: 0.0063   Avg Tick Time: 0.1754
+[10:43:53:302] Avg FPS: 135  Avg Frametime: 0.0061   Avg Tick Time: 0.1831
+[10:43:54:130] Avg FPS: 132  Avg Frametime: 0.0062   Avg Tick Time: 0.1859
+[10:43:54:721] Avg FPS: 136  Avg Frametime: 0.0060   Avg Tick Time: 0.1838
+[10:43:55:431] Avg FPS: 131  Avg Frametime: 0.0061   Avg Tick Time: 0.1998
+[10:43:56:136] Avg FPS: 142  Avg Frametime: 0.0059   Avg Tick Time: 0.1594
+[10:43:56:846] Avg FPS: 148  Avg Frametime: 0.0063   Avg Tick Time: 0.0782
+[10:43:57:553] Avg FPS: 121  Avg Frametime: 0.0078   Avg Tick Time: 0.0607
+[10:43:58:264] Avg FPS: 106  Avg Frametime: 0.0090   Avg Tick Time: 0.0526
+[10:43:58:976] Avg FPS:  90  Avg Frametime: 0.0107   Avg Tick Time: 0.0402
+[10:43:59:690] Avg FPS:  88  Avg Frametime: 0.0110   Avg Tick Time: 0.0460
+[10:44:00:395] Avg FPS:  76  Avg Frametime: 0.0126   Avg Tick Time: 0.0424
+[10:44:01:109] Avg FPS:  84  Avg Frametime: 0.0115   Avg Tick Time: 0.0475
+[10:44:01:818] Avg FPS:  95  Avg Frametime: 0.0101   Avg Tick Time: 0.0515
+[10:44:02:528] Avg FPS:  96  Avg Frametime: 0.0100   Avg Tick Time: 0.0444
+[10:44:03:233] Avg FPS: 132  Avg Frametime: 0.0071   Avg Tick Time: 0.0624
+[10:44:03:941] Avg FPS: 107  Avg Frametime: 0.0089   Avg Tick Time: 0.0498
+[10:44:04:656] Avg FPS: 124  Avg Frametime: 0.0077   Avg Tick Time: 0.0576
+[10:44:05:362] Avg FPS: 102  Avg Frametime: 0.0094   Avg Tick Time: 0.0479
+[10:44:06:730] Avg FPS: 109  Avg Frametime: 0.0088   Avg Tick Time: 0.0425
+[10:44:06:779] Avg FPS:  96  Avg Frametime: 0.0100   Avg Tick Time: 0.0399
+[10:44:07:494] Avg FPS:  80  Avg Frametime: 0.0123   Avg Tick Time: 0.0269
+[10:44:08:203] Avg FPS:  79  Avg Frametime: 0.0124   Avg Tick Time: 0.0278
+[10:44:08:913] Avg FPS:  79  Avg Frametime: 0.0124   Avg Tick Time: 0.0264
+[10:44:09:620] Avg FPS:  79  Avg Frametime: 0.0123   Avg Tick Time: 0.0277
+[10:44:10:324] Avg FPS:  79  Avg Frametime: 0.0123   Avg Tick Time: 0.0292
+[10:44:11:380] Avg FPS:  80  Avg Frametime: 0.0123   Avg Tick Time: 0.0281
+[10:44:11:744] Avg FPS:  79  Avg Frametime: 0.0123   Avg Tick Time: 0.0272
+[10:44:12:450] Avg FPS:  79  Avg Frametime: 0.0123   Avg Tick Time: 0.0267
+[10:44:13:158] Avg FPS:  79  Avg Frametime: 0.0124   Avg Tick Time: 0.0239
+[10:44:13:866] Avg FPS:  79  Avg Frametime: 0.0124   Avg Tick Time: 0.0282
+[10:44:14:576] Avg FPS:  92  Avg Frametime: 0.0106   Avg Tick Time: 0.0335
+[10:44:15:289] Avg FPS:  96  Avg Frametime: 0.0101   Avg Tick Time: 0.0405
+[10:44:15:997] Avg FPS:  89  Avg Frametime: 0.0108   Avg Tick Time: 0.0380
+[10:44:16:702] Avg FPS:  71  Avg Frametime: 0.0137   Avg Tick Time: 0.0266
+[10:44:17:417] Avg FPS:  80  Avg Frametime: 0.0124   Avg Tick Time: 0.0231
+[10:44:18:122] Avg FPS:  82  Avg Frametime: 0.0119   Avg Tick Time: 0.0279
+[10:44:18:836] Avg FPS:  80  Avg Frametime: 0.0123   Avg Tick Time: 0.0241
+[10:44:19:548] Avg FPS:  83  Avg Frametime: 0.0119   Avg Tick Time: 0.0259
+[10:44:20:263] Avg FPS:  75  Avg Frametime: 0.0131   Avg Tick Time: 0.0319
+[10:44:20:973] Avg FPS:  72  Avg Frametime: 0.0136   Avg Tick Time: 0.0279
+[10:44:21:681] Avg FPS:  75  Avg Frametime: 0.0131   Avg Tick Time: 0.0252
+[10:44:22:391] Avg FPS:  73  Avg Frametime: 0.0134   Avg Tick Time: 0.0232
+[10:44:23:105] Avg FPS:  70  Avg Frametime: 0.0140   Avg Tick Time: 0.0296
+[10:44:23:810] Avg FPS:  74  Avg Frametime: 0.0132   Avg Tick Time: 0.0270
+[10:44:24:514] Avg FPS:  82  Avg Frametime: 0.0118   Avg Tick Time: 0.0328
+[10:44:25:227] Avg FPS: 106  Avg Frametime: 0.0088   Avg Tick Time: 0.0788
+[10:44:25:939] Avg FPS:  85  Avg Frametime: 0.0112   Avg Tick Time: 0.0540
+[10:44:26:644] Avg FPS:  77  Avg Frametime: 0.0125   Avg Tick Time: 0.0413
+[10:44:27:355] Avg FPS:  79  Avg Frametime: 0.0121   Avg Tick Time: 0.0470
+[10:44:28:650] Avg FPS:  76  Avg Frametime: 0.0124   Avg Tick Time: 0.0629
+[10:44:28:782] Avg FPS:  78  Avg Frametime: 0.0124   Avg Tick Time: 0.0410
+[10:44:29:486] Avg FPS:  79  Avg Frametime: 0.0121   Avg Tick Time: 0.0507
+[10:44:30:196] Avg FPS:  77  Avg Frametime: 0.0125   Avg Tick Time: 0.0386
+[10:44:30:902] Avg FPS:  97  Avg Frametime: 0.0098   Avg Tick Time: 0.0618
+[10:44:31:613] Avg FPS: 103  Avg Frametime: 0.0086   Avg Tick Time: 0.1228
+[10:44:32:321] Avg FPS:  92  Avg Frametime: 0.0091   Avg Tick Time: 0.1630
+[10:44:33:250] Avg FPS:  95  Avg Frametime: 0.0089   Avg Tick Time: 0.1534
+[10:44:33:736] Avg FPS:  79  Avg Frametime: 0.0111   Avg Tick Time: 0.1295
+[10:44:34:445] Avg FPS:  84  Avg Frametime: 0.0104   Avg Tick Time: 0.1338
+[10:44:35:157] Avg FPS:  92  Avg Frametime: 0.0095   Avg Tick Time: 0.1327
+[10:44:35:863] Avg FPS:  94  Avg Frametime: 0.0091   Avg Tick Time: 0.1470
+[10:44:36:572] Avg FPS:  93  Avg Frametime: 0.0097   Avg Tick Time: 0.1002
+[10:44:37:280] Avg FPS: 103  Avg Frametime: 0.0087   Avg Tick Time: 0.1106
+[10:44:37:989] Avg FPS:  91  Avg Frametime: 0.0097   Avg Tick Time: 0.1244
+[10:44:38:693] Avg FPS: 117  Avg Frametime: 0.0074   Avg Tick Time: 0.1330
+[10:44:39:403] Avg FPS: 128  Avg Frametime: 0.0064   Avg Tick Time: 0.1826

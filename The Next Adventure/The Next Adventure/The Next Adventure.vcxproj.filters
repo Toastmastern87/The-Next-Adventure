@@ -13,5 +13,228 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\Textures">
+      <UniqueIdentifier>{a4489696-66c9-4d96-9e3d-c9eccfde28d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders">
+      <UniqueIdentifier>{0fb67f7f-6d71-42de-9558-46f37cdbc905}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Fonts">
+      <UniqueIdentifier>{1801a36b-1547-4137-b8a9-fae29efcf35d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\The Next Adventure">
+      <UniqueIdentifier>{aa1bd317-cbe8-427d-9dbd-fddfc552780b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Toast Engine">
+      <UniqueIdentifier>{d3f4f058-3125-4078-8105-9f1fdca9b9b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\The Next Adventure">
+      <UniqueIdentifier>{f923fe27-3584-4ca3-ab07-03a9c9a8099f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Toast Engine">
+      <UniqueIdentifier>{314540a5-2453-4761-8111-51541287af2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Toast Engine\GUI">
+      <UniqueIdentifier>{a88f848e-4796-49a4-9e76-802e334be8f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Toast Engine\TinyXML2">
+      <UniqueIdentifier>{0470b451-c7e3-43b7-b3de-b464b10d3fa7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Toast Engine\GUI">
+      <UniqueIdentifier>{4d8e01d9-2f26-4458-84bb-584dc62d33a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Toast Engine\TinyXML2">
+      <UniqueIdentifier>{b4cb774b-b3d1-485c-bc6b-7c63eeb8ca0f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Data\Fonts\SegoeUI.xml">
+      <Filter>Resource Files\Fonts</Filter>
+    </Xml>
+    <Xml Include="Data\Fonts\SegoeUIp14.xml">
+      <Filter>Resource Files\Fonts</Filter>
+    </Xml>
+    <Xml Include="Data\Fonts\SegoeUIp20.xml">
+      <Filter>Resource Files\Fonts</Filter>
+    </Xml>
+    <Xml Include="Data\Fonts\SegoeUIp35.xml">
+      <Filter>Resource Files\Fonts</Filter>
+    </Xml>
+    <Xml Include="Data\Fonts\SegoeUIp49.xml">
+      <Filter>Resource Files\Fonts</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Data\Shaders\GUI_ps.hlsl">
+      <Filter>Resource Files\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Data\Shaders\GUI_vs.hlsl">
+      <Filter>Resource Files\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Data\Shaders\Planet_ps.hlsl">
+      <Filter>Resource Files\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Data\Shaders\Planet_vs.hlsl">
+      <Filter>Resource Files\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Data\Shaders\StarSphere_ps.hlsl">
+      <Filter>Resource Files\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Data\Shaders\StarSphere_vs.hlsl">
+      <Filter>Resource Files\Shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Data\Textures\CursorTexture.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Data\Textures\DebugWindowTexture.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Data\Textures\DebugWindowTitleBarTexture.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Data\Textures\GameSpeedActivatedTexture.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Data\Textures\GameSpeedDeactivatedTexture.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Data\Textures\GameTimePanelTexture.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Data\Textures\MarsHeightMap8K.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Data\Textures\MarsTestColorMap.tiff">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Data\Textures\SegoeUI.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Data\Textures\SegoeUIp14.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Data\Textures\SegoeUIp20.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Data\Textures\SegoeUIp35.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Data\Textures\SegoeUIp49.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Data\Textures\StarSphere.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\Camera.h">
+      <Filter>Header Files\Toast Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\D3D.h">
+      <Filter>Header Files\Toast Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Functions.h">
+      <Filter>Header Files\Toast Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Material.h">
+      <Filter>Header Files\Toast Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Mesh.h">
+      <Filter>Header Files\Toast Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Object3D.h">
+      <Filter>Header Files\Toast Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Resources.h">
+      <Filter>Header Files\Toast Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SphereMesh.h">
+      <Filter>Header Files\Toast Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System.h">
+      <Filter>Header Files\Toast Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\World.h">
+      <Filter>Header Files\Toast Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Game.h">
+      <Filter>Header Files\The Next Adventure</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameInput.h">
+      <Filter>Header Files\The Next Adventure</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GUI.h">
+      <Filter>Header Files\Toast Engine\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GUIPanel.h">
+      <Filter>Header Files\Toast Engine\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GUIText.h">
+      <Filter>Header Files\Toast Engine\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\tinyxml2.h">
+      <Filter>Header Files\Toast Engine\TinyXML2</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GUICursor.h">
+      <Filter>Header Files\Toast Engine\GUI</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Game\Game.cpp">
+      <Filter>Source Files\The Next Adventure</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameInput.cpp">
+      <Filter>Source Files\The Next Adventure</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Camera.cpp">
+      <Filter>Source Files\Toast Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\D3D.cpp">
+      <Filter>Source Files\Toast Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Functions.cpp">
+      <Filter>Source Files\Toast Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Material.cpp">
+      <Filter>Source Files\Toast Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Mesh.cpp">
+      <Filter>Source Files\Toast Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Object3D.cpp">
+      <Filter>Source Files\Toast Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Resources.cpp">
+      <Filter>Source Files\Toast Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SphereMesh.cpp">
+      <Filter>Source Files\Toast Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System.cpp">
+      <Filter>Source Files\Toast Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\World.cpp">
+      <Filter>Source Files\Toast Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\GUI.cpp">
+      <Filter>Source Files\Toast Engine\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\GUIPanel.cpp">
+      <Filter>Source Files\Toast Engine\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\GUIText.cpp">
+      <Filter>Source Files\Toast Engine\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\tinyxml2.cpp">
+      <Filter>Source Files\Toast Engine\TinyXML2</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\GUICursor.cpp">
+      <Filter>Source Files\Toast Engine\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
