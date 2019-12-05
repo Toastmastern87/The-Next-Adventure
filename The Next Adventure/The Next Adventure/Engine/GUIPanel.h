@@ -35,11 +35,10 @@ namespace Toast
 
 		void CreatePanel(float startX, float startY, float width, float height, std::string *titleText = nullptr, bool titleBar = false);
 		void ConstructVertexBuffer();
-		void UpdatePos(float deltaX, float deltaY);
+		void UpdatePos(POINT deltaPos);
 		void CheckEdges();
 		void SetPos(float posX, float posY);
 		void Draw(D3D& d3d);
-		static void CheckRayIntersection2D(Toast::GUIPanel *panelOne, Toast::GUIPanel *panelTwo);
 
 		void AddElement(Toast::GUIText *newElement);
 

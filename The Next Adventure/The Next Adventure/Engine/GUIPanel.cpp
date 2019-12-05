@@ -97,10 +97,19 @@ namespace Toast
 		}
 	}
 
-	void GUIPanel::UpdatePos(float deltaX, float deltaY) 
+	void GUIPanel::UpdatePos(POINT deltaPos)
 	{
-		mPosX += deltaX;
-		mPosY += deltaY;
+		mPosX += static_cast<float>(deltaPos.x);
+		mPosY += static_cast<float>(deltaPos.y);
+
+		//mMaxX = Toast::System::tSys->mSettings["WindowSizeX"] - mWidth;
+
+		Toast::System::tSys->Print("Pos X: %f", mPosX);
+		Toast::System::tSys->Print("Pos Y: %f", mPosY);
+		Toast::System::tSys->Print("Width: %f", mWidth);
+		Toast::System::tSys->Print("Max pos Y: %f", mMaxY);
+		Toast::System::tSys->Print("Min pos X: %f", mMinX);
+		Toast::System::tSys->Print("Min pos Y: %f", mMinY);
 
 		//Check the edges, this 
 		CheckEdges();
@@ -239,31 +248,5 @@ namespace Toast
 		newElement->UpdatePos(mPosX, (mPosY + mTitleBarOffset));
 
 		mElements.push_back(newElement);
-	}
-
-	void GUIPanel::CheckRayIntersection2D(Toast::GUIPanel *panelOne, Toast::GUIPanel *panelTwo)
-	{
-		if ((panelTwo->mPosX >= panelOne->mPosX) && (panelTwo->mPosX <= (panelOne->mPosX + panelOne->mWidth)))
-		{
-			if (panelOne->mTitleBar)
-			{
-				if ((panelTwo->mPosY >= panelOne->mPosY) && (panelTwo->mPosY <= (panelOne->mPosY + panelOne->mTitleBarOffset)))
-				{
-					panelOne->mTargeted = true;
-
-					panelTwo->mMinX = panelTwo->mPosX - panelOne->mPosX;
-					panelTwo->mMinY = panelTwo->mPosY - panelOne->mPosY;
-					panelTwo->mMaxX = Toast::System::tSys->mSettings["WindowSizeX"] - ((panelOne->mPosX + panelOne->mWidth) - panelTwo->mPosX);
-					panelTwo->mMaxY = Toast::System::tSys->mSettings["WindowSizeY"] - panelOne->mHeight - ((panelOne->mPosY + panelOne->mTitleBarOffset) - panelTwo->mPosY);
-				}
-			}
-			else
-			{
-				if ((panelTwo->mPosY >= panelOne->mPosY) && (panelTwo->mPosY <= (panelOne->mPosY + panelOne->mHeight)))
-				{
-					panelOne->mClicked = true;
-				}
-			}
-		}
 	}
 }

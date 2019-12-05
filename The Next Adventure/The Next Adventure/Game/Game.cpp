@@ -196,14 +196,14 @@ namespace Toast
 				Toast::System::tSys->mTheNextFrontier->mCamera->ZoomOut();
 				break;
 			case Toast::GameCommands::ResetCursorOffsets:
-				//mGUI->mGUIPanels[cursorPanelID]->mMinX = 0.0f;
-				//mGUI->mGUIPanels[cursorPanelID]->mMaxX = Toast::System::tSys->mSettings["WindowSizeX"];
-				//mGUI->mGUIPanels[cursorPanelID]->mMinY = 0.0f;
-				//mGUI->mGUIPanels[cursorPanelID]->mMaxY = Toast::System::tSys->mSettings["WindowSizeY"];
-				//mGUI->mGUIPanels[0]->mTargeted = false;
+				mGUI->mCursor->mMinX = 0.0f;
+				mGUI->mCursor->mMaxX = Toast::System::tSys->mSettings["WindowSizeX"];
+				mGUI->mCursor->mMinY = 0.0f;
+				mGUI->mCursor->mMaxY = Toast::System::tSys->mSettings["WindowSizeY"];
+				mGUI->mGUIPanels[0]->mTargeted = false;
 				break;
 			case Toast::GameCommands::LeftMouseClick:
-				//Toast::GUIPanel::CheckRayIntersection2D(mGUI->mGUIPanels[0], mGUI->mGUIPanels[cursorPanelID]);
+				mGUI->mCursor->CheckRayIntersection2D(mGUI->mGUIPanels[0]);
 				break;
 			case Toast::GameCommands::RightMouseClick:
 				mGUI->mCursor->HideCursor();
@@ -298,20 +298,14 @@ namespace Toast
 		mCamera->CheckOrbitalAngleBoundaries();
 		mCamera->UpdateMatrices();
 
-		// Updates the position of the cursor and GUI panels that are moveable
-		if (mGUI->mGUIPanels[0]->mTargeted) 
-		{
-			mGUI->mGUIPanels[0]->UpdatePos(mInput->mDeltaMousePos.x, mInput->mDeltaMousePos.y);
-
-			/*mGUI->mGUIPanels[cursorPanelID]->UpdatePos(mInput->mDeltaMousePos.x, mInput->mDeltaMousePos.y);*/
-		}
-		else 
-		{
-			/*mGUI->mGUIPanels[cursorPanelID]->UpdatePos(mInput->mDeltaMousePos.x, mInput->mDeltaMousePos.y);*/
-		}
-
 		GetCursorPos(&mRawCursorPos);
 		mGUI->mCursor->UpdatePos(mRawCursorPos);
+
+		// Updates the position of the cursor and GUI panels that are moveable
+		if (mGUI->mGUIPanels[0]->mTargeted)
+		{
+			mGUI->mGUIPanels[0]->UpdatePos(mGUI->mCursor->GetDeltaPos());
+		}
 
 		//Updates the debug window with new data
 		std::string fpsString = "FPS: " + std::to_string(Toast::System::tSys->mFPS);

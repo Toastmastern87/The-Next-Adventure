@@ -23,16 +23,19 @@ namespace Toast
 		void CreateCursor(POINT pos, float width, float height);
 		void ConstructVertexBuffer();
 		void UpdatePos(POINT pos);
+		POINT CheckBoundaries(POINT pos);
 		void HideCursor();
 		void ShowCursor();
 		void Draw(D3D& d3d);
 		void CheckRayIntersection2D(Toast::GUIPanel *panel);
 
+		POINT GetDeltaPos() { return mDeltaPos; }
+
 		bool mVisible = true;
 		float mWidth = 0.0f, mHeight = 0.0f, mPosX = 0.0f, mPosY = 0.0f, mOldPosX, mOldPosY;
 		float mMinX = 0.0f, mMinY = 0.0f, mMaxX = 0.0f, mMaxY = 0.0f;
 
-		POINT mPos, mOldPos, mHiddenPos;
+		POINT mPos, mOldPos, mDeltaPos, mHiddenPos;
 
 		Material* mMaterial;
 

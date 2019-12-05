@@ -25,9 +25,6 @@ namespace Toast
 		mMinY = 0.0f;
 		mVisible = true;
 
-		Toast::System::tSys->Print("Mouse cursor start pos X: %f", static_cast<float>(pos.x));
-		Toast::System::tSys->Print("Mouse cursor start pos Y: %f", static_cast<float>(pos.y));
-
 		mMaxX = Toast::System::tSys->mSettings["WindowSizeX"] - mWidth;
 		mMaxY = Toast::System::tSys->mSettings["WindowSizeY"] - mHeight;
 
@@ -60,6 +57,12 @@ namespace Toast
 
 	void GUICursor::UpdatePos(POINT pos)
 	{
+		pos = CheckBoundaries(pos);
+
+		//Updates delta position which is the change of position since last check
+		mDeltaPos.x = pos.x - mOldPos.x;
+		mDeltaPos.y = pos.y - mOldPos.y;
+
 		mPosX = static_cast<float>(pos.x);
 		mPosY = static_cast<float>(pos.y);
 
@@ -67,8 +70,8 @@ namespace Toast
 		{
 			for (auto& vertex : mVertices)
 			{
-				vertex.position.x += (static_cast<float>(pos.x) - static_cast<float>(mOldPos.x));
-				vertex.position.y -= (static_cast<float>(pos.y) - static_cast<float>(mOldPos.y));
+				vertex.position.x += static_cast<float>(mDeltaPos.x);
+				vertex.position.y -= static_cast<float>(mDeltaPos.y);
 			}
 
 			Toast::Resources::sResources->RemapVertexBuffer(mVertices, iVertexBuffer);
@@ -109,27 +112,41 @@ namespace Toast
 		}
 	}
 
+	POINT GUICursor::CheckBoundaries(POINT pos)
+	{
+		// Checks so that the GUICursor isn't move while for exampla a GUIPanel has hit it the edge
+		if (static_cast<float>(pos.x) >= mMaxX)	
+			pos.x = static_cast<long>(mMaxX);
+
+		if (static_cast<float>(pos.x) <= mMinX)
+			pos.x = static_cast<long>(mMinX);
+
+		// Checks so that the GUICursor isn't move while for exampla a GUIPanel has hit it the edge
+		if (static_cast<float>(pos.y) >= mMaxY)
+			pos.y = static_cast<long>(mMaxY);
+
+		if (static_cast<float>(pos.y) <= mMinY)
+			pos.y = static_cast<long>(mMinY);
+
+		return pos;
+	}
+
 	void GUICursor::CheckRayIntersection2D(Toast::GUIPanel *panel)
 	{
-		if ((panel->mPosX >= mPosX) && (panel->mPosX <= (mPosX + mWidth)))
+		if ((mPosX >= panel->mPosX) && (mPosX <= (panel->mPosX + panel->mWidth)))
 		{
 			if (panel->mTitleBar)
 			{
-				if ((panel->mPosY >= mPosY) && (panel->mPosY <= (mPosY + panel->mTitleBarOffset)))
+				if ((mPosY >= panel->mPosY) && (mPosY <= (panel->mPosY + panel->mTitleBarOffset)))
 				{
+					Toast::System::tSys->Print("Panel targeted!!");
+
 					panel->mTargeted = true;
 
-					panel->mMinX = panel->mPosX - mPosX;
-					panel->mMinY = panel->mPosY - mPosY;
-					panel->mMaxX = Toast::System::tSys->mSettings["WindowSizeX"] - ((mPosX + mWidth) - mPosX);
-					panel->mMaxY = Toast::System::tSys->mSettings["WindowSizeY"] - mHeight - ((mPosY + panel->mTitleBarOffset) - panel->mPosY);
-				}
-			}
-			else
-			{
-				if ((panel->mPosY >= mPosY) && (panel->mPosY <= (mPosY + mHeight)))
-				{
-					panel->mClicked = true;
+					mMinX = mPosX - panel->mPosX;
+					mMinY = mPosY - panel->mPosY;
+					mMaxX = Toast::System::tSys->mSettings["WindowSizeX"] - ((panel->mPosX + panel->mWidth) - mPosX);
+					mMaxY = Toast::System::tSys->mSettings["WindowSizeY"] - panel->mHeight - ((panel->mPosY + panel->mTitleBarOffset) - mPosY);
 				}
 			}
 		}
