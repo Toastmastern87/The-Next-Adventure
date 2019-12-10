@@ -85,8 +85,8 @@ namespace Toast
 
 	void GUIText::ConstructVertexBuffer()
 	{
-		iVertexBuffer = Toast::Resources::sResources->CreateVertexBuffer(mVertices, static_cast<size_t>(100));
-		iIndexBuffer = Toast::Resources::sResources->CreateIndexBuffer(mIndices, static_cast<size_t>(200));
+		iVertexBuffer = Toast::Resources::sResources->CreateVertexBuffer(mVertices, static_cast<size_t>(400));
+		iIndexBuffer = Toast::Resources::sResources->CreateIndexBuffer(mIndices, static_cast<size_t>(400));
 
 		mVertexBuffer = Toast::Resources::sResources->mVertexBuffers[iVertexBuffer];
 		mIndexBuffer = Toast::Resources::sResources->mIndexBuffers[iIndexBuffer];

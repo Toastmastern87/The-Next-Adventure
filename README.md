@@ -1,9 +1,9 @@
 # The Next Adventure
 
 Next to be added:
-* Camera rotation in X, with limits to keep the planed in LoS
-* Normal calculations and therefor normals
+* Normal calculations and therefor sunlight on the surface
 * Give Mars a good orange start color
+* Printscreen ability in fullscreen mode
 
 ![Mars from space](https://i.imgur.com/9zKkTJd.png)
 ![LoD system in work](https://i.imgur.com/RRjd0Nh.png)

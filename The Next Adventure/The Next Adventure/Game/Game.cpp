@@ -12,8 +12,10 @@ namespace Toast
 
 		// Creating the camera that the game will use
 		mCamera = new Toast::Camera();
-		mCamera->SetPosition(XMFLOAT3(10000.0f, 0.0f, 0.0f));
-		mCamera->Rotate(0.0f, (-DirectX::XM_PI / 2), (DirectX::XM_PI / 2)); 
+		mCamera->SetPosition(XMFLOAT3(0.0f, 0.0f, 10000.0f));
+		//mCamera->Rotate(0.0f, (-DirectX::XM_PI / 2), (DirectX::XM_PI / 2));
+		//DirectX::XMConvertToRadians(-180.0f)
+		mCamera->Rotate(0.0f, DirectX::XMConvertToRadians(180.0f), 0.0f);
 		mCamera->SetAspectRatio(Toast::System::tSys->mSettings["WindowSizeX"] / Toast::System::tSys->mSettings["WindowSizeY"]);
 		mCamera->SetFoV(45.0f);
 		mCamera->SetNear(0.1f);
@@ -43,7 +45,7 @@ namespace Toast
 		mStarSphere->mSphereMeshes[0]->mMaterial = mStarSphereMaterial;	
 
 		mStarSphere->mScale = DirectX::XMFLOAT3(20000.0f, 20000.0f, 20000.0f);
-		mStarSphere->mRotation = DirectX::XMFLOAT3(0.0f, 2.0f, 0.0f);
+		mStarSphere->mRotation = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
 		mStarSphere->mPosition = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
 
 		mStarSphere->Update();
@@ -54,6 +56,7 @@ namespace Toast
 
 		mMars = new Toast::World();
 		mMars->CreateWorld(22, 4, false, 3389.5f, -8.2f, 21.229f);
+		//mMars->mRotation = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
 		mMarsMaterial = Resources::sResources->GetMaterial("Mars", "MarsHeightMap8K", "Planet", sphereIED, 6);
 		Resources::sResources->LoadTerrainData(mMarsMaterial, "MarsHeightMap8K");
 
@@ -63,6 +66,9 @@ namespace Toast
 		mMars->Update();
 
 		Toast::System::tSys->Print("Mars created");
+
+		//Setting max rotation to the camera after Mars is created
+		mCamera->SetMaxRotation((mCamera->GetFoVRadians() / 2.0f) + atanf(mMars->mRadius / mCamera->GetAltitude()));
 
 		mGUI = new Toast::GUI();
 
@@ -140,6 +146,70 @@ namespace Toast
 
 		Toast::System::tSys->Print("Altitude Text created in the Debug window");
 
+		std::string verticesString = "Vertices being rendered: " + std::to_string(mCamera->GetAltitude());
+		Toast::GUIText* verticesText = new Toast::GUIText();
+		verticesText->CreateText(10.0f, 50.0f, &verticesString, mGeneralFont, mFontMaterial);
+
+		mGUI->mGUIPanels[0]->AddElement(verticesText);
+
+		Toast::System::tSys->Print("Vertices Text created in the Debug window");
+
+		std::string orbitalAngleYString = "Orbital Angle Y: " + std::to_string(DirectX::XMConvertToDegrees(mCamera->mOrbitalAngleY));
+		Toast::GUIText* orbitalAngleYText = new Toast::GUIText();
+		orbitalAngleYText->CreateText(10.0f, 70.0f, &orbitalAngleYString, mGeneralFont, mFontMaterial);
+
+		mGUI->mGUIPanels[0]->AddElement(orbitalAngleYText);
+
+		Toast::System::tSys->Print("orbitalAngleY Text created in the Debug window");
+
+		std::string orbitalAngleXZString = "Orbital Angle XZ: " + std::to_string(DirectX::XMConvertToDegrees(mCamera->mOrbitalAngleXZ));
+		Toast::GUIText* orbitalAngleXZText = new Toast::GUIText();
+		orbitalAngleXZText->CreateText(10.0f, 90.0f, &orbitalAngleXZString, mGeneralFont, mFontMaterial);
+
+		mGUI->mGUIPanels[0]->AddElement(orbitalAngleXZText);
+
+		Toast::System::tSys->Print("orbitalAngleXZ Text created in the Debug window");
+
+		std::string rotationXZString = "Rotation XZ: " + std::to_string(DirectX::XMConvertToDegrees(mCamera->mRotationXZ));
+		Toast::GUIText* rotationXZText = new Toast::GUIText();
+		rotationXZText->CreateText(10.0f, 110.0f, &rotationXZString, mGeneralFont, mFontMaterial);
+
+		mGUI->mGUIPanels[0]->AddElement(rotationXZText);
+
+		Toast::System::tSys->Print("Rotation XZ Text created in the Debug window");
+
+		std::string maxRotationXZString = "Max Rotation XZ: " + std::to_string(DirectX::XMConvertToDegrees(mCamera->GetMaxRotation()));
+		Toast::GUIText* maxRotationXZText = new Toast::GUIText();
+		maxRotationXZText->CreateText(10.0f, 130.0f, &maxRotationXZString, mGeneralFont, mFontMaterial);
+
+		mGUI->mGUIPanels[0]->AddElement(maxRotationXZText);
+
+		Toast::System::tSys->Print("Max Rotation XZ Text created in the Debug window");
+
+		std::string posXString = "Position X: " + std::to_string(static_cast<int>(mCamera->GetPosition().x));
+		Toast::GUIText* posXText = new Toast::GUIText();
+		posXText->CreateText(10.0f, 150.0f, &posXString, mGeneralFont, mFontMaterial);
+
+		mGUI->mGUIPanels[0]->AddElement(posXText);
+
+		Toast::System::tSys->Print("Pos X Text created in the Debug window");
+
+		std::string posYString = "Y: " + std::to_string(static_cast<int>(mCamera->GetPosition().y));
+		Toast::GUIText* posYText = new Toast::GUIText();
+		posYText->CreateText(140.0f, 150.0f, &posYString, mGeneralFont, mFontMaterial);
+
+		mGUI->mGUIPanels[0]->AddElement(posYText);
+
+		Toast::System::tSys->Print("Pos Y Text created in the Debug window");
+
+		std::string posZString = "Z: " + std::to_string(static_cast<int>(mCamera->GetPosition().z));
+		Toast::GUIText* posZText = new Toast::GUIText();
+		posZText->CreateText(210.0f, 150.0f, &posZString, mGeneralFont, mFontMaterial);
+
+		mGUI->mGUIPanels[0]->AddElement(posZText);
+
+		Toast::System::tSys->Print("Pos Z Text created in the Debug window");
+
 		//Creating the game time speed GUI Panels
 		mGUI->AddPanel((Toast::System::tSys->mSettings["WindowSizeX"] - 34.0f), 2.0f, (48.0f * 0.5f), (21.0f * 0.5f));
 		mGUI->AddPanel((Toast::System::tSys->mSettings["WindowSizeX"] - 34.0f), 15.0f, (48.0f * 0.5f), (21.0f * 0.5f));
@@ -210,7 +280,7 @@ namespace Toast
 				break;
 			case Toast::GameCommands::RightMousePressed:
 				GetCursorPos(&mRawCursorPos);
-				Toast::System::tSys->mTheNextFrontier->mCamera->TurnAround(static_cast<float>(mRawCursorPos.x) - static_cast<float>(mGUI->mCursor->mOldPos.x));
+				Toast::System::tSys->mTheNextFrontier->mCamera->TurnAround(static_cast<float>(mRawCursorPos.x) - static_cast<float>(mGUI->mCursor->mOldPos.x), static_cast<float>(mRawCursorPos.y) - static_cast<float>(mGUI->mCursor->mOldPos.y));
 				break;
 			case Toast::GameCommands::RightMouseRelease:
 				mGUI->mCursor->ShowCursor();
@@ -223,6 +293,9 @@ namespace Toast
 				break;
 			case Toast::GameCommands::ShowDebugWindow:
 				mGUI->mGUIPanels[0]->mVisible = !mGUI->mGUIPanels[0]->mVisible;
+				break;
+			case Toast::GameCommands::TakeScreenshot:
+				Toast::System::tSys->Print("Printscreen pressed");
 				break;
 			}
 		}
@@ -293,7 +366,10 @@ namespace Toast
 		// Updates the Camera in the game
 		mCamera->Update(deltaTime);
 		mCamera->UpdateAltitude();
-		mCamera->Rotate(mCamera->mOrbitalAngleY, (-mCamera->mOrbitalAngleXZ + mCamera->mRotationXZ + (-DirectX::XM_PI / 2)), (DirectX::XM_PI / 2));
+		mCamera->SetMaxRotation((mCamera->GetFoVRadians() / 2.0f) + atanf(mMars->mRadius / mCamera->GetAltitude()));
+		mCamera->CheckBoundaries();
+		//Pitch, Yaw, Roll
+		mCamera->Rotate(mCamera->mOrbitalAngleY + mCamera->mRotationY, mCamera->mOrbitalAngleXZ + mCamera->mRotationXZ + DirectX::XMConvertToRadians(180.0f), 0.0f);
 		mCamera->UpdateOrbitalPosition();
 		mCamera->CheckOrbitalAngleBoundaries();
 		mCamera->UpdateMatrices();
@@ -306,12 +382,28 @@ namespace Toast
 		{
 			mGUI->mGUIPanels[0]->UpdatePos(mGUI->mCursor->GetDeltaPos());
 		}
-
+	
 		//Updates the debug window with new data
 		std::string fpsString = "FPS: " + std::to_string(Toast::System::tSys->mFPS);
 		mGUI->mGUIPanels[0]->mElements[0]->UpdateText(&fpsString);
 		std::string altitudeString = "Altitude: " + std::to_string((int)(mCamera->GetAltitude() - mMars->mRadius)) + "km";
 		mGUI->mGUIPanels[0]->mElements[1]->UpdateText(&altitudeString);
+		std::string verticesString = "Vertices being rendered: " + std::to_string((int)(mCamera->GetAltitude() - mMars->mRadius)) + "km";
+		mGUI->mGUIPanels[0]->mElements[2]->UpdateText(&verticesString);
+		std::string orbitalAngleYString = "Orbital Angle Y: " + std::to_string(DirectX::XMConvertToDegrees(mCamera->mOrbitalAngleY));
+		mGUI->mGUIPanels[0]->mElements[3]->UpdateText(&orbitalAngleYString);
+		std::string orbitalAngleXZString = "Orbital Angle XZ: " + std::to_string(DirectX::XMConvertToDegrees(mCamera->mOrbitalAngleXZ));
+		mGUI->mGUIPanels[0]->mElements[4]->UpdateText(&orbitalAngleXZString);
+		std::string rotationXZString = "Rotation XZ: " + std::to_string(DirectX::XMConvertToDegrees(mCamera->mRotationXZ));
+		mGUI->mGUIPanels[0]->mElements[5]->UpdateText(&rotationXZString);
+		std::string maxRotationXZString = "Max Rotation XZ: " + std::to_string(DirectX::XMConvertToDegrees(mCamera->GetMaxRotation()));
+		mGUI->mGUIPanels[0]->mElements[6]->UpdateText(&maxRotationXZString);
+		std::string posXString = "Position X: " + std::to_string(static_cast<int>(mCamera->GetPosition().x));
+		mGUI->mGUIPanels[0]->mElements[7]->UpdateText(&posXString);
+		std::string posYString = "Y: " + std::to_string(static_cast<int>(mCamera->GetPosition().y));
+		mGUI->mGUIPanels[0]->mElements[8]->UpdateText(&posYString);
+		std::string posZString = "Z: " + std::to_string(static_cast<int>(mCamera->GetPosition().z));
+		mGUI->mGUIPanels[0]->mElements[9]->UpdateText(&posZString);
 
 		mMars->Update();
 	}

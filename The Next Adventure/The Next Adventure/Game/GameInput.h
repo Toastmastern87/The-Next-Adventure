@@ -30,6 +30,7 @@ namespace Toast
 		MoveWindow,
 		ResetCursorOffsets,
 		LeftMouseClick,
+		TakeScreenshot,
 		RightMouseClick,
 		RightMousePressed,
 		RightMouseRelease,
@@ -55,6 +56,7 @@ namespace Toast
 		D = 0x44,
 		S = 0x53,
 		W = 0x57,
+		PRINTSCREEN = 0x2C,
 		NUMPADADD = 0x6B,
 		NUMPADSUB = 0x6D
 	};

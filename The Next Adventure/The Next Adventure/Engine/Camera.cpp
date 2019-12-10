@@ -34,7 +34,13 @@ namespace Toast
 
 		Toast::System::tSys->mD3D->mDevice->CreateBuffer(&cbGUIDesc, &initData, &mGUIConstantBuffer);
 
-		SetFoV(75.0f);
+		mForward = DirectX::XMFLOAT3(0, 0, 1);
+		mUp = DirectX::XMFLOAT3(0, 1, 0);
+		mRight = DirectX::XMFLOAT3(1, 0, 0);
+
+		mQuaternion = DirectX::XMQuaternionRotationRollPitchYaw(0.0f, 0.0f, 0.0f);
+
+		SetFoV(45.0f);
 		mNear = 0.1f;
 		mFar = 1000.0f;
 		SetAspectRatio(1.0f);
@@ -78,12 +84,27 @@ namespace Toast
 		mOrbitDirections[5] = true;
 	}
 
-	void Camera::TurnAround(float delta) 
+	void Camera::TurnAround(float deltaX, float deltaY) 
 	{
-		mRotationXZ += delta / 1500.0f;
+		mRotationXZ += (deltaX / 1500.0f);
+		mRotationY += (deltaY / 1500.0f);
 
-		Toast::System::tSys->Print("Altitude: %f", mAltitude);
-		Toast::System::tSys->Print("mRotationXZ: %f", mRotationXZ);
+		CheckBoundaries();
+	}
+
+	void Camera::CheckBoundaries()
+	{
+		if (mRotationXZ > mMaxRotation)
+			mRotationXZ = mMaxRotation;
+
+		if (mRotationXZ < -mMaxRotation)
+			mRotationXZ = -mMaxRotation;
+
+		if (mRotationY > mMaxRotation)
+			mRotationY = mMaxRotation;
+
+		if (mRotationY < -mMaxRotation)
+			mRotationY = -mMaxRotation;
 	}
 
 	void Camera::SetPosition(DirectX::XMFLOAT3 position)
@@ -93,36 +114,26 @@ namespace Toast
 		mAltitude = GetDistanceFromOrigo();
 	}
 
-	void Camera::Rotate(float xR, float yR, float zR)
+	void Camera::Rotate(float pitch, float yaw, float roll)
 	{
-		DirectX::XMVECTOR quad = XMQuaternionRotationRollPitchYaw(xR, yR, zR);
+		mForward = DirectX::XMFLOAT3(0, 0, 1);
+		mUp = DirectX::XMFLOAT3(0, 1, 0);
+		mRight = DirectX::XMFLOAT3(1, 0, 0);
 
-		DirectX::XMStoreFloat4(&mQuaternion, quad);
+		DirectX::XMVECTOR upVector = DirectX::XMLoadFloat3(&mUp);
+		DirectX::XMVECTOR forwardVector = DirectX::XMLoadFloat3(&mForward);
+		DirectX::XMVECTOR rightVector = DirectX::XMLoadFloat3(&mRight);
 
-		CalculateDirections();
-	}
-
-	void Camera::CalculateDirections() 
-	{
-		DirectX::XMVECTOR quat = DirectX::XMLoadFloat4(&mQuaternion);
-
-		DirectX::XMFLOAT3 inputEdit = DirectX::XMFLOAT3(1, 0, 0);
-		DirectX::XMVECTOR input = DirectX::XMLoadFloat3(&inputEdit);
-		input = DirectX::XMVector3Rotate(input, quat);
-		DirectX::XMStoreFloat3(&inputEdit, input);
-		mRight = inputEdit;
-
-		inputEdit = DirectX::XMFLOAT3(0, 1, 0);
-		input = DirectX::XMLoadFloat3(&inputEdit);
-		input = DirectX::XMVector3Rotate(input, quat);
-		DirectX::XMStoreFloat3(&inputEdit, input);
-		mUp = inputEdit;
-
-		inputEdit = DirectX::XMFLOAT3(0, 0, 1);
-		input = DirectX::XMLoadFloat3(&inputEdit);
-		input = DirectX::XMVector3Rotate(input, quat);
-		DirectX::XMStoreFloat3(&inputEdit, input);
-		mForward = inputEdit;
+		DirectX::XMVECTOR quad = DirectX::XMQuaternionRotationRollPitchYaw(pitch, yaw, roll);
+		
+		forwardVector = DirectX::XMVector3Rotate(forwardVector, quad);
+		DirectX::XMStoreFloat3(&mForward, forwardVector);
+		
+		upVector = DirectX::XMVector3Rotate(upVector, quad);
+		DirectX::XMStoreFloat3(&mUp, upVector);
+		
+		rightVector = DirectX::XMVector3Rotate(rightVector, quad);
+		DirectX::XMStoreFloat3(&mRight, rightVector);
 	}
 
 	void Camera::SetAspectRatio(float x) 
@@ -132,7 +143,7 @@ namespace Toast
 
 	void Camera::SetFoV(float degrees)
 	{
-		mFoV = degrees * (DirectX::XM_PI / 180.0f);
+		mFoV = DirectX::XMConvertToRadians(degrees);
 	}
 
 	void Camera::SetOrtho(float w, float h)
@@ -189,12 +200,12 @@ namespace Toast
 
 		if (mOrbitDirections[2])
 		{
-			mOrbitalAngleXZ += static_cast<float>(deltaTime) * (GetDistanceFromOrigo() / 10000.0f);
+			mOrbitalAngleXZ -= static_cast<float>(deltaTime) * (GetDistanceFromOrigo() / 10000.0f);
 		}
 
 		if (mOrbitDirections[3])
 		{
-			mOrbitalAngleXZ -= static_cast<float>(deltaTime) * (GetDistanceFromOrigo() / 10000.0f);
+			mOrbitalAngleXZ += static_cast<float>(deltaTime) * (GetDistanceFromOrigo() / 10000.0f);
 		}
 
 		if (mOrbitDirections[4])
@@ -232,7 +243,7 @@ namespace Toast
 		DirectX::XMMATRIX viewMatrix;
 
 		perspectiveProjectionMatrix = DirectX::XMMatrixPerspectiveFovLH(mFoV, mAspectRatio, mNear, mFar);
-		viewMatrix = DirectX::XMMatrixLookToLH(DirectX::XMLoadFloat3(&mPosition), DirectX::XMLoadFloat3(&mForward), DirectX::XMLoadFloat3(&mRight));
+		viewMatrix = DirectX::XMMatrixLookToLH(DirectX::XMLoadFloat3(&mPosition), DirectX::XMLoadFloat3(&mForward), DirectX::XMLoadFloat3(&mUp));
 
 		mConstantBufferData.projectionMatrix = perspectiveProjectionMatrix;
 		mConstantBufferData.viewMatrix = viewMatrix;
@@ -288,9 +299,9 @@ namespace Toast
 
 	void Camera::UpdateOrbitalPosition() 
 	{
-		mPosition.x += (cosf(mOrbitalAngleXZ) * mAltitude * cosf(mOrbitalAngleY)) - mPosition.x;
+		mPosition.x += (sinf(mOrbitalAngleXZ) * mAltitude * cosf(mOrbitalAngleY)) - mPosition.x; 
 		mPosition.y += (sinf(mOrbitalAngleY) * mAltitude) - mPosition.y;
-		mPosition.z += (sinf(mOrbitalAngleXZ) * mAltitude * cosf(mOrbitalAngleY)) - mPosition.z;
+		mPosition.z += (cosf(mOrbitalAngleXZ) * mAltitude * cosf(mOrbitalAngleY)) - mPosition.z;
 	}
 
 	void Camera::UpdateAltitude() 
@@ -338,5 +349,10 @@ namespace Toast
 		{
 			mOrbitalAngleXZ -= (DirectX::XM_2PI);
 		}
+	}
+
+	void Camera::SetMaxRotation(float maxRot)
+	{
+		mMaxRotation = maxRot;
 	}
 };

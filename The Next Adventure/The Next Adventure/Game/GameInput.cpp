@@ -57,6 +57,7 @@ namespace Toast
 		mKeyMap[Toast::GameCommands::IncreaseGameSpeed] = new Toast::GameCommand(L"IncreaseGameSpeed", Toast::Keyboard::NUMPADADD, Toast::KeyState::JUST_PRESSED, Toast::GameCommandsType::KeyboardCommand);
 		mKeyMap[Toast::GameCommands::DecreaseGameSpeed] = new Toast::GameCommand(L"DecreaseGameSpeed", Toast::Keyboard::NUMPADSUB, Toast::KeyState::JUST_PRESSED, Toast::GameCommandsType::KeyboardCommand);
 		mKeyMap[Toast::GameCommands::ShowDebugWindow] = new Toast::GameCommand(L"ShowDebugWindow", Toast::Keyboard::F3, Toast::KeyState::JUST_PRESSED, Toast::GameCommandsType::KeyboardCommand);
+		mKeyMap[Toast::GameCommands::TakeScreenshot] = new Toast::GameCommand(L"TakeScreenshot", Toast::Keyboard::PRINTSCREEN, Toast::KeyState::JUST_PRESSED, Toast::GameCommandsType::KeyboardCommand);
 	}
 
 	void GameInput::ProcessInputs()

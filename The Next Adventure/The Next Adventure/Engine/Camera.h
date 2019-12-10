@@ -31,9 +31,10 @@ namespace Toast {
 		void OrbitWest();
 		void ZoomIn();
 		void ZoomOut();
-		void TurnAround(float delta);
+		void TurnAround(float deltaX, float deltaY);
+		void CheckBoundaries();
 		void SetPosition(DirectX::XMFLOAT3 pos);
-		void Rotate(float xR, float yR, float zR);
+		void Rotate(float pitch, float yaw, float roll);
 		void CalculateDirections();
 		void SetAspectRatio(float x);
 		void SetFoV(float degrees);
@@ -42,6 +43,7 @@ namespace Toast {
 		void SetFar(float f);
 		void SetMaxZoom(float z);
 		void SetMinZoom(float z);
+		void SetMaxRotation(float maxRot);
 
 		void Update(double deltaTime);
 		void UpdateOrbitalPosition();
@@ -58,7 +60,7 @@ namespace Toast {
 		DirectX::XMFLOAT3 GetFoward() { return mForward; }
 		DirectX::XMFLOAT3 GetRight() { return mRight; }
 		DirectX::XMFLOAT3 GetPosition() { return mPosition; }
-		float GetFoV() { return mFoV * (DirectX::XM_PI / 180.0f); }
+		float GetFoV() { return DirectX::XMConvertToDegrees(mFoV); }
 		float GetFoVRadians() { return mFoV; }
 		float GetAspectRatio() { return mAspectRatio; }
 		float GetOrthoWidth() { return mOrthoWidth; }
@@ -66,6 +68,7 @@ namespace Toast {
 		float GetFar() { return mFar; }
 		float GetNear() { return mNear; }
 		float GetAltitude() { return mAltitude; }
+		float GetMaxRotation() { return mMaxRotation; }
 
 		CameraConstantBufferData mConstantBufferData;
 		GUIConstantBufferData mGUIConstantBufferData;
@@ -73,20 +76,21 @@ namespace Toast {
 		ID3D11Buffer *mGUIConstantBuffer = nullptr;
 
 		bool mOrbitDirections[6] = { false,false,false,false,false,false };
-		float mOrbitalAngleY = 0.0f, mOrbitalAngleXZ = 0.0f, mRotationXZ = 0.0f;
+		float mOrbitalAngleY = 0.0f, mOrbitalAngleXZ = 0.0f, mRotationXZ = 0.0f, mRotationY = 0.0f;
 
 	private:
 		DirectX::XMFLOAT3 mPosition;
-		DirectX::XMFLOAT4 mQuaternion;
+		DirectX::XMVECTOR mQuaternion;
 		DirectX::XMFLOAT3 mUp;
 		DirectX::XMFLOAT3 mForward;
 		DirectX::XMFLOAT3 mRight;
 		float mOrthoWidth = 150.0f, mOrthoHeight = 150.0f;
 		float mAspectRatio = 1.0f;
-		float mFoV = 2.5f;
+		float mFoV = (DirectX::XM_PI / 4.0f);
 		float mNear = 0.1f, mFar = 500.0f;
 		float mMaxZoom = 0.0f, mMinZoom = 0.0f;
 		float mAltitude = 10000.0f;
 		float mZoomOutSpeed = 0.0f, mZoomInSpeed = 0.0f;
+		float mMaxRotation;
 	};
 };

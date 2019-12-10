@@ -241,7 +241,7 @@ namespace Toast
 		}
 
 		d3d->mDeviceContext->Map(vertexBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);
-		memcpy(ms.pData, &vertices[0], sizeof(GUIVertex) * static_cast<UINT>(numVertices));
+		memcpy(ms.pData, &vertices[0], sizeof(GUIVertex) * static_cast<UINT>(vertices.size()));
 		d3d->mDeviceContext->Unmap(vertexBuffer, NULL);
 
 		mVertexBuffers.push_back(vertexBuffer);
@@ -255,7 +255,7 @@ namespace Toast
 		D3D11_MAPPED_SUBRESOURCE ms;
 
 		d3d->mDeviceContext->Map(mVertexBuffers[bufferID], NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);
-		memcpy(ms.pData, &vertices[0], sizeof(GUIVertex) * vertices.size());
+		memcpy(ms.pData, &vertices[0], sizeof(GUIVertex) * static_cast<UINT>(vertices.size()));
 		d3d->mDeviceContext->Unmap(mVertexBuffers[bufferID], NULL);
 	}
 
