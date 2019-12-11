@@ -8,10 +8,16 @@ namespace Toast
 
 	World::~World()
 	{
-		if (mConstantBuffer)
+		if (mPlanetConstantBuffer)
 		{
-			mConstantBuffer->Release();
-			mConstantBuffer = 0;
+			mPlanetConstantBuffer->Release();
+			mPlanetConstantBuffer = 0;
+		}
+
+		if (mSunlightConstantBuffer)
+		{
+			mSunlightConstantBuffer->Release();
+			mSunlightConstantBuffer = 0;
 		}
 	}
 
@@ -37,7 +43,8 @@ namespace Toast
 
 	void World::Draw(D3D& d3d)
 	{
-		d3d.SetPlanetConstantBuffer(mConstantBuffer);
+		d3d.SetPlanetConstantBuffer(mPlanetConstantBuffer);
+		d3d.SetSunlightConstantBuffer(mSunlightConstantBuffer);
 
 		d3d.mDeviceContext->IASetInputLayout(this->mSphereMeshes[0]->mMaterial->mInputLayout);
 		mSphereMeshes[0]->Update();
@@ -48,11 +55,12 @@ namespace Toast
 	{
 		Toast::D3D* d3d = Toast::System::tSys->mD3D;
 
+		//Planet terrain data
 		mPlanetBufferData.worldRadius = DirectX::XMFLOAT4(mRadius, mRadius, mRadius, mRadius);
 		mPlanetBufferData.minAltitude = DirectX::XMFLOAT4(mMinAltitude, mMinAltitude, mMinAltitude, mMinAltitude);
 		mPlanetBufferData.maxAltitude = DirectX::XMFLOAT4(mMaxAltitude, mMaxAltitude, mMaxAltitude, mMaxAltitude);
 
-		if (!mConstantBuffer)
+		if (!mPlanetConstantBuffer)
 		{
 			// Fill in a buffer description.
 			D3D11_BUFFER_DESC cbDesc;
@@ -69,14 +77,54 @@ namespace Toast
 			InitData.SysMemPitch = 0;
 			InitData.SysMemSlicePitch = 0;
 			// Create the buffer.
-			Toast::System::tSys->mD3D->mDevice->CreateBuffer(&cbDesc, &InitData, &mConstantBuffer);
+			Toast::System::tSys->mD3D->mDevice->CreateBuffer(&cbDesc, &InitData, &mPlanetConstantBuffer);
 		}
 
 		D3D11_MAPPED_SUBRESOURCE ms;
-		d3d->mDeviceContext->Map(mConstantBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);
+		d3d->mDeviceContext->Map(mPlanetConstantBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);
 		memcpy(ms.pData, &mPlanetBufferData, sizeof(PlanetBufferData));
-		d3d->mDeviceContext->Unmap(mConstantBuffer, NULL);
+		d3d->mDeviceContext->Unmap(mPlanetConstantBuffer, NULL);
 
-		d3d->SetPlanetConstantBuffer(mConstantBuffer);
+		d3d->SetPlanetConstantBuffer(mPlanetConstantBuffer);
+
+		//Sunlight
+		mSunlightBufferData.sunlightDirection = mSunlightDirection;
+		mSunlightBufferData.diffuseColor = mSunlightColor;// DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
+
+		if (!mSunlightConstantBuffer)
+		{
+			// Fill in a buffer description.
+			D3D11_BUFFER_DESC cbDesc;
+			cbDesc.ByteWidth = sizeof(SunlightBufferData);
+			cbDesc.Usage = D3D11_USAGE_DYNAMIC;
+			cbDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
+			cbDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+			cbDesc.MiscFlags = 0;
+			cbDesc.StructureByteStride = 0;
+
+			// Fill in the subresource data.
+			D3D11_SUBRESOURCE_DATA InitData;
+			InitData.pSysMem = &mSunlightBufferData;
+			InitData.SysMemPitch = 0;
+			InitData.SysMemSlicePitch = 0;
+			// Create the buffer.
+			Toast::System::tSys->mD3D->mDevice->CreateBuffer(&cbDesc, &InitData, &mSunlightConstantBuffer);
+		}
+
+		d3d->mDeviceContext->Map(mSunlightConstantBuffer, NULL, D3D11_MAP_WRITE_DISCARD, NULL, &ms);
+		memcpy(ms.pData, &mSunlightBufferData, sizeof(SunlightBufferData));
+		d3d->mDeviceContext->Unmap(mSunlightConstantBuffer, NULL);
+
+		d3d->SetSunlightConstantBuffer(mSunlightConstantBuffer);
+	}
+
+	void World::SetSunlightDirection(DirectX::XMFLOAT4 direction) 
+	{
+		mSunlightDirection = direction;
+	}
+
+	void World::SetSunlightColor(DirectX::XMFLOAT4 color)
+	{
+		mSunlightColor = color;
 	}
 }

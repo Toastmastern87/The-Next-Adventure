@@ -41,6 +41,8 @@ struct PixelInputType
 {
 	float4 position : SV_POSITION;
 	float3 uv : UV0;
+	float3 normal : NORMAL0;
+	float3 viewVector : NORMAL1;
 };
 
 float MorphFac(float distance, int level)
@@ -100,6 +102,10 @@ PixelInputType main(VertexInputType input)
 		0.0f, 0.0f, (radius.a + terrainHeight), 0.0f,
 		0.0f, 0.0f, 0.0f, 1.0f
 	};
+
+	//Normal calculations
+	output.normal = mul(finalPos, worldMatrix);
+	output.viewVector = (mul(cameraPosition.xyz, worldMatrix) - mul(finalPos, worldMatrix));
 
 	output.position = mul(finalPos, worldMatrix);
 	output.position = mul(output.position, viewMatrix);

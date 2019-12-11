@@ -41,6 +41,7 @@ namespace Toast {
 		void SetMorphConstantBuffer(ID3D11Buffer* buf);
 		void SetPlanetConstantBuffer(ID3D11Buffer* buf);
 		void SetGUIConstantBuffer(ID3D11Buffer* buf);
+		void SetSunlightConstantBuffer(ID3D11Buffer* buf);
 		void UploadConstantBuffersToGPU();
 
 		ID3D11RenderTargetView* mBackBuffer = nullptr;
@@ -69,7 +70,8 @@ namespace Toast {
 		static D3D11_INPUT_ELEMENT_DESC sDefaultInputLayoutDesc[];
 		static uint32_t sDefaultInputLayoutNumElements;
 		static ID3D11SamplerState* sDefaultTextureSampler;
-		static ID3D11Buffer* sConstantBuffers[5];
+		static ID3D11Buffer* sVSConstantBuffers[5];
+		static ID3D11Buffer* sPSConstantBuffers[2];
 		static Material *sStarBoxMaterial;
 	};
 };

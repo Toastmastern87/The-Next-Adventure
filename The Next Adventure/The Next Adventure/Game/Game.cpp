@@ -57,8 +57,10 @@ namespace Toast
 		mMars = new Toast::World();
 		mMars->CreateWorld(22, 4, false, 3389.5f, -8.2f, 21.229f);
 		//mMars->mRotation = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
+		mMars->SetSunlightDirection(DirectX::XMFLOAT4(0.0f, 0.0f, -1.0f, 1.0f));
+		mMars->SetSunlightColor(DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f));
 		mMarsMaterial = Resources::sResources->GetMaterial("Mars", "MarsHeightMap8K", "Planet", sphereIED, 6);
-		Resources::sResources->LoadTerrainData(mMarsMaterial, "MarsHeightMap8K");
+		Resources::sResources->LoadWorldData(mMarsMaterial, "MarsHeightMap8K", "MarsColorMap8K");
 
 		mMars->mSphereMeshes[0]->mMaterial = mMarsMaterial;
 

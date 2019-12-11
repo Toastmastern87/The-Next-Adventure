@@ -109,9 +109,6 @@
     <Image Include="Data\Textures\MarsHeightMap8K.tif">
       <Filter>Resource Files\Textures</Filter>
     </Image>
-    <Image Include="Data\Textures\MarsTestColorMap.tiff">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
     <Image Include="Data\Textures\SegoeUI.tif">
       <Filter>Resource Files\Textures</Filter>
     </Image>
@@ -128,6 +125,9 @@
       <Filter>Resource Files\Textures</Filter>
     </Image>
     <Image Include="Data\Textures\StarSphere.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Data\Textures\MarsColorMap8K.tif">
       <Filter>Resource Files\Textures</Filter>
     </Image>
   </ItemGroup>

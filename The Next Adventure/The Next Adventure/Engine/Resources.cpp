@@ -467,9 +467,10 @@ namespace Toast
 		return material;
 	}
 
-	void Resources::LoadTerrainData(Toast::Material* material, std::string texture)
+	void Resources::LoadWorldData(Toast::Material* material, std::string textureHeight, std::string textureColor)
 	{
-		material->mTerrainMap = Resources::sResources->GetTexture(texture);
+		material->mTerrainMap = Resources::sResources->GetTexture(textureHeight);
+		material->mTexture = Resources::sResources->GetTexture(textureColor);
 	}
 
 	ID3D11VertexShader* Resources::GetVertexShader(std::string name) 
@@ -499,7 +500,7 @@ namespace Toast
 		hResult = Toast::System::tSys->mD3D->mDevice->CreateVertexShader(VSRaw->GetBufferPointer(), VSRaw->GetBufferSize(), NULL, &vertexShader);
 		if (FAILED(hResult))
 		{
-			return false;
+			return nullptr;
 		}
 
 		VSRaw->Release();
@@ -536,7 +537,7 @@ namespace Toast
 		hResult = Toast::System::tSys->mD3D->mDevice->CreatePixelShader(PSRaw->GetBufferPointer(), PSRaw->GetBufferSize(), NULL, &pixelShader);
 		if (FAILED(hResult))
 		{
-			return false;
+			return nullptr;
 		}
 
 		PSRaw->Release();

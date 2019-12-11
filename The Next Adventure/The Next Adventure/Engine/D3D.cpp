@@ -21,7 +21,11 @@ namespace Toast
 	//2 morph
 	//3 2D
 	//4 planet
-	ID3D11Buffer* D3D::sConstantBuffers[5];
+	ID3D11Buffer* D3D::sVSConstantBuffers[5];
+
+	//0 planet
+	//1 sunlight
+	ID3D11Buffer* D3D::sPSConstantBuffers[2];
 
 	bool D3D::Init() 
 	{
@@ -406,32 +410,39 @@ namespace Toast
 
 	void D3D::SetObjectConstantBuffer(ID3D11Buffer* buf)
 	{
-		D3D::sConstantBuffers[0] = buf;
+		D3D::sVSConstantBuffers[0] = buf;
 	}
 
 	void D3D::SetCameraConstantBuffer(ID3D11Buffer* buf) 
 	{
-		D3D::sConstantBuffers[1] = buf;
+		D3D::sVSConstantBuffers[1] = buf;
 	}
 
 	void D3D::SetMorphConstantBuffer(ID3D11Buffer* buf)
 	{
-		D3D::sConstantBuffers[2] = buf;
+		D3D::sVSConstantBuffers[2] = buf;
 	}
 
 	void D3D::SetGUIConstantBuffer(ID3D11Buffer* buf)
 	{
-		D3D::sConstantBuffers[3] = buf;
+		D3D::sVSConstantBuffers[3] = buf;
 	}
 
 	void D3D::SetPlanetConstantBuffer(ID3D11Buffer* buf)
 	{
-		D3D::sConstantBuffers[4] = buf;
+		D3D::sVSConstantBuffers[4] = buf;
+		D3D::sPSConstantBuffers[0] = buf;
+	}
+
+	void D3D::SetSunlightConstantBuffer(ID3D11Buffer* buf)
+	{
+		D3D::sPSConstantBuffers[1] = buf;
 	}
 
 	void D3D::UploadConstantBuffersToGPU() 
 	{
-		mDeviceContext->VSSetConstantBuffers(0, 5, D3D::sConstantBuffers);
+		mDeviceContext->VSSetConstantBuffers(0, 5, D3D::sVSConstantBuffers);
+		mDeviceContext->PSSetConstantBuffers(0, 2, D3D::sPSConstantBuffers);
 	}
 
 	void D3D::CaptureScreenshot() 

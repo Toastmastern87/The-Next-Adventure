@@ -360,9 +360,12 @@ namespace Toast
 
 		if (mIsPlanet)
 		{
+			d3d.mDeviceContext->PSSetSamplers(0, 1, &mMaterial->mTexture->mSamplerState);
 			d3d.mDeviceContext->VSSetSamplers(0, 1, &mMaterial->mTexture->mSamplerState);
 			d3d.mDeviceContext->VSSetShaderResources(0, 1, &mMaterial->mTerrainMap->mView);
+			d3d.mDeviceContext->PSSetShaderResources(1, 1, &mMaterial->mTerrainMap->mView);
 		}
+
 
 		d3d.mDeviceContext->VSSetShader(mMaterial->mVertexShader, 0, 0);
 		d3d.mDeviceContext->PSSetShader(mMaterial->mPixelShader, 0, 0);

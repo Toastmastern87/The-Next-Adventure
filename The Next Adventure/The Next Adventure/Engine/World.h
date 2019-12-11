@@ -24,6 +24,12 @@ namespace Toast
 			DirectX::XMFLOAT4 maxAltitude;
 		};
 
+		struct SunlightBufferData
+		{
+			DirectX::XMFLOAT4 sunlightDirection;
+			DirectX::XMFLOAT4 diffuseColor;
+		};
+
 		World();
 		~World();
 
@@ -31,14 +37,21 @@ namespace Toast
 
 		void Draw(D3D& d3d);
 		void CreateWorld(int levels, int cellLevels, bool frontCulling = false, float radius = 1.0f, float minAltitude = 1.0f, float maxAltitude = 1.0f);
+		void SetSunlightDirection(DirectX::XMFLOAT4 direction);
+		void SetSunlightColor(DirectX::XMFLOAT4 color);
 
 		float mMinAltitude, mMaxAltitude, mRadius;
 
 		std::vector<SphereMesh*> mSphereMeshes;
 		PlanetBufferData mPlanetBufferData;
-		ID3D11Buffer* mConstantBuffer = nullptr;
+		SunlightBufferData mSunlightBufferData;
+		ID3D11Buffer* mPlanetConstantBuffer = nullptr;
+		ID3D11Buffer* mSunlightConstantBuffer = nullptr;
 
 		// Used to decide which raster state to be used when rendering the object
 		bool mFrontCulling = false;
+
+	private:
+		DirectX::XMFLOAT4 mSunlightDirection, mSunlightColor;
 	};
 };

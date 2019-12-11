@@ -52,8 +52,8 @@ namespace Toast
 		void RemapInstanceBuffer(std::vector<SphereCell> instances, size_t instanceID);
 		size_t CreateVertexBuffer(std::vector<SphereVertex> vertices);
 
-		// For planets only
-		void LoadTerrainData(Toast::Material*, std::string);
+		// For Worlds only
+		void LoadWorldData(Toast::Material*, std::string, std::string);
 
 		// For GUI
 		size_t CreateVertexBuffer(std::vector<GUIVertex> vertices);
