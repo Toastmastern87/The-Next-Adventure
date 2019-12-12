@@ -1,33 +1,33 @@
-[13:52:34:497] Initating the game
-[13:52:34:500] Camera created
-[13:52:34:896] Texture added
-[13:52:34:896] Star sphere created
-[13:52:35:576] Texture added
-[13:52:35:769] Texture added
-[13:52:35:769] Mars created
-[13:52:35:776] Texture added
-[13:52:35:779] Font Created
-[13:52:35:787] Texture added
-[13:52:35:789] Texture added
-[13:52:35:789] Debug window created
-[13:52:35:795] Texture added
-[13:52:35:803] Texture added
-[13:52:35:811] Texture added
-[13:52:35:814] Font Created
-[13:52:35:817] Font Created
-[13:52:35:829] Texture added
-[13:52:35:832] Font Created
-[13:52:35:833] FPS Text created in the Debug window
-[13:52:35:834] Altitude Text created in the Debug window
-[13:52:35:836] Vertices Text created in the Debug window
-[13:52:35:837] orbitalAngleY Text created in the Debug window
-[13:52:35:839] orbitalAngleXZ Text created in the Debug window
-[13:52:35:840] Rotation XZ Text created in the Debug window
-[13:52:35:841] Max Rotation XZ Text created in the Debug window
-[13:52:35:841] Pos X Text created in the Debug window
-[13:52:35:841] Pos Y Text created in the Debug window
-[13:52:35:842] Pos Z Text created in the Debug window
-[13:52:35:845] Texture added
-[13:52:35:848] Texture added
-[13:52:35:877] Texture added
-[13:52:35:877] Mouse cursor created
+[13:54:58:900] Initating the game
+[13:54:58:100] Camera created
+[13:54:58:383] Texture added
+[13:54:58:383] Star sphere created
+[13:54:59:220] Texture added
+[13:54:59:220] Texture added
+[13:54:59:220] Mars created
+[13:54:59:228] Texture added
+[13:54:59:231] Font Created
+[13:54:59:239] Texture added
+[13:54:59:241] Texture added
+[13:54:59:241] Debug window created
+[13:54:59:247] Texture added
+[13:54:59:256] Texture added
+[13:54:59:264] Texture added
+[13:54:59:267] Font Created
+[13:54:59:270] Font Created
+[13:54:59:280] Texture added
+[13:54:59:283] Font Created
+[13:54:59:284] FPS Text created in the Debug window
+[13:54:59:286] Altitude Text created in the Debug window
+[13:54:59:298] Vertices Text created in the Debug window
+[13:54:59:299] orbitalAngleY Text created in the Debug window
+[13:54:59:303] orbitalAngleXZ Text created in the Debug window
+[13:54:59:305] Rotation XZ Text created in the Debug window
+[13:54:59:309] Max Rotation XZ Text created in the Debug window
+[13:54:59:311] Pos X Text created in the Debug window
+[13:54:59:312] Pos Y Text created in the Debug window
+[13:54:59:312] Pos Z Text created in the Debug window
+[13:54:59:317] Texture added
+[13:54:59:323] Texture added
+[13:54:59:352] Texture added
+[13:54:59:352] Mouse cursor created
