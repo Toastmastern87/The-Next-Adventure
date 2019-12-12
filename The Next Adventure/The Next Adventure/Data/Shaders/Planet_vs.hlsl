@@ -40,7 +40,7 @@ struct VertexInputType
 struct PixelInputType
 {
 	float4 position : SV_POSITION;
-	float3 uv : UV0;
+	float2 uv : UV0;
 	float3 normal : NORMAL0;
 	float3 viewVector : NORMAL1;
 };
@@ -59,13 +59,10 @@ float MorphFac(float distance, int level)
 	return (1 - clamp((a / morphRange.x), 0, 1));
 }
 
-float GetHeight(float3 pos, float maxHeight, float minHeight)
+float GetHeight(float2 uv, float maxHeight, float minHeight)
 {
-	float2 uv;
 	float heightColorValue;
 	float finalHeight;
-
-	uv = float2((0.5f + (atan2(pos.z, pos.x) / (2 * PI))), (0.5f - (asin(pos.y) / PI)));
 
 	heightColorValue = heightMap.SampleLevel(sampleType, uv, 0).r;
 
@@ -79,6 +76,7 @@ PixelInputType main(VertexInputType input)
 	PixelInputType output;
 	float4 finalPos;
 	float3 pos;
+	float2 uv;
 	float distance, morphPercentage;
 	float terrainHeight;
 
@@ -91,9 +89,13 @@ PixelInputType main(VertexInputType input)
 
 	finalPos = float4(normalize(pos), 1.0f);
 
-	output.uv = normalize(pos);
+	pos = normalize(pos);
 
-	terrainHeight = GetHeight(output.uv, maxAltitude.a, minAltitude.a);
+	uv = float2((0.5f + (atan2(pos.z, pos.x) / (2 * PI))), (0.5f - (asin(pos.y) / PI)));
+
+	output.uv = uv;
+
+	terrainHeight = GetHeight(uv, maxAltitude.a, minAltitude.a);
 
 	float4x4 worldMatrix =
 	{
@@ -104,8 +106,8 @@ PixelInputType main(VertexInputType input)
 	};
 
 	//Normal calculations
-	output.normal = mul(finalPos, worldMatrix);
-	output.viewVector = (mul(cameraPosition.xyz, worldMatrix) - mul(finalPos, worldMatrix));
+	output.normal = normalize(mul(finalPos, worldMatrix));
+	output.viewVector = normalize(cameraPosition.xyz - mul(finalPos, worldMatrix)); //cameraDirection.xyz;
 
 	output.position = mul(finalPos, worldMatrix);
 	output.position = mul(output.position, viewMatrix);

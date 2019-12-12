@@ -22,7 +22,7 @@ cbuffer LightCalculations : register(b1)
 struct PixelInputType
 {
 	float4 position : SV_POSITION;
-	float3 uv : UV0;
+	float2 uv : UV0;
 	float3 normal : NORMAL0;
 	float3 viewVector : NORMAL1;
 };
@@ -51,13 +51,12 @@ float3x3 GetTBNMatrix(float3 normalVector, float3 posVector, float2 uv)
 
 float GetHeight(float2 uv)
 {
-	return (heightMap.SampleLevel(sampleType, uv, 0).r * (maxAltitude.a + minAltitude.a));
+	return (heightMap.SampleLevel(sampleType, uv, 0).r * (maxAltitude.a + minAltitude.a) + minAltitude.a);
 }
 
 float3 CalculateNormal(float3 normalVector, float3 viewVector, float2 uv)
 {
 	float textureWidth, textureHeight, hL, hR, hD, hU;
-	float hL2, hR2, hD2, hU2;
 	float3 texOffset, N;
 	float3x3 TBN;
 
@@ -84,15 +83,14 @@ float4 main(PixelInputType input) : SV_TARGET
 	float4 finalColor;
 	float2 uv;
 
-	uv = float2((0.5f + (atan2(input.uv.z, input.uv.x) / (2 * PI))), (0.5f - (asin(input.uv.y) / PI)));
+	normal = normalize(CalculateNormal(input.normal, input.viewVector, input.uv));
 
-	normal = normalize(CalculateNormal(normalize(input.normal), normalize(input.viewVector), uv));
-
+	//This becomes 0 for some reason with the bug
 	sunlightIntensity = saturate(dot(normal, normalize(-lightDirection)));
 
 	sunlightcolor = saturate(diffuseColor * sunlightIntensity);
 
-	finalColor = colorMap.SampleLevel(sampleType, uv, 0).rgba;
+	finalColor = colorMap.SampleLevel(sampleType, input.uv, 0).rgba;
 
 	return finalColor * sunlightcolor;
 }
