@@ -85,7 +85,6 @@ float4 main(PixelInputType input) : SV_TARGET
 
 	normal = normalize(CalculateNormal(input.normal, input.viewVector, input.uv));
 
-	//This becomes 0 for some reason with the bug
 	sunlightIntensity = saturate(dot(normal, normalize(-lightDirection)));
 
 	sunlightcolor = saturate(diffuseColor * sunlightIntensity);

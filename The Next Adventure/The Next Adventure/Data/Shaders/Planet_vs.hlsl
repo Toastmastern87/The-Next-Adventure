@@ -107,7 +107,9 @@ PixelInputType main(VertexInputType input)
 
 	//Normal calculations
 	output.normal = normalize(mul(finalPos, worldMatrix));
-	output.viewVector = normalize(cameraPosition.xyz - mul(finalPos, worldMatrix)); //cameraDirection.xyz;
+	output.viewVector = normalize(mul(finalPos, worldMatrix) - cameraPosition.xyz);
+	//This should work but will be a bug to fix for a later date
+	//output.viewVector = normalize(cameraDirection.xyz); 
 
 	output.position = mul(finalPos, worldMatrix);
 	output.position = mul(output.position, viewMatrix);
