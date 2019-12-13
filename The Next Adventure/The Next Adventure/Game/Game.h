@@ -9,6 +9,9 @@
 #include "../Engine/GUIPanel.h"
 #include "../Engine/GUICursor.h"
 #include "GameInput.h"
+#include "GameTime.h"
+
+const float MARSROTATESPEED = DirectX::XM_2PI / 88775000.0f;
 
 namespace Toast 
 {
@@ -16,6 +19,7 @@ namespace Toast
 	class Object3D;
 	class World;
 	class GameInput;
+	class GameTime;
 	class GUI;
 
 	class Game 
@@ -48,9 +52,10 @@ namespace Toast
 		Toast::GUIFont* mTimeFont;
 		Toast::GUIFont* mYearDayFont;
 
+		GameTime *mGameTime;
+		int mOldGameTimeSec, mOldGameTimeMSec;
+		float mSunlightRotateAngle;
+
 		POINT mRawCursorPos;
-		LARGE_INTEGER mGameTime;
-		float mGameSpeeds[4] = { 1.0f, 10.0f, 100.0f, 1000.0f };
-		int mGameSpeedActiveIndex = 0;
 	};
 };

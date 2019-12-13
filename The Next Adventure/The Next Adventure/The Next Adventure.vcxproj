@@ -220,6 +220,7 @@
     <ClInclude Include="Engine\World.h" />
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Game\GameInput.h" />
+    <ClInclude Include="Game\GameTime.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Camera.cpp" />
@@ -239,6 +240,7 @@
     <ClCompile Include="Engine\World.cpp" />
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Game\GameInput.cpp" />
+    <ClCompile Include="Game\GameTime.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

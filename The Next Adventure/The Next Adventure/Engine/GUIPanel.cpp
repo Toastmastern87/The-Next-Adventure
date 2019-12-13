@@ -104,12 +104,12 @@ namespace Toast
 
 		//mMaxX = Toast::System::tSys->mSettings["WindowSizeX"] - mWidth;
 
-		Toast::System::tSys->Print("Pos X: %f", mPosX);
-		Toast::System::tSys->Print("Pos Y: %f", mPosY);
-		Toast::System::tSys->Print("Width: %f", mWidth);
-		Toast::System::tSys->Print("Max pos Y: %f", mMaxY);
-		Toast::System::tSys->Print("Min pos X: %f", mMinX);
-		Toast::System::tSys->Print("Min pos Y: %f", mMinY);
+		//Toast::System::tSys->Print("Pos X: %f", mPosX);
+		//Toast::System::tSys->Print("Pos Y: %f", mPosY);
+		//Toast::System::tSys->Print("Width: %f", mWidth);
+		//Toast::System::tSys->Print("Max pos Y: %f", mMaxY);
+		//Toast::System::tSys->Print("Min pos X: %f", mMinX);
+		//Toast::System::tSys->Print("Min pos Y: %f", mMinY);
 
 		//Check the edges, this 
 		CheckEdges();

@@ -139,14 +139,19 @@ namespace Toast
 			{
 				if ((mPosY >= panel->mPosY) && (mPosY <= (panel->mPosY + panel->mTitleBarOffset)))
 				{
-					Toast::System::tSys->Print("Panel targeted!!");
-
 					panel->mTargeted = true;
 
 					mMinX = mPosX - panel->mPosX;
 					mMinY = mPosY - panel->mPosY;
 					mMaxX = Toast::System::tSys->mSettings["WindowSizeX"] - ((panel->mPosX + panel->mWidth) - mPosX);
 					mMaxY = Toast::System::tSys->mSettings["WindowSizeY"] - panel->mHeight - ((panel->mPosY + panel->mTitleBarOffset) - mPosY);
+				}
+			}
+			else 
+			{
+				if ((mPosY >= panel->mPosY) && (mPosY <= (panel->mPosY + panel->mHeight)))
+				{
+					panel->mClicked = true;
 				}
 			}
 		}

@@ -56,7 +56,6 @@ namespace Toast
 
 		mMars = new Toast::World();
 		mMars->CreateWorld(22, 4, false, 3389.5f, -8.2f, 21.229f);
-		//mMars->mRotation = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
 		mMars->SetSunlightDirection(DirectX::XMFLOAT4(0.0f, 0.0f, -1.0f, 1.0f));
 		mMars->SetSunlightColor(DirectX::XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f));
 		mMarsMaterial = Resources::sResources->GetMaterial("Mars", "MarsHeightMap8K", "Planet", sphereIED, 6);
@@ -64,13 +63,18 @@ namespace Toast
 
 		mMars->mSphereMeshes[0]->mMaterial = mMarsMaterial;
 
-		// Run an update to get the matrices correctly
+		// Run an update to get the matrices correctly fróm the start
 		mMars->Update();
 
 		Toast::System::tSys->Print("Mars created");
 
 		//Setting max rotation to the camera after Mars is created
 		mCamera->SetMaxRotation((mCamera->GetFoVRadians() / 2.0f) + atanf(mMars->mRadius / mCamera->GetAltitude()));
+
+		//Setting up the game time
+		mGameTime = new Toast::GameTime();
+
+		Toast::System::tSys->Print("Game time initiated");
 
 		mGUI = new Toast::GUI();
 
@@ -94,7 +98,7 @@ namespace Toast
 		Toast::System::tSys->Print("Debug window created");
 
 		//Creating the game time GUI Panel
-		mGUI->AddPanel((Toast::System::tSys->mSettings["WindowSizeX"] - (656.0f * 0.45f)), 0.0f, (656.0f * 0.45f), (221.0f * 0.35f));
+		mGUI->AddPanel((Toast::System::tSys->mSettings["WindowSizeX"] - (730.0f * 0.45f)), 0.0f, (730.0f * 0.45f), (221.0f * 0.35f));
 
 		mGameTimePanelMaterial = Resources::sResources->GetMaterial("GameTime", "GameTimePanelTexture", "GUI", GUIIED, 2);
 		mGUI->mGUIPanels[1]->mMaterial = mGameTimePanelMaterial;
@@ -116,13 +120,13 @@ namespace Toast
 
 		std::string mYearString = "M: 1";
 		Toast::GUIText *mYearText = new Toast::GUIText();
-		mYearText->CreateText(80.0f, -6.0f, &mYearString, mYearDayFont, mYearDayFontMaterial);
+		mYearText->CreateText(70.0f, -6.0f, &mYearString, mYearDayFont, mYearDayFontMaterial);
 
 		mGUI->mGUIPanels[1]->AddElement(mYearText);
 
 		std::string solString = "Sol: 1";
 		Toast::GUIText *solText = new Toast::GUIText();
-		solText->CreateText(80.0f, 16.0f, &solString, mYearDayFont, mYearDayFontMaterial);
+		solText->CreateText(70.0f, 16.0f, &solString, mYearDayFont, mYearDayFontMaterial);
 
 		mGUI->mGUIPanels[1]->AddElement(solText);
 
@@ -239,6 +243,8 @@ namespace Toast
 		// Handles the input and the event belonging to those keys
 		mInput->ProcessInputs();
 
+		mGameTime->Update();
+
 		for (auto i : mInput->mActiveKeyMap) 
 		{
 			switch (i.first) 
@@ -275,7 +281,11 @@ namespace Toast
 				mGUI->mGUIPanels[0]->mTargeted = false;
 				break;
 			case Toast::GameCommands::LeftMouseClick:
-				mGUI->mCursor->CheckRayIntersection2D(mGUI->mGUIPanels[0]);
+				for (int i = 0; i <= 5; i++)
+				{
+					mGUI->mCursor->CheckRayIntersection2D(mGUI->mGUIPanels[i]);
+				}
+
 				break;
 			case Toast::GameCommands::RightMouseClick:
 				mGUI->mCursor->HideCursor();
@@ -288,10 +298,10 @@ namespace Toast
 				mGUI->mCursor->ShowCursor();
 				break;
 			case Toast::GameCommands::IncreaseGameSpeed:
-				if (mGameSpeedActiveIndex < 3) mGameSpeedActiveIndex++;
+				if (mGameTime->GetGameSpeed() < 1000) mGameTime->IncreaseGameSpeed();
 				break;
 			case Toast::GameCommands::DecreaseGameSpeed:
-				if (mGameSpeedActiveIndex > 0) mGameSpeedActiveIndex--;
+				if (mGameTime->GetGameSpeed() > 0) mGameTime->DecreaseGameSpeed();
 				break;
 			case Toast::GameCommands::ShowDebugWindow:
 				mGUI->mGUIPanels[0]->mVisible = !mGUI->mGUIPanels[0]->mVisible;
@@ -304,48 +314,48 @@ namespace Toast
 
 		if (mGUI->mGUIPanels[2]->mClicked) 
 		{ 
-			mGameSpeedActiveIndex = 3;
+			mGameTime->SetGameSpeed(1000);
 			mGUI->mGUIPanels[2]->mClicked = false;
 		}
 		if (mGUI->mGUIPanels[3]->mClicked) 
 		{
-			mGameSpeedActiveIndex = 2;
+			mGameTime->SetGameSpeed(100);
 			mGUI->mGUIPanels[3]->mClicked = false;
 		}
 		if (mGUI->mGUIPanels[4]->mClicked)
 		{
-			mGameSpeedActiveIndex = 1;
+			mGameTime->SetGameSpeed(10);
 			mGUI->mGUIPanels[4]->mClicked = false;
 		}
 		if (mGUI->mGUIPanels[5]->mClicked)
 		{
-			mGameSpeedActiveIndex = 0;
+			mGameTime->SetGameSpeed(1);
 			mGUI->mGUIPanels[5]->mClicked = false;
 		}
 
 		// Updates the color of the time GUI indication panels
-		if (mGameSpeedActiveIndex == 3)
+		if (mGameTime->GetGameSpeed() == 1000)
 		{
 			mGUI->mGUIPanels[2]->mMaterial = mGameSpeedActivatedPanelMaterial;
 			mGUI->mGUIPanels[3]->mMaterial = mGameSpeedActivatedPanelMaterial;
 			mGUI->mGUIPanels[4]->mMaterial = mGameSpeedActivatedPanelMaterial;
 			mGUI->mGUIPanels[5]->mMaterial = mGameSpeedActivatedPanelMaterial;
 		}
-		else if (mGameSpeedActiveIndex == 2)
+		else if (mGameTime->GetGameSpeed() == 100)
 		{
 			mGUI->mGUIPanels[2]->mMaterial = mGameSpeedDeactivatedPanelMaterial;
 			mGUI->mGUIPanels[3]->mMaterial = mGameSpeedActivatedPanelMaterial;
 			mGUI->mGUIPanels[4]->mMaterial = mGameSpeedActivatedPanelMaterial;
 			mGUI->mGUIPanels[5]->mMaterial = mGameSpeedActivatedPanelMaterial;
 		}
-		else if (mGameSpeedActiveIndex == 1)
+		else if (mGameTime->GetGameSpeed() == 10)
 		{
 			mGUI->mGUIPanels[2]->mMaterial = mGameSpeedDeactivatedPanelMaterial;
 			mGUI->mGUIPanels[3]->mMaterial = mGameSpeedDeactivatedPanelMaterial;
 			mGUI->mGUIPanels[4]->mMaterial = mGameSpeedActivatedPanelMaterial;
 			mGUI->mGUIPanels[5]->mMaterial = mGameSpeedActivatedPanelMaterial;
 		}
-		else if (mGameSpeedActiveIndex == 0)
+		else if (mGameTime->GetGameSpeed() == 1)
 		{
 			mGUI->mGUIPanels[2]->mMaterial = mGameSpeedDeactivatedPanelMaterial;
 			mGUI->mGUIPanels[3]->mMaterial = mGameSpeedDeactivatedPanelMaterial;
@@ -360,10 +370,45 @@ namespace Toast
 			mGUI->mGUIPanels[5]->mMaterial = mGameSpeedDeactivatedPanelMaterial;
 		}
 
-		//::System::tSys->Print("mGameSpeed: %f", mGameSpeed);
+		// Update the sunlight to simulate that Mars is rotating
+		int gameTimeSec = mGameTime->GetGameTimeSecs();
+		int gameTimeMSec = mGameTime->GetGameTimeMS();
+		int timeDiff = 0;
 
-		// Updates the game time
-		//mGameTime += deltaTime;
+		if (mOldGameTimeMSec > gameTimeMSec)
+		{
+			timeDiff += (1000 - mOldGameTimeMSec) + gameTimeMSec;
+		}
+		else
+		{
+			timeDiff += gameTimeMSec - mOldGameTimeMSec;
+
+			if (mOldGameTimeSec > gameTimeSec)
+			{
+				timeDiff += ((60 - mOldGameTimeSec) + gameTimeSec) * 1000;
+			}
+			else
+			{
+				timeDiff += (gameTimeSec - mOldGameTimeSec) * 1000;
+			}
+		}
+
+		mSunlightRotateAngle = timeDiff * MARSROTATESPEED;
+
+		mOldGameTimeSec = gameTimeSec;
+		mOldGameTimeMSec = gameTimeMSec;
+
+		DirectX::XMMATRIX mRotation = XMMATRIX(cosf(-mSunlightRotateAngle), 0.0f, sinf(-mSunlightRotateAngle), 0.0f,
+											   0.0f, 1.0f, 0.0f, 0.0f,
+											   -sinf(-mSunlightRotateAngle), 0.0f, cosf(-mSunlightRotateAngle), 0.0f,
+											   0.0f, 0.0f, 0.0f, 1.0f);
+		DirectX::XMFLOAT4 updatedDirection;
+		DirectX::XMStoreFloat4(&updatedDirection, DirectX::XMVector4Transform(DirectX::XMLoadFloat4(&mMars->GetSunlightDirection()), mRotation));
+
+		mMars->SetSunlightDirection(updatedDirection);
+
+		mStarSphere->mRotation.y += mSunlightRotateAngle;
+		Toast::System::tSys->Print("Star Sphere Rotation: %f, %f, %f", mStarSphere->mRotation.x, mStarSphere->mRotation.y, mStarSphere->mRotation.z);
 
 		// Updates the Camera in the game
 		mCamera->Update(deltaTime);
@@ -385,6 +430,14 @@ namespace Toast
 			mGUI->mGUIPanels[0]->UpdatePos(mGUI->mCursor->GetDeltaPos());
 		}
 	
+		//Update the game time GUI
+		std::string timeString = mGameTime->GetTimeString();
+		mGUI->mGUIPanels[1]->mElements[0]->UpdateText(&timeString);
+		std::string yearsString = "M: " + std::to_string(mGameTime->GetGameTimeMarsYears());
+		mGUI->mGUIPanels[1]->mElements[1]->UpdateText(&yearsString);
+		std::string solsString = "Sol: " + std::to_string(mGameTime->GetGameTimeSols());
+		mGUI->mGUIPanels[1]->mElements[2]->UpdateText(&solsString);
+
 		//Updates the debug window with new data
 		std::string fpsString = "FPS: " + std::to_string(Toast::System::tSys->mFPS);
 		mGUI->mGUIPanels[0]->mElements[0]->UpdateText(&fpsString);
@@ -408,12 +461,16 @@ namespace Toast
 		mGUI->mGUIPanels[0]->mElements[9]->UpdateText(&posZString);
 
 		mMars->Update();
+
+		mStarSphere->Update();
 	}
 
 	void Toast::Game::Stop()
 	{
 		delete mCamera;
 		mCamera = nullptr;
+
+		//Need to add all code to delete everything here when the game it stopped
 
 		for (int i = 0; i < mObjects3D.size(); i++)
 		{

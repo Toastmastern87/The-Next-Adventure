@@ -39,6 +39,7 @@ namespace Toast
 		void CreateWorld(int levels, int cellLevels, bool frontCulling = false, float radius = 1.0f, float minAltitude = 1.0f, float maxAltitude = 1.0f);
 		void SetSunlightDirection(DirectX::XMFLOAT4 direction);
 		void SetSunlightColor(DirectX::XMFLOAT4 color);
+		DirectX::XMFLOAT4 GetSunlightDirection() { return mSunlightDirection; }
 
 		float mMinAltitude, mMaxAltitude, mRadius;
 
