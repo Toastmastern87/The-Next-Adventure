@@ -1,11 +1,7 @@
 #pragma once
 
-#pragma comment(lib, "winmm.lib")
-
-#include <Windows.h>
+#include "../Engine/System.h"
 #include <string>
-//#include <mmsystem.h>
-//#include <fstream>
 
 namespace Toast
 {
@@ -15,7 +11,7 @@ namespace Toast
 		GameTime();
 		~GameTime();
 
-		void Update();
+		void Update(float);
 		int GetGameTimeMS() { return mGameTimeMS; }
 		int GetGameTimeSecs() { return mGameTimeSecs; }
 		int GetGameTimeMins() { return mGameTimeMins; }
@@ -29,7 +25,6 @@ namespace Toast
 		std::string GetTimeString();
 
 	private:
-		int mGameTimeMS, mGameTimeSecs, mGameTimeMins, mGameTimeHours, mGameTimeSols, mGameTimeMarsYears, mSpeed;
-		unsigned long mOldTime;
+		int mGameTimeMS = 0, mGameTimeSecs = 0, mGameTimeMins = 0, mGameTimeHours = 0, mGameTimeSols = 0, mGameTimeMarsYears = 0, mSpeed = 0;
 	};
 }

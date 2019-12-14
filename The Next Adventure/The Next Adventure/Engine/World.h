@@ -19,15 +19,15 @@ namespace Toast
 	public:
 		struct PlanetBufferData
 		{
-			DirectX::XMFLOAT4 worldRadius;
-			DirectX::XMFLOAT4 minAltitude;
-			DirectX::XMFLOAT4 maxAltitude;
+			DirectX::XMFLOAT4 worldRadius = DirectX::XMFLOAT4(0.0f, 0.0f, 0.0f, 0.0f);
+			DirectX::XMFLOAT4 minAltitude = DirectX::XMFLOAT4(0.0f, 0.0f, 0.0f, 0.0f);
+			DirectX::XMFLOAT4 maxAltitude = DirectX::XMFLOAT4(0.0f, 0.0f, 0.0f, 0.0f);
 		};
 
 		struct SunlightBufferData
 		{
-			DirectX::XMFLOAT4 sunlightDirection;
-			DirectX::XMFLOAT4 diffuseColor;
+			DirectX::XMFLOAT4 sunlightDirection = DirectX::XMFLOAT4(0.0f, 0.0f, 0.0f, 0.0f);
+			DirectX::XMFLOAT4 diffuseColor = DirectX::XMFLOAT4(0.0f, 0.0f, 0.0f, 0.0f);
 		};
 
 		World();
@@ -41,7 +41,7 @@ namespace Toast
 		void SetSunlightColor(DirectX::XMFLOAT4 color);
 		DirectX::XMFLOAT4 GetSunlightDirection() { return mSunlightDirection; }
 
-		float mMinAltitude, mMaxAltitude, mRadius;
+		float mMinAltitude = 0.0f, mMaxAltitude = 0.0f, mRadius = 0.0f;
 
 		std::vector<SphereMesh*> mSphereMeshes;
 		PlanetBufferData mPlanetBufferData;
@@ -53,6 +53,6 @@ namespace Toast
 		bool mFrontCulling = false;
 
 	private:
-		DirectX::XMFLOAT4 mSunlightDirection, mSunlightColor;
+		DirectX::XMFLOAT4 mSunlightDirection = DirectX::XMFLOAT4(0.0f, 0.0f, 0.0f, 0.0f), mSunlightColor = DirectX::XMFLOAT4(0.0f, 0.0f, 0.0f, 0.0f);
 	};
 };

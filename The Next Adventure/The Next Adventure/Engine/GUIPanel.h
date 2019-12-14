@@ -47,13 +47,13 @@ namespace Toast
 		float mMinX = 0.0f, mMinY = 0.0f, mMaxX = 0.0f, mMaxY = 0.0f;
 		float mTitleBarOffset = 0.0f;
 
-		Toast::GUIText* mTitle;
-		Toast::GUIFont* mTitleFont;
+		Toast::GUIText* mTitle = nullptr;
+		Toast::GUIFont* mTitleFont = nullptr;
 
-		Material* mMaterial;
-		Material* mTitleBarMaterial;
-		Material* mTitleFontMaterial;
-		Material* mBorderMaterial;
+		Material* mMaterial = nullptr;
+		Material* mTitleBarMaterial = nullptr;
+		Material* mTitleFontMaterial = nullptr;
+		Material* mBorderMaterial = nullptr;
 		std::vector<GUIVertex> mVertices;
 		std::vector<GUIVertex> mTitleBarVertices;
 		std::vector<uint32_t> mIndices;
@@ -61,9 +61,9 @@ namespace Toast
 		size_t iTitleBarVertexBuffer; //index to the vertexbuffer in resourcemanager
 		size_t iIndexBuffer; // index to the indexbuffer in resourcemanager
 
-		ID3D11Buffer* mVertexBuffer;
-		ID3D11Buffer* mTitleBarVertexBuffer;
-		ID3D11Buffer* mIndexBuffer;
+		ID3D11Buffer* mVertexBuffer = nullptr;
+		ID3D11Buffer* mTitleBarVertexBuffer = nullptr;
+		ID3D11Buffer* mIndexBuffer = nullptr;
 
 		std::vector<Toast::GUIText*> mElements;
 	};

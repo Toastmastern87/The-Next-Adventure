@@ -1,8 +1,7 @@
 # The Next Adventure
 
 Next to be added:
-* Game time
-* Mars rotation
+* Sunlight bug
 * Correct sun angle on the surface of Mars
 * GUI Panel/Button for research
 

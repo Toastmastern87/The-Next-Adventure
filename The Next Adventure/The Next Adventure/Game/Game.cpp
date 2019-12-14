@@ -243,7 +243,7 @@ namespace Toast
 		// Handles the input and the event belonging to those keys
 		mInput->ProcessInputs();
 
-		mGameTime->Update();
+		mGameTime->Update(deltaTime);
 
 		for (auto i : mInput->mActiveKeyMap) 
 		{
@@ -408,7 +408,6 @@ namespace Toast
 		mMars->SetSunlightDirection(updatedDirection);
 
 		mStarSphere->mRotation.y += mSunlightRotateAngle;
-		Toast::System::tSys->Print("Star Sphere Rotation: %f, %f, %f", mStarSphere->mRotation.x, mStarSphere->mRotation.y, mStarSphere->mRotation.z);
 
 		// Updates the Camera in the game
 		mCamera->Update(deltaTime);

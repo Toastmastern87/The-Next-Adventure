@@ -37,14 +37,14 @@ namespace Toast
 
 		POINT mPos, mOldPos, mDeltaPos, mHiddenPos;
 
-		Material* mMaterial;
+		Material* mMaterial = nullptr;
 
 		std::vector<GUIVertex> mVertices;
 		std::vector<uint32_t> mIndices;
 		size_t iVertexBuffer; //index to the vertexbuffer in resourcemanager
 		size_t iIndexBuffer; // index to the indexbuffer in resourcemanager
 
-		ID3D11Buffer* mVertexBuffer;
-		ID3D11Buffer* mIndexBuffer;
+		ID3D11Buffer* mVertexBuffer = nullptr;;
+		ID3D11Buffer* mIndexBuffer = nullptr;;
 	};
 }

@@ -95,22 +95,22 @@ namespace Toast
 		void GenerateSphereCells();
 		void GenerateDistanceLUT();
 
-		Material* mMaterial;
+		Material* mMaterial = nullptr;
 		std::vector<SphereVertex> mSphereCellVertices;
 		std::vector<uint32_t> mSphereCellIndices;
 		std::vector<SphereCell> mSphereCells;
-		float mSphereCellPatchDelta;
-		float mSphereMaxTriangleSize;
-		int mSphereMaxLevels, mCellLevels;
-		bool mIsPlanet;
-		float mRadius;
+		float mSphereCellPatchDelta = 0.0f;
+		float mSphereMaxTriangleSize = 0.0f;
+		int mSphereMaxLevels = 0, mCellLevels = 0;
+		bool mIsPlanet = false;
+		float mRadius = 0.0f;
 
 		std::vector<SphereTriangle> mIcosphere;
 		std::vector<float> mDistanceLUT;
 
-		ID3D11Buffer* mVertexBuffer;
-		ID3D11Buffer* mIndexBuffer;
-		ID3D11Buffer* mInstanceBuffer;
+		ID3D11Buffer* mVertexBuffer = nullptr;
+		ID3D11Buffer* mIndexBuffer = nullptr;
+		ID3D11Buffer* mInstanceBuffer = nullptr;
 
 		size_t iVertexBuffer; //index to the vertexbuffer in resourcemanager
 		size_t iIndexBuffer; // index to the indexbuffer in resourcemanager

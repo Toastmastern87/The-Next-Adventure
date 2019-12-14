@@ -31,30 +31,30 @@ namespace Toast
 		void Stop();
 
 		std::vector<Toast::Object3D*> mObjects3D;
-		Camera *mCamera;
-		GameInput *mInput;
-		Object3D *mStarSphere;
-		World *mMars;
-		Material *mStarSphereMaterial;
-		Material *mMarsMaterial;
+		Camera *mCamera = nullptr;
+		GameInput *mInput = nullptr;
+		Object3D *mStarSphere = nullptr;
+		World *mMars = nullptr;
+		Material *mStarSphereMaterial = nullptr;
+		Material *mMarsMaterial = nullptr;
 
-		GUI *mGUI;
-		Material *mDebugWindowMaterial;
-		Material *mDebugWindowTitleBarMaterial;
-		Material *mGameTimePanelMaterial;
-		Material *mGameSpeedDeactivatedPanelMaterial;
-		Material *mGameSpeedActivatedPanelMaterial;
-		Material *mCursorMaterial;
-		Material *mFontMaterial;
-		Material *mTimeFontMaterial;
-		Material *mYearDayFontMaterial;
-		Toast::GUIFont* mGeneralFont;
-		Toast::GUIFont* mTimeFont;
-		Toast::GUIFont* mYearDayFont;
+		GUI *mGUI = nullptr;
+		Material *mDebugWindowMaterial = nullptr;
+		Material *mDebugWindowTitleBarMaterial = nullptr;
+		Material *mGameTimePanelMaterial = nullptr;
+		Material *mGameSpeedDeactivatedPanelMaterial = nullptr;
+		Material *mGameSpeedActivatedPanelMaterial = nullptr;
+		Material *mCursorMaterial = nullptr;
+		Material *mFontMaterial = nullptr;
+		Material *mTimeFontMaterial = nullptr;
+		Material *mYearDayFontMaterial = nullptr;
+		Toast::GUIFont* mGeneralFont = nullptr;
+		Toast::GUIFont* mTimeFont = nullptr;
+		Toast::GUIFont* mYearDayFont = nullptr;
 
-		GameTime *mGameTime;
-		int mOldGameTimeSec, mOldGameTimeMSec;
-		float mSunlightRotateAngle;
+		GameTime *mGameTime = nullptr;
+		int mOldGameTimeSec = 0, mOldGameTimeMSec = 0;
+		float mSunlightRotateAngle = 0.0f;
 
 		POINT mRawCursorPos;
 	};

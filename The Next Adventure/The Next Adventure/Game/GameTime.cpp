@@ -12,19 +12,16 @@ namespace Toast
 		mGameTimeMarsYears = 0;
 
 		mSpeed = 1;
-
-		mOldTime = timeGetTime();
 	}
 
 	GameTime::~GameTime()
 	{
 	}
 
-	void GameTime::Update()
+	void GameTime::Update(float deltaTime)
 	{
-		mGameTimeMS += (timeGetTime() - mOldTime) * mSpeed;
-
-		mOldTime = timeGetTime();
+		// deltaTime is in seconds so I multiply with 1000 to get it into milliseconds
+		mGameTimeMS += static_cast<int>(deltaTime * 1000.0f) * mSpeed;
 
 		if (mGameTimeMS >= 1000)
 		{
@@ -84,7 +81,7 @@ namespace Toast
 
 	void GameTime::SetGameSpeed(float speed)
 	{
-		mSpeed = speed;
+		mSpeed = static_cast<int>(speed);
 	}
 
 	std::string GameTime::GetTimeString() 

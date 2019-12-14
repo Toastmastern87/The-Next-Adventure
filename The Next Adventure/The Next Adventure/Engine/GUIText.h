@@ -7,7 +7,7 @@ namespace Toast
 	struct GUIFont
 	{
 		std::vector<float> xVec, yVec, widthVec, heightVec;
-		Toast::Texture* texture;
+		Toast::Texture* texture = nullptr;
 
 		GUIFont()
 		{
@@ -30,17 +30,17 @@ namespace Toast
 		void UpdateText(std::string* newText);
 		void UpdatePos(float deltaX, float deltaY);
 
-		Toast::Material* mMaterial;
-		std::string mText;
+		Toast::Material* mMaterial = nullptr;
+		std::string mText = "";
 		float mSpaceSize = 5.0f;
-		Toast::GUIFont* mFont;
+		Toast::GUIFont* mFont = nullptr;
 
 		std::vector<GUIVertex> mVertices;
 		std::vector<uint32_t> mIndices;
-		size_t iVertexBuffer; //index to the vertexbuffer in resourcemanager
-		size_t iIndexBuffer; // index to the indexbuffer in resourcemanager
+		size_t iVertexBuffer = 0; //index to the vertexbuffer in resourcemanager
+		size_t iIndexBuffer = 0; // index to the indexbuffer in resourcemanager
 
-		ID3D11Buffer* mVertexBuffer;
-		ID3D11Buffer* mIndexBuffer;
+		ID3D11Buffer* mVertexBuffer = nullptr;
+		ID3D11Buffer* mIndexBuffer = nullptr;
 	};
 }

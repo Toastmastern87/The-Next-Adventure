@@ -94,9 +94,9 @@ namespace Toast {
 		System() {};
 		void Run();
 
-		Toast::D3D *mD3D;
-		Toast::Game *mTheNextFrontier;
-		Toast::Resources *mResources;
+		Toast::D3D *mD3D = nullptr;
+		Toast::Game *mTheNextFrontier = nullptr;
+		Toast::Resources *mResources = nullptr;
 		HWND mWindow = nullptr;
 		HINSTANCE mHInstance = nullptr;
 		bool mDone = false;

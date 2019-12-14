@@ -127,10 +127,13 @@
     <Image Include="Data\Textures\StarSphere.tif">
       <Filter>Resource Files\Textures</Filter>
     </Image>
+    <Image Include="Data\Textures\ResearchPanelTexture.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
     <Image Include="Data\Textures\MarsColorMap8K.tif">
       <Filter>Resource Files\Textures</Filter>
     </Image>
-    <Image Include="Data\Textures\ResearchPanelTexture.tif">
+    <Image Include="Data\Textures\MarsColorMap8K2.tif">
       <Filter>Resource Files\Textures</Filter>
     </Image>
   </ItemGroup>
