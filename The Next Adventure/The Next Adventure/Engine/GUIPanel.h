@@ -12,8 +12,8 @@ namespace Toast
 {
 	struct GUIVertex
 	{
-		DirectX::XMFLOAT3 position;
-		DirectX::XMFLOAT2 uv;
+		DirectX::XMFLOAT3 position = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
+		DirectX::XMFLOAT2 uv = DirectX::XMFLOAT2(0.0f, 0.0f);
 
 		GUIVertex(DirectX::XMFLOAT3 pos, DirectX::XMFLOAT2 UV)
 		{

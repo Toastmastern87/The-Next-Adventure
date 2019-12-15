@@ -63,11 +63,18 @@ float3 CalculateNormal(float3 normalVector, float3 viewVector, float2 uv)
 	heightMap.GetDimensions(textureWidth, textureHeight);
 
 	texOffset = float3((1.0f / (textureWidth)), (1.0f / (textureHeight)), 0.0f);
-
-	hL = GetHeight((uv - texOffset.xz));
-	hR = GetHeight((uv + texOffset.xz));
-	hD = GetHeight((uv + texOffset.zy));
-	hU = GetHeight((uv - texOffset.zy));
+	
+	if (uv.x >= (1.0f - (1.0f / 8192.0f)))
+	{
+		//Add code here to handle the seam in Mars
+	}
+	else 
+	{
+		hL = GetHeight((uv - texOffset.xz));
+		hR = GetHeight((uv + texOffset.xz));
+		hD = GetHeight((uv + texOffset.zy));
+		hU = GetHeight((uv - texOffset.zy));
+	}
 
 	N = normalize(float3((hL - hR), (hU - hD), 2.0f));
 

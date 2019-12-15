@@ -103,6 +103,8 @@ namespace Toast
 		mGameTimePanelMaterial = Resources::sResources->GetMaterial("GameTime", "GameTimePanelTexture", "GUI", GUIIED, 2);
 		mGUI->mGUIPanels[1]->mMaterial = mGameTimePanelMaterial;
 
+		Toast::System::tSys->Print("Game time GUI panel created");
+
 		// Sets up the font and add element for time panel created earlier
 		mTimeFontMaterial = Resources::sResources->GetMaterial("SegoeUIFontp35", "SegoeUIp35", "GUI", GUIIED, 2);
 		mYearDayFontMaterial = Resources::sResources->GetMaterial("SegoeUIFontp20", "SegoeUIp20", "GUI", GUIIED, 2);
@@ -236,6 +238,14 @@ namespace Toast
 		mGUI->mCursor->mMaterial = mCursorMaterial;
 
 		Toast::System::tSys->Print("Mouse cursor created");
+
+		//Creating the game research GUI Panel
+		mGUI->AddPanel((Toast::System::tSys->mSettings["WindowSizeX"] - (250.0f * 0.3f) - ((730.0f - 112.0f) * 0.45f)), 0.0f, (250.0f * 0.3f), (183.0f * 0.3f));
+
+		mGameResearchPanelMaterial = Resources::sResources->GetMaterial("GameResearch", "GameResearchPanelTexture", "GUI", GUIIED, 2);
+		mGUI->mGUIPanels[6]->mMaterial = mGameResearchPanelMaterial;
+
+		Toast::System::tSys->Print("Game research GUI panel created!");
 	}
 
 	void Toast::Game::Update(double deltaTime) 

@@ -10,9 +10,9 @@ namespace Toast
 {
 	struct SphereTriangle
 	{
-		DirectX::XMFLOAT3 a, b, c;
-		SphereTriangle* parent;
-		short level;
+		DirectX::XMFLOAT3 a = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), b = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), c = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
+		SphereTriangle* parent = nullptr;
+		short level = 0;
 
 		SphereTriangle()
 		{
@@ -32,8 +32,8 @@ namespace Toast
 
 	struct SphereVertex
 	{
-		DirectX::XMFLOAT2 position;
-		DirectX::XMFLOAT2 morphing;
+		DirectX::XMFLOAT2 position = DirectX::XMFLOAT2(0.0f, 0.0f);
+		DirectX::XMFLOAT2 morphing = DirectX::XMFLOAT2(0.0f, 0.0f);
 
 		SphereVertex(DirectX::XMFLOAT2 pos, DirectX::XMFLOAT2 morph)
 		{
@@ -44,10 +44,10 @@ namespace Toast
 
 	struct SphereCell
 	{
-		int level;
-		DirectX::XMFLOAT3 a;
-		DirectX::XMFLOAT3 r;
-		DirectX::XMFLOAT3 s;
+		int level = 0;
+		DirectX::XMFLOAT3 a = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
+		DirectX::XMFLOAT3 r = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
+		DirectX::XMFLOAT3 s = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
 
 		SphereCell(int Level, DirectX::XMFLOAT3 A, DirectX::XMFLOAT3 R, DirectX::XMFLOAT3 S)
 		{
@@ -62,7 +62,7 @@ namespace Toast
 	{
 		DirectX::XMMATRIX rotationMatrix;
 		DirectX::XMFLOAT4 distanceLUT[32];
-		DirectX::XMFLOAT4 morphRange;
+		DirectX::XMFLOAT4 morphRange = DirectX::XMFLOAT4(0.0f, 0.0f, 0.0f, 0.0f);
 	};
 
 	enum NextSphereTriangle

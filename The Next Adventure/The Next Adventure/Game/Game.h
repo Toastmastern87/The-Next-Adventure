@@ -42,6 +42,7 @@ namespace Toast
 		Material *mDebugWindowMaterial = nullptr;
 		Material *mDebugWindowTitleBarMaterial = nullptr;
 		Material *mGameTimePanelMaterial = nullptr;
+		Material* mGameResearchPanelMaterial = nullptr;
 		Material *mGameSpeedDeactivatedPanelMaterial = nullptr;
 		Material *mGameSpeedActivatedPanelMaterial = nullptr;
 		Material *mCursorMaterial = nullptr;
