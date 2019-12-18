@@ -40,7 +40,6 @@ struct VertexInputType
 struct PixelInputType
 {
 	float4 position : SV_POSITION;
-	float2 uv : UV0;
 	float3 normal : NORMAL0;
 	float3 viewVector : NORMAL1;
 };
@@ -91,9 +90,7 @@ PixelInputType main(VertexInputType input)
 
 	pos = normalize(pos);
 
-	uv = float2((0.5f + (atan2(pos.z, pos.x) / (2 * PI))), (0.5f - (asin(pos.y) / PI)));
-
-	output.uv = uv;
+	uv = float2((0.5f + (atan2(pos.z, pos.x) / (2.0f * PI))), (0.5f - (asin(pos.y) / PI)));
 
 	terrainHeight = GetHeight(uv, maxAltitude.a, minAltitude.a);
 

@@ -22,7 +22,6 @@ cbuffer LightCalculations : register(b1)
 struct PixelInputType
 {
 	float4 position : SV_POSITION;
-	float2 uv : UV0;
 	float3 normal : NORMAL0;
 	float3 viewVector : NORMAL1;
 };
@@ -64,9 +63,19 @@ float3 CalculateNormal(float3 normalVector, float3 viewVector, float2 uv)
 
 	texOffset = float3((1.0f / (textureWidth)), (1.0f / (textureHeight)), 0.0f);
 	
-	if (uv.x >= (1.0f - (1.0f / 8192.0f)))
+	if (uv.x >= (1.0f - (1.0f / textureWidth)))
 	{
-		//Add code here to handle the seam in Mars
+		hL = GetHeight(float2(0.0f, uv.y));
+		hR = GetHeight(float2(0.0f, uv.y));
+		hD = GetHeight((uv + texOffset.zy));
+		hU = GetHeight((uv - texOffset.zy));
+	}
+	else if (uv.x <= (1.0f / textureWidth))
+	{
+		hL = GetHeight(float2(textureWidth, uv.y));
+		hR = GetHeight(float2(textureWidth, uv.y));
+		hD = GetHeight((uv + texOffset.zy));
+		hU = GetHeight((uv - texOffset.zy));
 	}
 	else 
 	{
@@ -90,13 +99,15 @@ float4 main(PixelInputType input) : SV_TARGET
 	float4 finalColor;
 	float2 uv;
 
-	normal = normalize(CalculateNormal(input.normal, -input.viewVector, input.uv));
+	uv = float2((0.5f + (atan2(input.normal.z, input.normal.x) / (2.0f * PI))), (0.5f - (asin(input.normal.y) / PI)));
+
+	normal = normalize(CalculateNormal(input.normal, -input.viewVector, uv));
 
 	sunlightIntensity = saturate(dot(normal, normalize(-lightDirection.xyz)));
 
 	sunlightcolor = saturate(diffuseColor * sunlightIntensity);
 
-	finalColor = colorMap.SampleLevel(sampleType, input.uv, 0).rgba;
+	finalColor = colorMap.SampleLevel(sampleType, uv, 0).rgba;
 
 	return finalColor * sunlightcolor;
 }
