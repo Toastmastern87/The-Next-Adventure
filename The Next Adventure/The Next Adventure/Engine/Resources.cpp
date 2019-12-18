@@ -467,6 +467,31 @@ namespace Toast
 		return material;
 	}
 
+	Toast::Mesh* Resources::LoadMesh(std::string meshName, std::string shaderPath, D3D11_INPUT_ELEMENT_DESC* nonDefaultIED)
+	{
+		Toast::Mesh *mesh = new Toast::Mesh();
+		Assimp::Importer imp;
+
+		const aiScene* scene = imp.ReadFile(meshName, aiProcess_ConvertToLeftHanded | aiProcess_JoinIdenticalVertices | aiProcess_CalcTangentSpace);
+
+		aiMesh* impMesh = scene->mMeshes[0];
+
+		for (int i = 0; i < mesh->mNumVertices; i++)
+		{
+			mesh->mVertices.push_back(Vertex(XMFLOAT3(impMesh->mVertices[i].x, impMesh->mVertices[i].y, impMesh->mVertices[i].z), XMFLOAT3(impMesh->mNormals[i].x, impMesh->mNormals[i].y, impMesh->mNormals[i].z), XMFLOAT3(impMesh->mTangents[i].x, impMesh->mTangents[i].y, impMesh->mTangents[i].z), XMFLOAT3(impMesh->mBitangents[i].x, impMesh->mBitangents[i].y, impMesh->mBitangents[i].z), XMFLOAT2(impMesh->mTextureCoords[0][i].x, impMesh->mTextureCoords[0][i].y)));
+		}
+
+		for (int i = 0; i < impMesh->mNumFaces; i++)
+		{
+			for (int j = 0; j < impMesh->mFaces[i].mNumIndices; j++)
+			{
+				mesh->mIndices.push_back(impMesh->mFaces[i].mIndices[j]);
+			}
+		}
+
+		return mesh;
+	}
+
 	void Resources::LoadWorldData(Toast::Material* material, std::string textureHeight, std::string textureColor)
 	{
 		material->mTerrainMap = Resources::sResources->GetTexture(textureHeight);

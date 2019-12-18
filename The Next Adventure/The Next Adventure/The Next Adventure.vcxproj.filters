@@ -46,6 +46,9 @@
     <Filter Include="Header Files\Toast Engine\TinyXML2">
       <UniqueIdentifier>{b4cb774b-b3d1-485c-bc6b-7c63eeb8ca0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Meshes">
+      <UniqueIdentifier>{92d72b53-a2b2-4bbd-a7b3-c19cb8b4f9c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

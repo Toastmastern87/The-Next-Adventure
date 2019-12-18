@@ -5,11 +5,15 @@
 #include <d3dcommon.h>
 #include <d3d11.h>
 #include <WICTextureLoader.h>
+#include <assimp/importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
 #include "tinyxml2.h"
 
 #define BASE_SHADER_PATH "../The Next Adventure/Data/Shaders/"
 #define BASE_TEXTURE_PATH "../The Next Adventure/Data/Textures/"
 #define BASE_FONT_PATH "../The Next Adventure/Data/Fonts/"
+#define BASE_MESH_PATH "../The Next Adventure/Data/Meshes/"
 
 namespace Toast 
 {
@@ -38,6 +42,8 @@ namespace Toast
 
 		Toast::Material* GetMaterial(std::string materialName, std::string texture, std::string shaderPath, D3D11_INPUT_ELEMENT_DESC *nonDefaultIED = nullptr, int numElements = 0, bool instanced = false);
 		Toast::Material* LoadMaterial(std::string materialName, std::string texture, std::string shaderPath, D3D11_INPUT_ELEMENT_DESC *nonDefaultIED = nullptr, int numElements = 0, bool instanced = false);
+		
+		Toast::Mesh* LoadMesh(std::string meshName, std::string shaderPath, D3D11_INPUT_ELEMENT_DESC* nonDefaultIED = nullptr);
 
 		ID3D11VertexShader* GetVertexShader(std::string name);
 		ID3D11PixelShader* GetPixelShader(std::string name);

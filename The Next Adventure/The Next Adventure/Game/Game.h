@@ -11,7 +11,8 @@
 #include "GameInput.h"
 #include "GameTime.h"
 
-const float MARSROTATESPEED = DirectX::XM_2PI / 88775000.0f;
+const float MARSROTATESPEED = DirectX::XM_2PI / 89676000.0f;
+const double MARSSUNORBITSPEED = (0.55333333333f * DirectX::XM_PI) / 100319175000.0f;
 
 namespace Toast 
 {
