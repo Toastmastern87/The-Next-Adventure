@@ -467,16 +467,20 @@ namespace Toast
 		return material;
 	}
 
-	Toast::Mesh* Resources::LoadMesh(std::string meshName, std::string shaderPath, D3D11_INPUT_ELEMENT_DESC* nonDefaultIED)
+	Toast::Mesh* Resources::LoadMesh(std::string meshName)
 	{
 		Toast::Mesh *mesh = new Toast::Mesh();
 		Assimp::Importer imp;
 
-		const aiScene* scene = imp.ReadFile(meshName, aiProcess_ConvertToLeftHanded | aiProcess_JoinIdenticalVertices | aiProcess_CalcTangentSpace);
+		std::string basePath = BASE_MESH_PATH;
+		basePath.append(meshName);
+		basePath.append(".obj");
+
+		const aiScene* scene = imp.ReadFile(basePath, aiProcess_ConvertToLeftHanded | aiProcess_JoinIdenticalVertices | aiProcess_CalcTangentSpace);
 
 		aiMesh* impMesh = scene->mMeshes[0];
 
-		for (int i = 0; i < mesh->mNumVertices; i++)
+		for (int i = 0; i < impMesh->mNumVertices; i++)
 		{
 			mesh->mVertices.push_back(Vertex(XMFLOAT3(impMesh->mVertices[i].x, impMesh->mVertices[i].y, impMesh->mVertices[i].z), XMFLOAT3(impMesh->mNormals[i].x, impMesh->mNormals[i].y, impMesh->mNormals[i].z), XMFLOAT3(impMesh->mTangents[i].x, impMesh->mTangents[i].y, impMesh->mTangents[i].z), XMFLOAT3(impMesh->mBitangents[i].x, impMesh->mBitangents[i].y, impMesh->mBitangents[i].z), XMFLOAT2(impMesh->mTextureCoords[0][i].x, impMesh->mTextureCoords[0][i].y)));
 		}
@@ -519,12 +523,16 @@ namespace Toast
 		hResult = D3DReadFileToBlob(stemp.c_str(), &VSRaw);
 		if (FAILED(hResult))
 		{
+			Toast::System::tSys->Print("Couldn't create the Vertex Shader \n");
+
 			return nullptr;
 		}
 
 		hResult = Toast::System::tSys->mD3D->mDevice->CreateVertexShader(VSRaw->GetBufferPointer(), VSRaw->GetBufferSize(), NULL, &vertexShader);
 		if (FAILED(hResult))
 		{
+			Toast::System::tSys->Print("Couldn't create the Vertex Shader \n");
+
 			return nullptr;
 		}
 
@@ -556,12 +564,16 @@ namespace Toast
 		hResult = D3DReadFileToBlob(stemp.c_str(), &PSRaw);
 		if (FAILED(hResult))
 		{
+			Toast::System::tSys->Print("Couldn't create the Pixel Shader \n");
+
 			return nullptr;
 		}
 
 		hResult = Toast::System::tSys->mD3D->mDevice->CreatePixelShader(PSRaw->GetBufferPointer(), PSRaw->GetBufferSize(), NULL, &pixelShader);
 		if (FAILED(hResult))
 		{
+			Toast::System::tSys->Print("Couldn't create the Pixel Shader \n");
+
 			return nullptr;
 		}
 

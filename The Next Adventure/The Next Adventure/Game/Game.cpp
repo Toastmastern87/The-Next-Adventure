@@ -76,6 +76,20 @@ namespace Toast
 
 		Toast::System::tSys->Print("Game time initiated");
 
+		//Set up the first test with a spaceship
+		mSpaceship = new Toast::Object3D();
+		mSpaceship->mMeshes.push_back(Resources::sResources->LoadMesh("Cube"));
+		Toast::System::tSys->Print("Size vertices spaceship %d", mSpaceship->mMeshes[0]->mVertices.size());
+		Toast::System::tSys->Print("Size indices spaceship %d", mSpaceship->mMeshes[0]->mIndices.size());
+		mSpaceship->mMeshes[0]->mNumVertices = mSpaceship->mMeshes[0]->mVertices.size();
+		mSpaceship->mMeshes[0]->mNumIndices = mSpaceship->mMeshes[0]->mIndices.size();
+		mSpaceshipMaterial = Resources::sResources->GetMaterial("Starship", "Starship", "Object3D");
+		mSpaceship->mMeshes[0]->mMaterial = mSpaceshipMaterial;
+		mSpaceship->mMeshes[0]->ConstructVertexBuffer();
+		mSpaceship->mPosition = DirectX::XMFLOAT3(0.0f, 0.0f, 8000.0f);
+		mSpaceship->mScale = DirectX::XMFLOAT3(75.0f, 75.0f, 75.0f);
+		mObjects3D.push_back(mSpaceship);
+
 		mGUI = new Toast::GUI();
 
 		D3D11_INPUT_ELEMENT_DESC GUIIED[] =
@@ -471,7 +485,10 @@ namespace Toast
 
 		mMars->Update();
 
-		mStarSphere->Update();
+		for (int i = 0; i < mObjects3D.size(); i++)
+		{
+			mObjects3D[i]->Update();
+		}
 	}
 
 	void Toast::Game::Stop()

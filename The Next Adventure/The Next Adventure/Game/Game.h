@@ -35,9 +35,11 @@ namespace Toast
 		Camera *mCamera = nullptr;
 		GameInput *mInput = nullptr;
 		Object3D *mStarSphere = nullptr;
+		Object3D* mSpaceship = nullptr;
 		World *mMars = nullptr;
 		Material *mStarSphereMaterial = nullptr;
 		Material *mMarsMaterial = nullptr;
+		Material* mSpaceshipMaterial = nullptr;
 
 		GUI *mGUI = nullptr;
 		Material *mDebugWindowMaterial = nullptr;
