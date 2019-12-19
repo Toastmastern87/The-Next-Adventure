@@ -52,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Data\Meshes\Cube.obj">
+      <Filter>Resource Files\Meshes</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Data\Fonts\SegoeUI.xml">
@@ -257,10 +260,5 @@
     <ClCompile Include="Game\GameTime.cpp">
       <Filter>Source Files\The Next Adventure</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="Data\Meshes\Cube.obj">
-      <Filter>Resource Files\Meshes</Filter>
-    </Object>
   </ItemGroup>
 </Project>
