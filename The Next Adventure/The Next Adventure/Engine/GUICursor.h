@@ -28,6 +28,7 @@ namespace Toast
 		void ShowCursor();
 		void Draw(D3D& d3d);
 		void CheckRayIntersection2D(Toast::GUIPanel *panel);
+		DirectX::XMVECTOR GetPickingRay(DirectX::XMFLOAT2, DirectX::XMMATRIX, DirectX::XMMATRIX);
 
 		POINT GetDeltaPos() { return mDeltaPos; }
 

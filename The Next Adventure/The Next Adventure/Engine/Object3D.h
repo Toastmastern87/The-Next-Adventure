@@ -22,13 +22,13 @@ namespace Toast
 			DirectX::XMMATRIX worldMatrix;
 		};
 		
-		Object3D();
+		Object3D(bool targetable = false);
 		~Object3D();
 
 		void Update();
 
 		void Draw(D3D &d3d);
-		void CreateCube();
+		void CreateTargetBox();
 		void CreateSphere(int levels, int cellLevels, bool isPlanet = false, bool frontCulling = false, float radius = 1.0f);
 
 		std::vector<Mesh*> mMeshes;
@@ -38,6 +38,6 @@ namespace Toast
 		ID3D11Buffer *mConstantBuffer = nullptr;
 
 		// Used to decide which raster state to be used when rendering the object
-		bool mFrontCulling = false;
+		bool mFrontCulling = false, mTargetable = false, mTargeted = false;
 	};
 };

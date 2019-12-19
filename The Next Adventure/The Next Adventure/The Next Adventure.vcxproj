@@ -218,6 +218,7 @@
     <Image Include="Data\Textures\SegoeUIp49.tif" />
     <Image Include="Data\Textures\Starship.tif" />
     <Image Include="Data\Textures\StarSphere.tif" />
+    <Image Include="Data\Textures\TargetBox.tif" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Camera.h" />

@@ -40,6 +40,7 @@ namespace Toast
 		Material *mStarSphereMaterial = nullptr;
 		Material *mMarsMaterial = nullptr;
 		Material* mSpaceshipMaterial = nullptr;
+		Material* mTargetBoxMaterial = nullptr;
 
 		GUI *mGUI = nullptr;
 		Material *mDebugWindowMaterial = nullptr;
@@ -57,8 +58,8 @@ namespace Toast
 		Toast::GUIFont* mYearDayFont = nullptr;
 
 		GameTime *mGameTime = nullptr;
-		int mOldGameTimeSec = 0, mOldGameTimeMSec = 0;
-		float mSunlightRotateAngle = 0.0f;
+		int mOldGameTimeSec = 0, mOldGameTimeMSec = 0, mMarsSeasonalRotationDir = 1;
+		float mSunlightRotateAngle = 0.0f, mSunlightSeasonalRotateAngle = 0.0f;
 
 		POINT mRawCursorPos;
 	};

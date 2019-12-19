@@ -76,16 +76,19 @@ namespace Toast
 
 		Toast::System::tSys->Print("Game time initiated");
 
+		//Creates the material for the target box to be used
+		mTargetBoxMaterial = Resources::sResources->GetMaterial("TargetBox", "TargetBox", "Object3D");
+
 		//Set up the first test with a spaceship
-		mSpaceship = new Toast::Object3D();
+		mSpaceship = new Toast::Object3D(true);
 		mSpaceship->mMeshes.push_back(Resources::sResources->LoadMesh("Cube"));
-		Toast::System::tSys->Print("Size vertices spaceship %d", mSpaceship->mMeshes[0]->mVertices.size());
-		Toast::System::tSys->Print("Size indices spaceship %d", mSpaceship->mMeshes[0]->mIndices.size());
-		mSpaceship->mMeshes[0]->mNumVertices = mSpaceship->mMeshes[0]->mVertices.size();
-		mSpaceship->mMeshes[0]->mNumIndices = mSpaceship->mMeshes[0]->mIndices.size();
+		mSpaceship->mMeshes[1]->mNumVertices = mSpaceship->mMeshes[0]->mVertices.size();
+		mSpaceship->mMeshes[1]->mNumIndices = mSpaceship->mMeshes[0]->mIndices.size();
 		mSpaceshipMaterial = Resources::sResources->GetMaterial("Starship", "Starship", "Object3D");
-		mSpaceship->mMeshes[0]->mMaterial = mSpaceshipMaterial;
+		mSpaceship->mMeshes[0]->mMaterial = mTargetBoxMaterial;
+		mSpaceship->mMeshes[1]->mMaterial = mSpaceshipMaterial;
 		mSpaceship->mMeshes[0]->ConstructVertexBuffer();
+		mSpaceship->mMeshes[1]->ConstructVertexBuffer();
 		mSpaceship->mPosition = DirectX::XMFLOAT3(0.0f, 0.0f, 8000.0f);
 		mSpaceship->mScale = DirectX::XMFLOAT3(75.0f, 75.0f, 75.0f);
 		mObjects3D.push_back(mSpaceship);
@@ -417,21 +420,39 @@ namespace Toast
 			}
 		}
 
+		//Using the starsphere rotation here cause it is the one that is saved overtime. This if statement makes the rotation turn back towards
+		//next season
+		if (mStarSphere->mRotation.x >= DirectX::XMConvertToRadians(24.9f) || mStarSphere->mRotation.x <= DirectX::XMConvertToRadians(-24.9f))
+		{
+			mMarsSeasonalRotationDir *= -1;
+		}
+
 		mSunlightRotateAngle = timeDiff * MARSROTATESPEED;
+		mSunlightSeasonalRotateAngle = timeDiff * MARSSUNORBITSPEED * mMarsSeasonalRotationDir;
 
 		mOldGameTimeSec = gameTimeSec;
 		mOldGameTimeMSec = gameTimeMSec;
 
-		DirectX::XMMATRIX mRotation = XMMATRIX(cosf(-mSunlightRotateAngle), 0.0f, sinf(-mSunlightRotateAngle), 0.0f,
+		DirectX::XMMATRIX dayRotation = XMMATRIX(cosf(-mSunlightRotateAngle), 0.0f, sinf(-mSunlightRotateAngle), 0.0f,
 											   0.0f, 1.0f, 0.0f, 0.0f,
 											   -sinf(-mSunlightRotateAngle), 0.0f, cosf(-mSunlightRotateAngle), 0.0f,
 											   0.0f, 0.0f, 0.0f, 1.0f);
-		DirectX::XMFLOAT4 updatedDirection;
-		DirectX::XMStoreFloat4(&updatedDirection, DirectX::XMVector4Transform(DirectX::XMLoadFloat4(&mMars->GetSunlightDirection()), mRotation));
+		DirectX::XMMATRIX seasonalRotation = XMMATRIX(1.0f, 0.0f, 0.0f, 0.0f,
+													  0.0f, cosf(mSunlightSeasonalRotateAngle), -sinf(mSunlightSeasonalRotateAngle), 0.0f,
+													  0.0f, sinf(mSunlightSeasonalRotateAngle), cosf(mSunlightSeasonalRotateAngle), 0.0f,
+													  0.0f, 0.0f, 0.0f, 1.0f);
 
+		DirectX::XMFLOAT4 updatedDirection;
+		DirectX::XMStoreFloat4(&updatedDirection, DirectX::XMVector4Transform(DirectX::XMLoadFloat4(&mMars->GetSunlightDirection()), dayRotation));
+		mMars->SetSunlightDirection(updatedDirection);
+
+		DirectX::XMStoreFloat4(&updatedDirection, DirectX::XMVector4Transform(DirectX::XMLoadFloat4(&mMars->GetSunlightDirection()), seasonalRotation));
 		mMars->SetSunlightDirection(updatedDirection);
 
 		mStarSphere->mRotation.y += mSunlightRotateAngle;
+		mStarSphere->mRotation.x += mSunlightSeasonalRotateAngle;
+
+		Toast::System::tSys->Print("Seasonal rotation: %f", mStarSphere->mRotation.x);
 
 		// Updates the Camera in the game
 		mCamera->Update(deltaTime);

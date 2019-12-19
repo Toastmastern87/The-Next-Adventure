@@ -148,6 +148,9 @@
     <Image Include="Data\Textures\Starship.tif">
       <Filter>Resource Files\Textures</Filter>
     </Image>
+    <Image Include="Data\Textures\TargetBox.tif">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Camera.h">

@@ -1,9 +1,9 @@
 # The Next Adventure
 
 Next to be added:
-* Sunlight bug
-* Correct sun angle on the surface of Mars
-* GUI Panel/Button for research
+* Target box for objects that players should be able to target
+* Gravity
+* Zoom updated to be more functional
 
 ![Mars from space](https://imgur.com/htpW6er.png)
 ![Mars from space](https://imgur.com/yVlRAuB.png)
