@@ -474,7 +474,7 @@ namespace Toast
 
 		std::string basePath = BASE_MESH_PATH;
 		basePath.append(meshName);
-		basePath.append(".obj");
+		basePath.append(".fbx");
 
 		const aiScene* scene = imp.ReadFile(basePath, aiProcess_ConvertToLeftHanded | aiProcess_JoinIdenticalVertices | aiProcess_CalcTangentSpace);
 

@@ -1,54 +1,64 @@
-[21:06:00:159] Initating the game
-[21:06:00:162] Camera created
-[21:06:00:607] Texture added
-[21:06:00:607] Star sphere created
-[21:06:01:427] Texture added
-[21:06:01:632] Texture added
-[21:06:01:632] Mars created
-[21:06:01:632] Game time initiated
-[21:06:01:650] Size vertices spaceship 24
-[21:06:01:650] Size indices spaceship 36
-[21:06:01:657] Texture added
-[21:06:01:666] Texture added
-[21:06:01:669] Font Created
-[21:06:01:693] Texture added
-[21:06:01:702] Texture added
-[21:06:01:702] Debug window created
-[21:06:01:708] Texture added
-[21:06:01:708] Game time GUI panel created
-[21:06:01:717] Texture added
-[21:06:01:726] Texture added
-[21:06:01:729] Font Created
-[21:06:01:732] Font Created
-[21:06:01:742] Texture added
-[21:06:01:745] Font Created
-[21:06:01:746] FPS Text created in the Debug window
-[21:06:01:747] Altitude Text created in the Debug window
-[21:06:01:748] Vertices Text created in the Debug window
-[21:06:01:749] orbitalAngleY Text created in the Debug window
-[21:06:01:752] orbitalAngleXZ Text created in the Debug window
-[21:06:01:753] Rotation XZ Text created in the Debug window
-[21:06:01:754] Max Rotation XZ Text created in the Debug window
-[21:06:01:755] Pos X Text created in the Debug window
-[21:06:01:755] Pos Y Text created in the Debug window
-[21:06:01:756] Pos Z Text created in the Debug window
-[21:06:01:758] Texture added
-[21:06:01:760] Texture added
-[21:06:01:792] Texture added
-[21:06:01:792] Mouse cursor created
-[21:06:01:796] Texture added
-[21:06:01:796] Game research GUI panel created!
-[21:06:02:514] Avg FPS:  88  Avg Frametime: 0.0047   Avg Tick Time: 0.5901
-[21:06:03:229] Avg FPS:  73  Avg Frametime: 0.0046   Avg Tick Time: 0.6766
-[21:06:03:940] Avg FPS:  81  Avg Frametime: 0.0042   Avg Tick Time: 0.6752
-[21:06:04:646] Avg FPS:  81  Avg Frametime: 0.0040   Avg Tick Time: 0.6775
-[21:06:05:368] Avg FPS:  77  Avg Frametime: 0.0045   Avg Tick Time: 0.6731
-[21:06:06:780] Avg FPS:  81  Avg Frametime: 0.0039   Avg Tick Time: 0.6935
-[21:06:06:789] Avg FPS:  75  Avg Frametime: 0.0047   Avg Tick Time: 0.6531
-[21:06:07:496] Avg FPS:  80  Avg Frametime: 0.0041   Avg Tick Time: 0.6716
-[21:06:08:201] Avg FPS:  86  Avg Frametime: 0.0038   Avg Tick Time: 0.6731
-[21:06:08:908] Avg FPS:  79  Avg Frametime: 0.0039   Avg Tick Time: 0.6949
-[21:06:09:617] Avg FPS:  85  Avg Frametime: 0.0037   Avg Tick Time: 0.6894
-[21:06:10:325] Avg FPS:  80  Avg Frametime: 0.0041   Avg Tick Time: 0.6800
-[21:06:11:380] Avg FPS:  80  Avg Frametime: 0.0041   Avg Tick Time: 0.6797
-[21:06:11:743] Avg FPS:  79  Avg Frametime: 0.0043   Avg Tick Time: 0.6651
+[21:45:54:840] Initating the game
+[21:45:54:870] Camera created
+[21:45:54:502] Texture added
+[21:45:54:502] Star sphere created
+[21:45:55:257] Texture added
+[21:45:55:488] Texture added
+[21:45:55:488] Mars created
+[21:45:55:488] Game time initiated
+[21:45:55:502] Size vertices spaceship 24
+[21:45:55:502] Size indices spaceship 36
+[21:45:55:509] Texture added
+[21:45:55:517] Texture added
+[21:45:55:520] Font Created
+[21:45:55:529] Texture added
+[21:45:55:531] Texture added
+[21:45:55:531] Debug window created
+[21:45:55:537] Texture added
+[21:45:55:537] Game time GUI panel created
+[21:45:55:545] Texture added
+[21:45:55:555] Texture added
+[21:45:55:559] Font Created
+[21:45:55:562] Font Created
+[21:45:55:573] Texture added
+[21:45:55:576] Font Created
+[21:45:55:577] FPS Text created in the Debug window
+[21:45:55:578] Altitude Text created in the Debug window
+[21:45:55:580] Vertices Text created in the Debug window
+[21:45:55:581] orbitalAngleY Text created in the Debug window
+[21:45:55:582] orbitalAngleXZ Text created in the Debug window
+[21:45:55:583] Rotation XZ Text created in the Debug window
+[21:45:55:584] Max Rotation XZ Text created in the Debug window
+[21:45:55:585] Pos X Text created in the Debug window
+[21:45:55:585] Pos Y Text created in the Debug window
+[21:45:55:586] Pos Z Text created in the Debug window
+[21:45:55:588] Texture added
+[21:45:55:591] Texture added
+[21:45:55:621] Texture added
+[21:45:55:621] Mouse cursor created
+[21:45:55:624] Texture added
+[21:45:55:625] Game research GUI panel created!
+[21:45:56:338] Avg FPS:  96  Avg Frametime: 0.0045   Avg Tick Time: 0.5676
+[21:45:57:480] Avg FPS: 102  Avg Frametime: 0.0039   Avg Tick Time: 0.6031
+[21:45:57:765] Avg FPS:  99  Avg Frametime: 0.0045   Avg Tick Time: 0.5741
+[21:45:58:473] Avg FPS: 116  Avg Frametime: 0.0037   Avg Tick Time: 0.5711
+[21:45:59:183] Avg FPS: 153  Avg Frametime: 0.0034   Avg Tick Time: 0.4871
+[21:45:59:887] Avg FPS: 156  Avg Frametime: 0.0031   Avg Tick Time: 0.5214
+[21:46:00:596] Avg FPS: 170  Avg Frametime: 0.0029   Avg Tick Time: 0.5195
+[21:46:01:302] Avg FPS: 178  Avg Frametime: 0.0026   Avg Tick Time: 0.5486
+[21:46:02:120] Avg FPS: 160  Avg Frametime: 0.0028   Avg Tick Time: 0.5527
+[21:46:02:723] Avg FPS: 123  Avg Frametime: 0.0036   Avg Tick Time: 0.5625
+[21:46:03:427] Avg FPS: 109  Avg Frametime: 0.0041   Avg Tick Time: 0.5592
+[21:46:04:134] Avg FPS: 109  Avg Frametime: 0.0038   Avg Tick Time: 0.5856
+[21:46:04:844] Avg FPS: 124  Avg Frametime: 0.0031   Avg Tick Time: 0.6175
+[21:46:05:551] Avg FPS: 128  Avg Frametime: 0.0030   Avg Tick Time: 0.6229
+[21:46:06:268] Avg FPS: 120  Avg Frametime: 0.0035   Avg Tick Time: 0.5863
+[21:46:06:973] Avg FPS: 123  Avg Frametime: 0.0034   Avg Tick Time: 0.5875
+[21:46:07:685] Avg FPS: 114  Avg Frametime: 0.0035   Avg Tick Time: 0.6116
+[21:46:08:392] Avg FPS: 113  Avg Frametime: 0.0033   Avg Tick Time: 0.6353
+[21:46:09:980] Avg FPS: 130  Avg Frametime: 0.0029   Avg Tick Time: 0.6186
+[21:46:09:807] Avg FPS: 138  Avg Frametime: 0.0029   Avg Tick Time: 0.6007
+[21:46:10:515] Avg FPS: 118  Avg Frametime: 0.0029   Avg Tick Time: 0.6555
+[21:46:11:224] Avg FPS: 103  Avg Frametime: 0.0034   Avg Tick Time: 0.6563
+[21:46:11:938] Avg FPS:  94  Avg Frametime: 0.0035   Avg Tick Time: 0.6797
+[21:46:12:643] Avg FPS:  84  Avg Frametime: 0.0039   Avg Tick Time: 0.6779
