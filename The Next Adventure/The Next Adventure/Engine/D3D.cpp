@@ -183,15 +183,25 @@ namespace Toast
 
 		ID3D11RasterizerState* tempRS = nullptr;
 
-		for (int i = 0; i < game.mObjects3D.size(); i++) 
+		for (int i = 0; i < game.mObjects3D.size(); i++)
 		{
-			if (game.mObjects3D[i]->mFrontCulling && !mWireframe) 
+			if (game.mObjects3D[i]->mFrontCulling && !mWireframe)
 			{
 				mDeviceContext->RSGetState(&tempRS);
 				mDeviceContext->RSSetState(mFrontCullingRasterizerState);
 			}
 
+			if (game.mObjects3D[i]->mAlphaBlending)
+			{
+				mDeviceContext->OMSetBlendState(mAlphaBlendingEnabledState, mBlendFactor, 0xffffffff);
+			}
+
 			game.mObjects3D[i]->Draw(_this);
+
+			if (game.mObjects3D[i]->mAlphaBlending)
+			{
+				mDeviceContext->OMSetBlendState(mAlphaBlendingDisabledState, mBlendFactor, 0xffffffff);
+			}
 
 			if (game.mObjects3D[i]->mFrontCulling && !mWireframe)
 			{

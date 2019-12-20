@@ -80,18 +80,21 @@ namespace Toast
 		mTargetBoxMaterial = Resources::sResources->GetMaterial("TargetBox", "TargetBox", "Object3D");
 
 		//Set up the first test with a spaceship
-		mSpaceship = new Toast::Object3D(true);
+		mSpaceship = new Toast::Object3D(true, true);
 		mSpaceship->mMeshes.push_back(Resources::sResources->LoadMesh("Cube"));
-		mSpaceship->mMeshes[1]->mNumVertices = mSpaceship->mMeshes[0]->mVertices.size();
-		mSpaceship->mMeshes[1]->mNumIndices = mSpaceship->mMeshes[0]->mIndices.size();
+		mSpaceship->CreateTargetBox();
+		mSpaceship->mMeshes[0]->mNumVertices = mSpaceship->mMeshes[0]->mVertices.size();
+		mSpaceship->mMeshes[0]->mNumIndices = mSpaceship->mMeshes[0]->mIndices.size();
 		mSpaceshipMaterial = Resources::sResources->GetMaterial("Starship", "Starship", "Object3D");
-		mSpaceship->mMeshes[0]->mMaterial = mTargetBoxMaterial;
-		mSpaceship->mMeshes[1]->mMaterial = mSpaceshipMaterial;
+		mSpaceship->mMeshes[1]->mMaterial = mTargetBoxMaterial;
+		mSpaceship->mMeshes[0]->mMaterial = mSpaceshipMaterial;
 		mSpaceship->mMeshes[0]->ConstructVertexBuffer();
 		mSpaceship->mMeshes[1]->ConstructVertexBuffer();
 		mSpaceship->mPosition = DirectX::XMFLOAT3(0.0f, 0.0f, 8000.0f);
 		mSpaceship->mScale = DirectX::XMFLOAT3(75.0f, 75.0f, 75.0f);
 		mObjects3D.push_back(mSpaceship);
+
+		Toast::System::tSys->Print("Spaceship initiated");
 
 		mGUI = new Toast::GUI();
 

@@ -4,13 +4,15 @@
 
 namespace Toast 
 {
-	Object3D::Object3D(bool targetable)
+	Object3D::Object3D(bool targetable, bool alphaBlending)
 	{
 		mPosition = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
 		mScale = DirectX::XMFLOAT3(1.0f, 1.0f, 1.0f);
 		mRotation = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
 
-		if (targetable) CreateTargetBox();
+		mTargetable = targetable;
+
+		mAlphaBlending = alphaBlending;
 	}
 
 	Object3D::~Object3D() 
@@ -27,32 +29,39 @@ namespace Toast
 		Mesh *mesh = new Mesh();
 		Toast::System::tSys->mResources->mMeshes.push_back(mesh);
 
-		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-0.55f, 0.55f, -0.55f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(1.0f, 0.0f)));
-		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(0.55f, 0.55f, -0.55f), DirectX::XMFLOAT3(0.0f, 0.0f, 1.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.0f, 1.0f)));
-		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(0.55f, 0.55f, 0.55f), DirectX::XMFLOAT3(0.0f, 0.0f, 1.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.0f, 0.0f)));
-		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-0.55f, 0.55f, 0.55f), DirectX::XMFLOAT3(1.0f, 1.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(1.0f, 1.0f)));
-		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-0.55f, -0.55f, 0.55f), DirectX::XMFLOAT3(0.0f, 1.0f, 1.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(1.0f, 0.0f)));
-		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(0.55f, -0.55f, 0.55f), DirectX::XMFLOAT3(1.0f, 1.0f, 1.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.0f, 1.0f)));
-		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(0.55f, -0.55f, -0.55f), DirectX::XMFLOAT3(1.0f, 0.0f, 1.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.0f, 0.0f)));
-		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-0.55f, -0.55f, -0.55f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(1.0f, 1.0f)));
+		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-1.2f, 1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.0f, 0.25f)));
+		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-1.2f, -1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.25f, 0.25f)));
+		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(1.2f, 1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.0f, 0.5f)));
+		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(1.2f, -1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.25f, 0.5f)));
+		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-1.2f, -1.2f, 1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.5f, 0.25f)));
+		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(1.2f, -1.2f, 1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.5f, 0.5f)));
+		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-1.2f, 1.2f, 1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.75f, 0.25f)));
+		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(1.2f, 1.2f, 1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.75f, 0.5f)));
+		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-1.2f, 1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(1.0f, 0.25f)));
+		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(1.2f, 1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(1.0f, 0.5f)));
+		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-1.2f, 1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.25f, 0.0f)));
+		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-1.2f, 1.2f, 1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.5f, 0.0f)));
+		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(1.2f, 1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.25f, 0.75f)));
+		mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(1.2f, 1.2f, 1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.5f, 0.75f)));
 
 		mesh->mIndices = std::vector<uint32_t>{
-			0, 1, 2,
-			0, 2, 3,
-			4, 5, 6,
-			4, 6, 7,
-			3, 2, 5,
-			3, 5, 4,
-			2, 1, 6,
-			2, 6, 5,
-			1, 7, 6,
-			1, 0, 7,
-			0, 3, 4,
-			0, 4, 7
+				0, 2, 1,
+				1, 2, 3,
+				4, 5, 6,
+				5, 7, 6,
+				6, 7, 8,
+				7, 9, 8,
+				1, 3, 4,
+				3, 5, 4,
+				1, 11, 10,
+				1, 4, 11,
+				3, 12, 5,
+				5, 12, 13
 		};
 
+
 		mesh->mNumIndices = 36;
-		mesh->mNumVertices = 8;
+		mesh->mNumVertices = 14;
 		mesh->ConstructVertexBuffer();
 		mMeshes.push_back(mesh);
 	}
@@ -79,18 +88,21 @@ namespace Toast
 	{
 		d3d.SetObjectConstantBuffer(mConstantBuffer);
 
-		int startIndex = 0;
+		int endIndex = 0;
 
-		if (mTargetable) startIndex = 1;
+		if (mTargetable)
+		{
+			endIndex = 1; 
+		}
 
 		if (mTargeted) 
 		{
-			d3d.mDeviceContext->IASetInputLayout(this->mMeshes[0]->mMaterial->mInputLayout);
-			mMeshes[0]->Update();
-			mMeshes[0]->Draw(d3d);
+			d3d.mDeviceContext->IASetInputLayout(this->mMeshes[1]->mMaterial->mInputLayout);
+			mMeshes[1]->Update();
+			mMeshes[1]->Draw(d3d);
 		}
 
-		for (int i = startIndex; i < mMeshes.size(); i++)
+		for (int i = 0; i < endIndex; i++)
 		{
 			d3d.mDeviceContext->IASetInputLayout(this->mMeshes[i]->mMaterial->mInputLayout);
 			mMeshes[i]->Update();

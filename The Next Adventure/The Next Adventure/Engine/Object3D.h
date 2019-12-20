@@ -22,7 +22,7 @@ namespace Toast
 			DirectX::XMMATRIX worldMatrix;
 		};
 		
-		Object3D(bool targetable = false);
+		Object3D(bool targetable = false, bool alphaBlending = false);
 		~Object3D();
 
 		void Update();
@@ -38,6 +38,6 @@ namespace Toast
 		ID3D11Buffer *mConstantBuffer = nullptr;
 
 		// Used to decide which raster state to be used when rendering the object
-		bool mFrontCulling = false, mTargetable = false, mTargeted = false;
+		bool mFrontCulling = false, mTargetable = false, mTargeted = false, mAlphaBlending = false;
 	};
 };
