@@ -1,7 +1,6 @@
 # The Next Adventure
 
 Next to be added:
-* Target box for objects that players should be able to target
 * Gravity
 * Zoom updated to be more functional
 

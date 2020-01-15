@@ -157,31 +157,38 @@ namespace Toast
 		}
 	}
 
-	DirectX::XMVECTOR GUICursor::GetPickingRay(XMFLOAT2 mouseLocation, XMMATRIX projectionMatrix, XMMATRIX viewMatrix)
+	void GUICursor::CheckRayIntersection3D(DirectX::XMVECTOR cameraPos, DirectX::XMVECTOR pickingRay, Toast::Object3D* object)
+	{
+		float dist;
+
+		object->mTargeted = object->mBoundingOrientedBox.Intersects(cameraPos, pickingRay, dist);
+	}
+
+	DirectX::XMVECTOR GUICursor::GetPickingRay(POINT cursorPos, DirectX::XMMATRIX projectionMatrix, DirectX::XMMATRIX viewMatrix)
 	{
 		float pointX, pointY;
-		XMFLOAT4X4 projectionMatrixXMFLOAT4X4, inverseViewMatrixXMFLOAT4X4;
-		XMFLOAT3 ret;
-		XMMATRIX inverseViewMatrix;
+		DirectX::XMFLOAT4X4 projectionMatrixXMFLOAT4X4, inverseViewMatrixXMFLOAT4X4;
+		DirectX::XMFLOAT3 ret;
+		DirectX::XMMATRIX inverseViewMatrix;
 
-		XMStoreFloat4x4(&projectionMatrixXMFLOAT4X4, projectionMatrix);
+		DirectX::XMStoreFloat4x4(&projectionMatrixXMFLOAT4X4, projectionMatrix);
 
-		inverseViewMatrix = XMMatrixInverse(NULL, viewMatrix);
-		XMStoreFloat4x4(&inverseViewMatrixXMFLOAT4X4, inverseViewMatrix);
+		inverseViewMatrix = DirectX::XMMatrixInverse(NULL, viewMatrix);
+		DirectX::XMStoreFloat4x4(&inverseViewMatrixXMFLOAT4X4, inverseViewMatrix);
 
-		//// Move the mouse cursor coordinates into the -1 to +1 range.
-		pointX = ((2.0f * (float)mouseLocation.x) / (float)Toast::System::tSys->mSettings["WindowSizeX"]);
-		pointY = ((2.0f * (float)mouseLocation.y) / (float)Toast::System::tSys->mSettings["WindowSizeY"]) * -1.0f;
+		// Move the mouse cursor coordinates into the -1 to +1 range.
+		pointX = ((2.0f * static_cast<float>(cursorPos.x)) / (float)Toast::System::tSys->mSettings["WindowSizeX"]) - 1.0f;
+		pointY = ((2.0f * static_cast<float>(cursorPos.y)) / (float)Toast::System::tSys->mSettings["WindowSizeY"]) - 1.0f;
 
-		//// Adjust the points using the projection matrix to account for the aspect ratio of the viewport.
+		// Adjust the points using the projection matrix to account for the aspect ratio of the viewport.
 		pointX = pointX / projectionMatrixXMFLOAT4X4._11;
 		pointY = pointY / projectionMatrixXMFLOAT4X4._22;
 
-		//// Calculate the direction of the picking ray in view space.
+		// Calculate the direction of the picking ray in view space.
 		ret.x = (pointX * inverseViewMatrixXMFLOAT4X4._11) + (pointY * inverseViewMatrixXMFLOAT4X4._21) + inverseViewMatrixXMFLOAT4X4._31;
 		ret.y = (pointX * inverseViewMatrixXMFLOAT4X4._12) + (pointY * inverseViewMatrixXMFLOAT4X4._22) + inverseViewMatrixXMFLOAT4X4._32;
 		ret.z = (pointX * inverseViewMatrixXMFLOAT4X4._13) + (pointY * inverseViewMatrixXMFLOAT4X4._23) + inverseViewMatrixXMFLOAT4X4._33;
 
-		return XMVector3Normalize(XMLoadFloat3(&ret));
+		return DirectX::XMVector3Normalize(DirectX::XMLoadFloat3(&ret));
 	}
 }

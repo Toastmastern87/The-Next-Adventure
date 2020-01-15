@@ -2,6 +2,7 @@
 
 #include <d3d11.h>
 #include <DirectXMath.h>
+#include <DirectXCollision.h>
 #include <string>
 #include <vector>
 #include "Resources.h"
@@ -36,6 +37,7 @@ namespace Toast
 		DirectX::XMFLOAT3 mPosition, mRotation, mScale;
 		Object3DConstantBufferData mConstantBufferData;
 		ID3D11Buffer *mConstantBuffer = nullptr;
+		DirectX::BoundingOrientedBox mBoundingOrientedBox;
 
 		// Used to decide which raster state to be used when rendering the object
 		bool mFrontCulling = false, mTargetable = false, mTargeted = false, mAlphaBlending = false;

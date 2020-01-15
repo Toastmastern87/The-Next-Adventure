@@ -2,6 +2,7 @@
 
 #include <d3d11.h>
 #include <DirectXMath.h>
+#include <DirectXCollision.h>
 #include <SpriteFont.h>
 #include <SpriteBatch.h>
 #include <vector>
@@ -28,7 +29,8 @@ namespace Toast
 		void ShowCursor();
 		void Draw(D3D& d3d);
 		void CheckRayIntersection2D(Toast::GUIPanel *panel);
-		DirectX::XMVECTOR GetPickingRay(DirectX::XMFLOAT2, DirectX::XMMATRIX, DirectX::XMMATRIX);
+		void CheckRayIntersection3D(DirectX::XMVECTOR cameraPos, DirectX::XMVECTOR pickingRay, Toast::Object3D* object);
+		DirectX::XMVECTOR GetPickingRay(POINT cursorPos, DirectX::XMMATRIX projectionMatrix, DirectX::XMMATRIX viewMatrix);
 
 		POINT GetDeltaPos() { return mDeltaPos; }
 
@@ -45,7 +47,7 @@ namespace Toast
 		size_t iVertexBuffer; //index to the vertexbuffer in resourcemanager
 		size_t iIndexBuffer; // index to the indexbuffer in resourcemanager
 
-		ID3D11Buffer* mVertexBuffer = nullptr;;
-		ID3D11Buffer* mIndexBuffer = nullptr;;
+		ID3D11Buffer* mVertexBuffer = nullptr;
+		ID3D11Buffer* mIndexBuffer = nullptr;
 	};
 }

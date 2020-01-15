@@ -92,6 +92,7 @@ namespace Toast
 		mSpaceship->mMeshes[1]->ConstructVertexBuffer();
 		mSpaceship->mPosition = DirectX::XMFLOAT3(0.0f, 0.0f, 8000.0f);
 		mSpaceship->mScale = DirectX::XMFLOAT3(75.0f, 75.0f, 75.0f);
+		mSpaceship->mTargeted = false;
 		mObjects3D.push_back(mSpaceship);
 
 		Toast::System::tSys->Print("Spaceship initiated");
@@ -272,8 +273,14 @@ namespace Toast
 	{
 		// Handles the input and the event belonging to those keys
 		mInput->ProcessInputs();
+		GetCursorPos(&mRawCursorPos);
 
 		mGameTime->Update(deltaTime);
+
+		for (Object3D *object : mObjects3D)
+		{
+			object->Update();
+		}
 
 		for (auto i : mInput->mActiveKeyMap) 
 		{
@@ -311,6 +318,19 @@ namespace Toast
 				mGUI->mGUIPanels[0]->mTargeted = false;
 				break;
 			case Toast::GameCommands::LeftMouseClick:
+				DirectX::XMVECTOR pickingRay = mGUI->mCursor->GetPickingRay(mRawCursorPos, mCamera->GetPerspectiveProjectionMatrix(), mCamera->GetViewMatrix());	
+
+				DirectX::XMFLOAT3 pkingRay;
+				DirectX::XMStoreFloat3(&pkingRay, pickingRay);
+
+				for(Toast::Object3D *object : mObjects3D) 
+				{
+					if (object->mTargetable) 
+					{
+						mGUI->mCursor->CheckRayIntersection3D(DirectX::XMLoadFloat3(&mCamera->GetPosition()), pickingRay, object);
+					}
+				}
+
 				for (int i = 0; i <= 5; i++)
 				{
 					mGUI->mCursor->CheckRayIntersection2D(mGUI->mGUIPanels[i]);
@@ -455,8 +475,6 @@ namespace Toast
 		mStarSphere->mRotation.y += mSunlightRotateAngle;
 		mStarSphere->mRotation.x += mSunlightSeasonalRotateAngle;
 
-		Toast::System::tSys->Print("Seasonal rotation: %f", mStarSphere->mRotation.x);
-
 		// Updates the Camera in the game
 		mCamera->Update(deltaTime);
 		mCamera->UpdateAltitude();
@@ -468,7 +486,6 @@ namespace Toast
 		mCamera->CheckOrbitalAngleBoundaries();
 		mCamera->UpdateMatrices();
 
-		GetCursorPos(&mRawCursorPos);
 		mGUI->mCursor->UpdatePos(mRawCursorPos);
 
 		// Updates the position of the cursor and GUI panels that are moveable
@@ -508,11 +525,6 @@ namespace Toast
 		mGUI->mGUIPanels[0]->mElements[9]->UpdateText(&posZString);
 
 		mMars->Update();
-
-		for (int i = 0; i < mObjects3D.size(); i++)
-		{
-			mObjects3D[i]->Update();
-		}
 	}
 
 	void Toast::Game::Stop()
