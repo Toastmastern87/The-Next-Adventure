@@ -231,11 +231,13 @@
     <ClInclude Include="Engine\Material.h" />
     <ClInclude Include="Engine\Mesh.h" />
     <ClInclude Include="Engine\Object3D.h" />
+    <ClInclude Include="Engine\ObjectPhysic.h" />
     <ClInclude Include="Engine\Resources.h" />
     <ClInclude Include="Engine\SphereMesh.h" />
     <ClInclude Include="Engine\System.h" />
     <ClInclude Include="Engine\tinyxml2.h" />
     <ClInclude Include="Engine\World.h" />
+    <ClInclude Include="Engine\WorldPhysic.h" />
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Game\GameInput.h" />
     <ClInclude Include="Game\GameTime.h" />
@@ -251,11 +253,13 @@
     <ClCompile Include="Engine\Material.cpp" />
     <ClCompile Include="Engine\Mesh.cpp" />
     <ClCompile Include="Engine\Object3D.cpp" />
+    <ClCompile Include="Engine\ObjectPhysic.cpp" />
     <ClCompile Include="Engine\Resources.cpp" />
     <ClCompile Include="Engine\SphereMesh.cpp" />
     <ClCompile Include="Engine\System.cpp" />
     <ClCompile Include="Engine\tinyxml2.cpp" />
     <ClCompile Include="Engine\World.cpp" />
+    <ClCompile Include="Engine\WorldPhysic.cpp" />
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Game\GameInput.cpp" />
     <ClCompile Include="Game\GameTime.cpp" />

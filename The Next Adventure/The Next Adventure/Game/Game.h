@@ -8,6 +8,7 @@
 #include "../Engine/GUI.h"
 #include "../Engine/GUIPanel.h"
 #include "../Engine/GUICursor.h"
+#include "../Engine/WorldPhysic.h"
 #include "GameInput.h"
 #include "GameTime.h"
 
@@ -33,6 +34,7 @@ namespace Toast
 
 		std::vector<Toast::Object3D*> mObjects3D;
 		Camera *mCamera = nullptr;
+		WorldPhysic* mWorldPhysic = nullptr;
 		GameInput *mInput = nullptr;
 		Object3D *mStarSphere = nullptr;
 		Object3D* mSpaceship = nullptr;

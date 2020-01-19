@@ -1,6 +1,4 @@
 #include "Object3D.h"
-#include "Mesh.h"
-#include "SphereMesh.h"
 
 namespace Toast 
 {
@@ -10,10 +8,7 @@ namespace Toast
 		mScale = DirectX::XMFLOAT3(1.0f, 1.0f, 1.0f);
 		mRotation = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
 
-		mBoundingOrientedBox = BoundingOrientedBox(XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(1.0f, 1.0f, 1.0f), XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f));
-
 		mTargetable = targetable;
-
 		mAlphaBlending = alphaBlending;
 	}
 
@@ -26,27 +21,41 @@ namespace Toast
 		}
 	}
 
-	void Object3D::CreateTargetBox()
+	void Object3D::CreateTargetBox(float sizeFactor)
 	{
+		DirectX::XMFLOAT3 BOBCorners;
+		float xSize, ySize, zSize;
+
+		BOBCorners = Object3D::GetBoundingBoxSize();
+		mBoundingOrientedBox = BoundingOrientedBox(XMFLOAT3(0.0f, 0.0f, 0.0f), BOBCorners, XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f));
+
+		Toast::System::tSys->Print("BOBCorners.x: %f", BOBCorners.x);
+		Toast::System::tSys->Print("BOBCorners.y: %f", BOBCorners.y);
+		Toast::System::tSys->Print("BOBCorners.z: %f", BOBCorners.z);
+
+		xSize = BOBCorners.x * sizeFactor;
+		ySize = BOBCorners.y * sizeFactor;
+		zSize = BOBCorners.z * sizeFactor;
+
 		if (mMeshes.size() > 0) 
 		{
 			Mesh* mesh = new Mesh();
 			Toast::System::tSys->mResources->mMeshes.push_back(mesh);
 
-			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-1.2f, 1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.0f, 0.25f)));
-			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-1.2f, -1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.25f, 0.25f)));
-			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(1.2f, 1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.0f, 0.5f)));
-			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(1.2f, -1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.25f, 0.5f)));
-			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-1.2f, -1.2f, 1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.5f, 0.25f)));
-			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(1.2f, -1.2f, 1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.5f, 0.5f)));
-			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-1.2f, 1.2f, 1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.75f, 0.25f)));
-			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(1.2f, 1.2f, 1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.75f, 0.5f)));
-			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-1.2f, 1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(1.0f, 0.25f)));
-			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(1.2f, 1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(1.0f, 0.5f)));
-			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-1.2f, 1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.25f, 0.0f)));
-			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-1.2f, 1.2f, 1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.5f, 0.0f)));
-			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(1.2f, 1.2f, -1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.25f, 0.75f)));
-			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(1.2f, 1.2f, 1.2f), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.5f, 0.75f)));
+			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-xSize, ySize, -zSize), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.0f, 0.25f)));
+			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-xSize, -ySize, -zSize), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.25f, 0.25f)));
+			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(xSize, ySize, -zSize), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.0f, 0.5f)));
+			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(xSize, -ySize, -zSize), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.25f, 0.5f)));
+			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-xSize, -ySize, zSize), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.5f, 0.25f)));
+			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(xSize, -ySize, zSize), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.5f, 0.5f)));
+			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-xSize, ySize, zSize), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.75f, 0.25f)));
+			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(xSize, ySize, zSize), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.75f, 0.5f)));
+			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-xSize, ySize, -zSize), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(1.0f, 0.25f)));
+			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(xSize, ySize, -zSize), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(1.0f, 0.5f)));
+			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-xSize, ySize, -zSize), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.25f, 0.0f)));
+			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(-xSize, ySize, zSize), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.5f, 0.0f)));
+			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(xSize, ySize, -zSize), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.25f, 0.75f)));
+			mesh->mVertices.push_back(Toast::Vertex(DirectX::XMFLOAT3(xSize, ySize, zSize), DirectX::XMFLOAT3(1.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f), DirectX::XMFLOAT2(0.5f, 0.75f)));
 
 			mesh->mIndices = std::vector<uint32_t>{
 					0, 2, 1,
@@ -68,10 +77,6 @@ namespace Toast
 			mesh->mNumVertices = 14;
 			mesh->ConstructVertexBuffer();
 			mMeshes.push_back(mesh);
-		}
-		else 
-		{
-			return;
 		}
 	}
 
@@ -135,9 +140,8 @@ namespace Toast
 		worldMatrix = DirectX::XMMatrixMultiply(worldMatrix, DirectX::XMMatrixRotationRollPitchYawFromVector(XMLoadFloat3(&mRotation)));
 		worldMatrix = DirectX::XMMatrixMultiply(worldMatrix, DirectX::XMMatrixTranslationFromVector(XMLoadFloat3(&mPosition)));
 
-		if (mTargetable) 
+		if (mTargetable)
 		{
-			mBoundingOrientedBox = BoundingOrientedBox(XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(1.0f, 1.0f, 1.0f), XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f));
 			mBoundingOrientedBox.Transform(mBoundingOrientedBox, worldMatrix);
 		}
 
@@ -174,5 +178,29 @@ namespace Toast
 		d3d->mDeviceContext->Unmap(mConstantBuffer, NULL);
 
 		d3d->SetObjectConstantBuffer(mConstantBuffer);
+	}
+
+	DirectX::XMFLOAT3 Object3D::GetBoundingBoxSize()
+	{
+		float distX, distY, distZ;
+		DirectX::XMFLOAT3 minVertex = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
+		DirectX::XMFLOAT3 maxVertex = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
+
+		for (int i = 0; i < mMeshes[0]->mNumVertices; i++)
+		{
+			minVertex.x = min(minVertex.x, mMeshes[0]->mVertices[i].position.x);
+			minVertex.y = min(minVertex.y, mMeshes[0]->mVertices[i].position.y);
+			minVertex.z = min(minVertex.z, mMeshes[0]->mVertices[i].position.z);
+
+			maxVertex.x = max(maxVertex.x, mMeshes[0]->mVertices[i].position.x);
+			maxVertex.y = max(maxVertex.y, mMeshes[0]->mVertices[i].position.y);
+			maxVertex.z = max(maxVertex.z, mMeshes[0]->mVertices[i].position.z);
+		}
+
+		distX = (maxVertex.x - minVertex.x) / 2.0f;
+		distY = (maxVertex.y - minVertex.y) / 2.0f;
+		distZ = (maxVertex.z - minVertex.z) / 2.0f;
+
+		return DirectX::XMFLOAT3(distX, distY, distZ);
 	}
 }

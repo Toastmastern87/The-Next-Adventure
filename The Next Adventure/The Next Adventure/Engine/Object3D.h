@@ -8,6 +8,9 @@
 #include "Resources.h"
 #include "System.h"
 #include "Functions.h"
+#include "Mesh.h"
+#include "SphereMesh.h"
+#include "ObjectPhysic.h"
 
 namespace Toast 
 {
@@ -29,9 +32,11 @@ namespace Toast
 		void Update();
 
 		void Draw(D3D &d3d);
-		void CreateTargetBox();
+		void CreateTargetBox(float sizeFactor);
 		void CreateSphere(int levels, int cellLevels, bool isPlanet = false, bool frontCulling = false, float radius = 1.0f);
+		DirectX::XMFLOAT3 GetBoundingBoxSize();
 
+		Toast::ObjectPhysic* objectPhysic;
 		std::vector<Mesh*> mMeshes;
 		std::vector<SphereMesh*> mSphereMeshes;
 		DirectX::XMFLOAT3 mPosition, mRotation, mScale;

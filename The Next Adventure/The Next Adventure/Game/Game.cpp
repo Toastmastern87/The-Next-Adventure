@@ -27,6 +27,11 @@ namespace Toast
 
 		Toast::System::tSys->Print("Camera created");
 
+		//Setting up the physic engine
+		mWorldPhysic = new WorldPhysic();
+
+		Toast::System::tSys->Print("Physic Engine created");
+
 		D3D11_INPUT_ELEMENT_DESC sphereIED[] =
 		{
 			{ "TEXCOORD" , 0, DXGI_FORMAT_R32G32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
@@ -82,9 +87,9 @@ namespace Toast
 		//Set up the first test with a spaceship
 		mSpaceship = new Toast::Object3D(true, true);
 		mSpaceship->mMeshes.push_back(Resources::sResources->LoadMesh("Cube"));
-		mSpaceship->CreateTargetBox();
 		mSpaceship->mMeshes[0]->mNumVertices = mSpaceship->mMeshes[0]->mVertices.size();
 		mSpaceship->mMeshes[0]->mNumIndices = mSpaceship->mMeshes[0]->mIndices.size();
+		mSpaceship->CreateTargetBox(1.2f);
 		mSpaceshipMaterial = Resources::sResources->GetMaterial("Starship", "Starship", "Object3D");
 		mSpaceship->mMeshes[1]->mMaterial = mTargetBoxMaterial;
 		mSpaceship->mMeshes[0]->mMaterial = mSpaceshipMaterial;

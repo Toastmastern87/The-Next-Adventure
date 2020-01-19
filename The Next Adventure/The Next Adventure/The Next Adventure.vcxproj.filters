@@ -49,6 +49,12 @@
     <Filter Include="Resource Files\Meshes">
       <UniqueIdentifier>{92d72b53-a2b2-4bbd-a7b3-c19cb8b4f9c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Toast Engine\Physic">
+      <UniqueIdentifier>{577c469e-50ed-4112-9a67-5523e8963982}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Toast Engine\Physic">
+      <UniqueIdentifier>{ee02b099-0d2e-42cf-8476-e08be969b4c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -207,6 +213,12 @@
     <ClInclude Include="Game\GameTime.h">
       <Filter>Header Files\The Next Adventure</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\ObjectPhysic.h">
+      <Filter>Header Files\Toast Engine\Physic</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\WorldPhysic.h">
+      <Filter>Header Files\Toast Engine\Physic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Game.cpp">
@@ -262,6 +274,12 @@
     </ClCompile>
     <ClCompile Include="Game\GameTime.cpp">
       <Filter>Source Files\The Next Adventure</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ObjectPhysic.cpp">
+      <Filter>Source Files\Toast Engine\Physic</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\WorldPhysic.cpp">
+      <Filter>Source Files\Toast Engine\Physic</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

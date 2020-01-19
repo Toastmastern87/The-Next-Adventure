@@ -10,6 +10,7 @@
 #include "System.h"
 #include "Mesh.h"
 #include "Object3D.h"
+#include "ObjectPhysic.h"
 #include "World.h"
 #include "Resources.h"
 #include "Material.h"
