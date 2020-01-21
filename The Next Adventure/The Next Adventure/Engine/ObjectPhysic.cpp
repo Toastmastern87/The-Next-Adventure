@@ -20,11 +20,10 @@ namespace Toast
 
 		gravityVector = DirectX::XMVectorScale(DirectX::XMVector3Normalize(DirectX::XMLoadFloat3(&mPosition)), -1.0f);
 
-		//Toast::System::tSys->Print("Gravity Vector x: %f, y: %f, z: %f", DirectX::XMVectorGetX(gravityVector), DirectX::XMVectorGetY(gravityVector), DirectX::XMVectorGetZ(gravityVector));
+		//velocity is suppose to be in km/s not in m/s therefor I didvide by 1000.0f
+		velocity = velocity + ((mGravityConstant * deltaTime) / 1000.0f);
 
-		velocity = velocity + (mGravityConstant * (deltaTime / 1000.0f));
-
-		mPositionTransform = DirectX::XMVectorScale(gravityVector, velocity);
+		mPositionTransform = DirectX::XMVectorScale(gravityVector, (velocity * deltaTime));
 	}
 
 	DirectX::XMVECTOR ObjectPhysic::GetPositionTransform() 
