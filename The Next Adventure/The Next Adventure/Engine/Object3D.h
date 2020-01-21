@@ -35,8 +35,9 @@ namespace Toast
 		void CreateTargetBox(float sizeFactor);
 		void CreateSphere(int levels, int cellLevels, bool isPlanet = false, bool frontCulling = false, float radius = 1.0f);
 		DirectX::XMFLOAT3 GetBoundingBoxSize();
+		std::vector<DirectX::XMFLOAT3> GetBoundingBoxVertices();
 
-		Toast::ObjectPhysic* objectPhysic;
+		Toast::ObjectPhysic* mObjectPhysic;
 		std::vector<Mesh*> mMeshes;
 		std::vector<SphereMesh*> mSphereMeshes;
 		DirectX::XMFLOAT3 mPosition, mRotation, mScale;

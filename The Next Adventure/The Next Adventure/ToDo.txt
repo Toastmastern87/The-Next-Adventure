@@ -1,0 +1,2 @@
+* Need to find the bug with the picking after the camera has moved away and rotated
+* Need to remake the gametimer class

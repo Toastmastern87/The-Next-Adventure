@@ -9,8 +9,8 @@
 #include "../Engine/GUIPanel.h"
 #include "../Engine/GUICursor.h"
 #include "../Engine/WorldPhysic.h"
+#include "../Engine/Time.h"
 #include "GameInput.h"
-#include "GameTime.h"
 
 const float MARSROTATESPEED = DirectX::XM_2PI / 89676000.0f;
 const double MARSSUNORBITSPEED = (0.55333333333f * DirectX::XM_PI) / 100319175000.0f;
@@ -21,7 +21,7 @@ namespace Toast
 	class Object3D;
 	class World;
 	class GameInput;
-	class GameTime;
+	class Time;
 	class GUI;
 
 	class Game 
@@ -30,6 +30,7 @@ namespace Toast
 		Game() {};
 		void Init();
 		void Update(double deltaTime);
+		void InitializeCamera();
 		void Stop();
 
 		std::vector<Toast::Object3D*> mObjects3D;
@@ -58,9 +59,9 @@ namespace Toast
 		Toast::GUIFont* mGeneralFont = nullptr;
 		Toast::GUIFont* mTimeFont = nullptr;
 		Toast::GUIFont* mYearDayFont = nullptr;
+		Time* mTime = nullptr;
 
-		GameTime *mGameTime = nullptr;
-		int mOldGameTimeSec = 0, mOldGameTimeMSec = 0, mMarsSeasonalRotationDir = 1;
+		int mMarsSeasonalRotationDir = 1;
 		float mSunlightRotateAngle = 0.0f, mSunlightSeasonalRotateAngle = 0.0f;
 
 		POINT mRawCursorPos;

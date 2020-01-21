@@ -210,14 +210,14 @@
     <ClInclude Include="Engine\GUICursor.h">
       <Filter>Header Files\Toast Engine\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="Game\GameTime.h">
-      <Filter>Header Files\The Next Adventure</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\ObjectPhysic.h">
       <Filter>Header Files\Toast Engine\Physic</Filter>
     </ClInclude>
     <ClInclude Include="Engine\WorldPhysic.h">
       <Filter>Header Files\Toast Engine\Physic</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Time.h">
+      <Filter>Header Files\Toast Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -272,14 +272,14 @@
     <ClCompile Include="Engine\GUICursor.cpp">
       <Filter>Source Files\Toast Engine\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="Game\GameTime.cpp">
-      <Filter>Source Files\The Next Adventure</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\ObjectPhysic.cpp">
       <Filter>Source Files\Toast Engine\Physic</Filter>
     </ClCompile>
     <ClCompile Include="Engine\WorldPhysic.cpp">
       <Filter>Source Files\Toast Engine\Physic</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Time.cpp">
+      <Filter>Source Files\Toast Engine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

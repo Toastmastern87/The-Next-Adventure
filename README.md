@@ -1,6 +1,7 @@
 # The Next Adventure
 
 Next to be added:
+* Rebuild of the timer function
 * Gravity
 * Zoom updated to be more functional
 

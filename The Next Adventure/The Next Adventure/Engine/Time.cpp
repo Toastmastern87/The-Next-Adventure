@@ -1,40 +1,31 @@
-#include "GameTime.h"
+#include "Time.h"
 
 namespace Toast
 {
-	GameTime::GameTime()
+	Time::Time()
 	{
-		mGameTimeMS = 0;
 		mGameTimeSecs = 0;
 		mGameTimeMins = 0;
 		mGameTimeHours = 0;
 		mGameTimeSols = 0;
 		mGameTimeMarsYears = 0;
 
-		mSpeed = 1;
+		mSpeed = 1.0f;
 	}
 
-	GameTime::~GameTime()
+	Time::~Time()
 	{
 	}
 
-	void GameTime::Update(float deltaTime)
+	void Time::Update(double deltaTime)
 	{
-		// deltaTime is in seconds so I multiply with 1000 to get it into milliseconds
-		mGameTimeMS += static_cast<int>(deltaTime * 1000.0f) * mSpeed;
+		mGameTimeSecs += deltaTime * mSpeed;
 
-		if (mGameTimeMS >= 1000)
+		//Toast::System::tSys->Print("mGameTimeMS: %f", mGameTimeMS);
+
+		if (mGameTimeSecs >= 60.0f)
 		{
-			int numberOfSecs = mGameTimeMS / 1000;
-
-			mGameTimeMS -= (numberOfSecs * 1000);
-
-			mGameTimeSecs += numberOfSecs;
-		}
-
-		if (mGameTimeSecs >= 60)
-		{
-			mGameTimeSecs -= 60;
+			mGameTimeSecs -= 60.0f;
 
 			mGameTimeMins++;
 		}
@@ -63,28 +54,28 @@ namespace Toast
 		}
 	}
 
-	void GameTime::IncreaseGameSpeed()
+	void Time::IncreaseGameSpeed()
 	{
-		if (mSpeed <= 100)
+		if (mSpeed <= 100.0f)
 		{
-			mSpeed *= 10;
+			mSpeed *= 10.0f;
 		}
 	}
 
-	void GameTime::DecreaseGameSpeed()
+	void Time::DecreaseGameSpeed()
 	{
-		if (mSpeed > 1)
+		if (mSpeed > 1.0f)
 		{
-			mSpeed /= 10;
+			mSpeed /= 10.0f;
 		}
 	}
 
-	void GameTime::SetGameSpeed(float speed)
+	void Time::SetGameSpeed(float speed)
 	{
-		mSpeed = static_cast<int>(speed);
+		mSpeed = speed;
 	}
 
-	std::string GameTime::GetTimeString() 
+	std::string Time::GetTimeString()
 	{
 		std::string timeString, hoursString, minsString, secsString;
 
@@ -108,11 +99,11 @@ namespace Toast
 
 		if (mGameTimeSecs < 10)
 		{
-			secsString = "0" + std::to_string(mGameTimeSecs);
+			secsString = "0" + std::to_string(static_cast<int>(mGameTimeSecs));
 		}
 		else
 		{
-			secsString = std::to_string(mGameTimeSecs);
+			secsString = std::to_string(static_cast<int>(mGameTimeSecs));
 		}
 
 		timeString = hoursString + ":" + minsString + ":" + secsString;

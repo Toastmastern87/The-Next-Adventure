@@ -10,22 +10,7 @@ namespace Toast
 		mInput = new Toast::GameInput();
 		mInput->SetDefaultKeyMap();
 
-		// Creating the camera that the game will use
-		mCamera = new Toast::Camera();
-		mCamera->SetPosition(XMFLOAT3(0.0f, 0.0f, 10000.0f));
-		//mCamera->Rotate(0.0f, (-DirectX::XM_PI / 2), (DirectX::XM_PI / 2));
-		//DirectX::XMConvertToRadians(-180.0f)
-		mCamera->Rotate(0.0f, DirectX::XMConvertToRadians(180.0f), 0.0f);
-		mCamera->SetAspectRatio(Toast::System::tSys->mSettings["WindowSizeX"] / Toast::System::tSys->mSettings["WindowSizeY"]);
-		mCamera->SetFoV(45.0f);
-		mCamera->SetNear(0.1f);
-		mCamera->SetFar(40000.0f);
-		mCamera->SetOrtho(Toast::System::tSys->mSettings["WindowSizeX"], Toast::System::tSys->mSettings["WindowSizeY"]);
-		// 10.0f being the min altitude above Mars, and 6610.5 as min zoom gives an distance to origo to 10000.0 with the Mars radius being 3389.5
-		mCamera->SetMaxZoom(3399.5f);
-		mCamera->SetMinZoom(10000.0f);
-
-		Toast::System::tSys->Print("Camera created");
+		InitializeCamera();
 
 		//Setting up the physic engine
 		mWorldPhysic = new WorldPhysic();
@@ -46,9 +31,7 @@ namespace Toast
 		mStarSphere = new Toast::Object3D();
 		mStarSphere->CreateSphere(1, 3, false, true, 20000.0f);
 		mStarSphereMaterial = Resources::sResources->GetMaterial("StarSphere", "StarSphere", "StarSphere", sphereIED, 6);
-
 		mStarSphere->mSphereMeshes[0]->mMaterial = mStarSphereMaterial;	
-
 		mStarSphere->mScale = DirectX::XMFLOAT3(20000.0f, 20000.0f, 20000.0f);
 		mStarSphere->mRotation = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
 		mStarSphere->mPosition = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
@@ -77,7 +60,7 @@ namespace Toast
 		mCamera->SetMaxRotation((mCamera->GetFoVRadians() / 2.0f) + atanf(mMars->mRadius / mCamera->GetAltitude()));
 
 		//Setting up the game time
-		mGameTime = new Toast::GameTime();
+		mTime = new Toast::Time();
 
 		Toast::System::tSys->Print("Game time initiated");
 
@@ -96,9 +79,13 @@ namespace Toast
 		mSpaceship->mMeshes[0]->ConstructVertexBuffer();
 		mSpaceship->mMeshes[1]->ConstructVertexBuffer();
 		mSpaceship->mPosition = DirectX::XMFLOAT3(0.0f, 0.0f, 8000.0f);
-		mSpaceship->mScale = DirectX::XMFLOAT3(75.0f, 75.0f, 75.0f);
 		mSpaceship->mTargeted = false;
 		mObjects3D.push_back(mSpaceship);
+		mSpaceship->Update();
+		//Setting up the physics for the spaceship
+		mWorldPhysic->mObjects.push_back(new Toast::ObjectPhysic(true));
+		mSpaceship->mObjectPhysic = mWorldPhysic->mObjects[mWorldPhysic->mObjects.size()-1];
+		mWorldPhysic->mObjects[mWorldPhysic->mObjects.size() - 1]->mGravityConstant = 3.711f;
 
 		Toast::System::tSys->Print("Spaceship initiated");
 
@@ -276,11 +263,14 @@ namespace Toast
 
 	void Toast::Game::Update(double deltaTime) 
 	{
+		// Update game time. Inside the time is multiplied by the speed
+		mTime->Update(deltaTime);
+
 		// Handles the input and the event belonging to those keys
 		mInput->ProcessInputs();
 		GetCursorPos(&mRawCursorPos);
 
-		mGameTime->Update(deltaTime);
+		mWorldPhysic->Update(deltaTime * mTime->GetGameSpeed());
 
 		for (Object3D *object : mObjects3D)
 		{
@@ -353,10 +343,10 @@ namespace Toast
 				mGUI->mCursor->ShowCursor();
 				break;
 			case Toast::GameCommands::IncreaseGameSpeed:
-				if (mGameTime->GetGameSpeed() < 1000) mGameTime->IncreaseGameSpeed();
+				if (mTime->GetGameSpeed() < 1000) mTime->IncreaseGameSpeed();
 				break;
 			case Toast::GameCommands::DecreaseGameSpeed:
-				if (mGameTime->GetGameSpeed() > 0) mGameTime->DecreaseGameSpeed();
+				if (mTime->GetGameSpeed() > 0) mTime->DecreaseGameSpeed();
 				break;
 			case Toast::GameCommands::ShowDebugWindow:
 				mGUI->mGUIPanels[0]->mVisible = !mGUI->mGUIPanels[0]->mVisible;
@@ -369,48 +359,48 @@ namespace Toast
 
 		if (mGUI->mGUIPanels[2]->mClicked) 
 		{ 
-			mGameTime->SetGameSpeed(1000);
+			mTime->SetGameSpeed(1000);
 			mGUI->mGUIPanels[2]->mClicked = false;
 		}
 		if (mGUI->mGUIPanels[3]->mClicked) 
 		{
-			mGameTime->SetGameSpeed(100);
+			mTime->SetGameSpeed(100);
 			mGUI->mGUIPanels[3]->mClicked = false;
 		}
 		if (mGUI->mGUIPanels[4]->mClicked)
 		{
-			mGameTime->SetGameSpeed(10);
+			mTime->SetGameSpeed(10);
 			mGUI->mGUIPanels[4]->mClicked = false;
 		}
 		if (mGUI->mGUIPanels[5]->mClicked)
 		{
-			mGameTime->SetGameSpeed(1);
+			mTime->SetGameSpeed(1);
 			mGUI->mGUIPanels[5]->mClicked = false;
 		}
 
 		// Updates the color of the time GUI indication panels
-		if (mGameTime->GetGameSpeed() == 1000)
+		if (mTime->GetGameSpeed() == 1000)
 		{
 			mGUI->mGUIPanels[2]->mMaterial = mGameSpeedActivatedPanelMaterial;
 			mGUI->mGUIPanels[3]->mMaterial = mGameSpeedActivatedPanelMaterial;
 			mGUI->mGUIPanels[4]->mMaterial = mGameSpeedActivatedPanelMaterial;
 			mGUI->mGUIPanels[5]->mMaterial = mGameSpeedActivatedPanelMaterial;
 		}
-		else if (mGameTime->GetGameSpeed() == 100)
+		else if (mTime->GetGameSpeed() == 100)
 		{
 			mGUI->mGUIPanels[2]->mMaterial = mGameSpeedDeactivatedPanelMaterial;
 			mGUI->mGUIPanels[3]->mMaterial = mGameSpeedActivatedPanelMaterial;
 			mGUI->mGUIPanels[4]->mMaterial = mGameSpeedActivatedPanelMaterial;
 			mGUI->mGUIPanels[5]->mMaterial = mGameSpeedActivatedPanelMaterial;
 		}
-		else if (mGameTime->GetGameSpeed() == 10)
+		else if (mTime->GetGameSpeed() == 10)
 		{
 			mGUI->mGUIPanels[2]->mMaterial = mGameSpeedDeactivatedPanelMaterial;
 			mGUI->mGUIPanels[3]->mMaterial = mGameSpeedDeactivatedPanelMaterial;
 			mGUI->mGUIPanels[4]->mMaterial = mGameSpeedActivatedPanelMaterial;
 			mGUI->mGUIPanels[5]->mMaterial = mGameSpeedActivatedPanelMaterial;
 		}
-		else if (mGameTime->GetGameSpeed() == 1)
+		else if (mTime->GetGameSpeed() == 1)
 		{
 			mGUI->mGUIPanels[2]->mMaterial = mGameSpeedDeactivatedPanelMaterial;
 			mGUI->mGUIPanels[3]->mMaterial = mGameSpeedDeactivatedPanelMaterial;
@@ -425,29 +415,6 @@ namespace Toast
 			mGUI->mGUIPanels[5]->mMaterial = mGameSpeedDeactivatedPanelMaterial;
 		}
 
-		// Update the sunlight to simulate that Mars is rotating
-		int gameTimeSec = mGameTime->GetGameTimeSecs();
-		int gameTimeMSec = mGameTime->GetGameTimeMS();
-		int timeDiff = 0;
-
-		if (mOldGameTimeMSec > gameTimeMSec)
-		{
-			timeDiff += (1000 - mOldGameTimeMSec) + gameTimeMSec;
-		}
-		else
-		{
-			timeDiff += gameTimeMSec - mOldGameTimeMSec;
-
-			if (mOldGameTimeSec > gameTimeSec)
-			{
-				timeDiff += ((60 - mOldGameTimeSec) + gameTimeSec) * 1000;
-			}
-			else
-			{
-				timeDiff += (gameTimeSec - mOldGameTimeSec) * 1000;
-			}
-		}
-
 		//Using the starsphere rotation here cause it is the one that is saved overtime. This if statement makes the rotation turn back towards
 		//next season
 		if (mStarSphere->mRotation.x >= DirectX::XMConvertToRadians(24.9f) || mStarSphere->mRotation.x <= DirectX::XMConvertToRadians(-24.9f))
@@ -455,11 +422,8 @@ namespace Toast
 			mMarsSeasonalRotationDir *= -1;
 		}
 
-		mSunlightRotateAngle = timeDiff * MARSROTATESPEED;
-		mSunlightSeasonalRotateAngle = timeDiff * MARSSUNORBITSPEED * mMarsSeasonalRotationDir;
-
-		mOldGameTimeSec = gameTimeSec;
-		mOldGameTimeMSec = gameTimeMSec;
+		mSunlightRotateAngle = deltaTime * mTime->GetGameSpeed() * MARSROTATESPEED;
+		mSunlightSeasonalRotateAngle = deltaTime * mTime->GetGameSpeed() * MARSSUNORBITSPEED * mMarsSeasonalRotationDir;
 
 		DirectX::XMMATRIX dayRotation = XMMATRIX(cosf(-mSunlightRotateAngle), 0.0f, sinf(-mSunlightRotateAngle), 0.0f,
 											   0.0f, 1.0f, 0.0f, 0.0f,
@@ -500,11 +464,11 @@ namespace Toast
 		}
 	
 		//Update the game time GUI
-		std::string timeString = mGameTime->GetTimeString();
+		std::string timeString = mTime->GetTimeString();
 		mGUI->mGUIPanels[1]->mElements[0]->UpdateText(&timeString);
-		std::string yearsString = "M: " + std::to_string(mGameTime->GetGameTimeMarsYears());
+		std::string yearsString = "M: " + std::to_string(mTime->GetGameTimeMarsYears());
 		mGUI->mGUIPanels[1]->mElements[1]->UpdateText(&yearsString);
-		std::string solsString = "Sol: " + std::to_string(mGameTime->GetGameTimeSols());
+		std::string solsString = "Sol: " + std::to_string(mTime->GetGameTimeSols());
 		mGUI->mGUIPanels[1]->mElements[2]->UpdateText(&solsString);
 
 		//Updates the debug window with new data
@@ -530,6 +494,26 @@ namespace Toast
 		mGUI->mGUIPanels[0]->mElements[9]->UpdateText(&posZString);
 
 		mMars->Update();
+	}
+
+	void Toast::Game::InitializeCamera() 
+	{
+		// Creating the camera that the game will use
+		mCamera = new Toast::Camera();
+		mCamera->SetPosition(XMFLOAT3(0.0f, 0.0f, 10000.0f));
+		//mCamera->Rotate(0.0f, (-DirectX::XM_PI / 2), (DirectX::XM_PI / 2));
+		//DirectX::XMConvertToRadians(-180.0f)
+		mCamera->Rotate(0.0f, DirectX::XMConvertToRadians(180.0f), 0.0f);
+		mCamera->SetAspectRatio(Toast::System::tSys->mSettings["WindowSizeX"] / Toast::System::tSys->mSettings["WindowSizeY"]);
+		mCamera->SetFoV(45.0f);
+		mCamera->SetNear(0.1f);
+		mCamera->SetFar(40000.0f);
+		mCamera->SetOrtho(Toast::System::tSys->mSettings["WindowSizeX"], Toast::System::tSys->mSettings["WindowSizeY"]);
+		// 10.0f being the min altitude above Mars, and 6610.5 as min zoom gives an distance to origo to 10000.0 with the Mars radius being 3389.5
+		mCamera->SetMaxZoom(3399.5f);
+		mCamera->SetMinZoom(10000.0f);
+
+		Toast::System::tSys->Print("Camera created");
 	}
 
 	void Toast::Game::Stop()

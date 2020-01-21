@@ -8,6 +8,8 @@ namespace Toast
 		mScale = DirectX::XMFLOAT3(1.0f, 1.0f, 1.0f);
 		mRotation = DirectX::XMFLOAT3(0.0f, 0.0f, 0.0f);
 
+		mBoundingOrientedBox = BoundingOrientedBox(XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(1.0f, 1.0f, 1.0f), XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f));
+
 		mTargetable = targetable;
 		mAlphaBlending = alphaBlending;
 	}
@@ -27,11 +29,8 @@ namespace Toast
 		float xSize, ySize, zSize;
 
 		BOBCorners = Object3D::GetBoundingBoxSize();
-		mBoundingOrientedBox = BoundingOrientedBox(XMFLOAT3(0.0f, 0.0f, 0.0f), BOBCorners, XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f));
 
-		Toast::System::tSys->Print("BOBCorners.x: %f", BOBCorners.x);
-		Toast::System::tSys->Print("BOBCorners.y: %f", BOBCorners.y);
-		Toast::System::tSys->Print("BOBCorners.z: %f", BOBCorners.z);
+		mBoundingOrientedBox = BoundingOrientedBox(XMFLOAT3(0.0f, 0.0f, 0.0f), BOBCorners, XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f));
 
 		xSize = BOBCorners.x * sizeFactor;
 		ySize = BOBCorners.y * sizeFactor;
@@ -131,10 +130,21 @@ namespace Toast
 		}
 	}
 
-	void Object3D::Update() 
+	void Object3D::Update()
 	{
-		Toast::D3D *d3d = Toast::System::tSys->mD3D;
+		Toast::D3D* d3d = Toast::System::tSys->mD3D;
 		DirectX::XMMATRIX worldMatrix = XMMatrixIdentity();
+
+		if (mObjectPhysic != nullptr) 
+		{
+			DirectX::XMVECTOR transformVector = mObjectPhysic->GetPositionTransform();
+
+			if (mObjectPhysic->mUseGravity) 
+			{
+				mObjectPhysic->mPosition = mPosition;
+				mPosition = DirectX::XMFLOAT3(mPosition.x + DirectX::XMVectorGetX(transformVector), mPosition.y + DirectX::XMVectorGetY(transformVector), mPosition.z + DirectX::XMVectorGetZ(transformVector));
+			}
+		}
 
 		worldMatrix = DirectX::XMMatrixMultiply(worldMatrix, DirectX::XMMatrixScalingFromVector(XMLoadFloat3(&mScale)));
 		worldMatrix = DirectX::XMMatrixMultiply(worldMatrix, DirectX::XMMatrixRotationRollPitchYawFromVector(XMLoadFloat3(&mRotation)));
@@ -142,6 +152,10 @@ namespace Toast
 
 		if (mTargetable)
 		{
+			DirectX::XMFLOAT3 BOBCorners = BOBCorners = Object3D::GetBoundingBoxSize();
+
+			mBoundingOrientedBox = BoundingOrientedBox(XMFLOAT3(0.0f, 0.0f, 0.0f), BOBCorners, XMFLOAT4(0.0f, 0.0f, 0.0f, 1.0f));
+
 			mBoundingOrientedBox.Transform(mBoundingOrientedBox, worldMatrix);
 		}
 
@@ -202,5 +216,21 @@ namespace Toast
 		distZ = (maxVertex.z - minVertex.z) / 2.0f;
 
 		return DirectX::XMFLOAT3(distX, distY, distZ);
+	}
+
+	std::vector<DirectX::XMFLOAT3> Object3D::GetBoundingBoxVertices() 
+	{
+		std::vector<DirectX::XMFLOAT3> vertices;
+		DirectX::XMFLOAT3 corners[8];
+
+		mBoundingOrientedBox.GetCorners(&corners[0]);
+
+		for (int i = 0; i < 8; i++)
+		{
+			//Toast::System::tSys->Print("corners[%d] x: %f, y: %f, z: %f", i, corners[i].x, corners[i].y, corners[i].z);
+			vertices.push_back(corners[i]);
+		}
+
+		return vertices;
 	}
 }

@@ -161,6 +161,14 @@ namespace Toast
 	{
 		float dist;
 
+		XMFLOAT3 corners[8];
+		object->mBoundingOrientedBox.GetCorners(&corners[0]);
+
+		for (int i = 0; i < 8; i++) 
+		{
+			//Toast::System::tSys->Print("Corner[%d] x: %f, y: %f, z: %f", i, corners[i].x, corners[i].y, corners[i].z);
+		}
+
 		object->mTargeted = object->mBoundingOrientedBox.Intersects(cameraPos, pickingRay, dist);
 	}
 

@@ -3,9 +3,9 @@
 #include <d3d11.h>
 #include <DirectXMath.h>
 #include <DirectXCollision.h>
-#include "ObjectPhysic.h"
 #include <string>
 #include <vector>
+#include "ObjectPhysic.h"
 
 namespace Toast
 {
@@ -15,6 +15,8 @@ namespace Toast
 		WorldPhysic();
 		~WorldPhysic();
 
-		std::vector<ObjectPhysic*> mObjects;
+		void Update(float deltaTime);
+
+		std::vector<Toast::ObjectPhysic*> mObjects;
 	};
 };
